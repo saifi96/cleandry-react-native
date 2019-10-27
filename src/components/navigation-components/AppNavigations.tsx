@@ -4,9 +4,10 @@ import { createStackNavigator } from "react-navigation-stack";
 import AppLoadingScreen from "../../screens/app-loading-screen/AppLoadingScreen";
 import LoginScreen from "../../screens/auth-screens/LoginScreen";
 import LoginOTPScreen from "../../screens/auth-screens/LoginOTPScreen";
-import GettingStartedScreen1 from "../../screens/getting-started-screens/getting-started-screen-1";
+import GettingStartedScreen1 from "../../screens/getting-started-screens/GettingStartedScreen1";
 import RegistrationScreen from "../../screens/registration-screen/RegistrationScreen";
 import DashboardScreen from "../../screens/dashboard-screen/DashboardScreen";
+import ProfileViewScreen from "../../screens/profile-screens/ProfileViewScreen";
 
 
 
@@ -62,8 +63,14 @@ const AuthScreensStack = createStackNavigator({
 
 
 /**
- * Dashboard Screens Stack
+ * User Profil Screens Stack
  */
+const UserProfileScreensStack = createStackNavigator({
+    ProfileViewScreen: ProfileViewScreen
+}, {
+    initialRouteName: "ProfileViewScreen",
+    headerMode: "none"
+});
 
 
 /**
@@ -71,6 +78,7 @@ const AuthScreensStack = createStackNavigator({
  */
 const DashboardScreensStack = createStackNavigator({
     DashboardScreen: DashboardScreen,
+    UserProfileScreensStack: UserProfileScreensStack
 }, {
     initialRouteName: "DashboardScreen",
     headerMode: "none",
@@ -133,6 +141,9 @@ export const NavigateToRoot = Object.freeze({
 });
 
 
+export const NavigateToStack = Object.freeze({
+    UserProfileScreensStack: "UserProfileScreensStack"
+});
 
 export const NavigateToScreen = Object.freeze({
     AppLoadingScreen: "AppLoadingScreen",

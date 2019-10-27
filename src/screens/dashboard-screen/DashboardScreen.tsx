@@ -50,7 +50,7 @@ class DashboardScreen extends React.Component<IProps, IState> {
                 type="overlay"
                 captureGestures={true}
                 tapToClose={true}
-                content={<LeftMenuComponent userName="Cleandry In" />} >
+                content={<LeftMenuComponent userName="Cleandry In" navigation={this.props.navigation} />} >
 
                 <MainContainerComponent isLoading={false}>
 

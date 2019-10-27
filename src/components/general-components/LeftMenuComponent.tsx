@@ -4,16 +4,19 @@ import globalStyle from "../../styles/global-style";
 import ImgSources from "../../core/img-sources";
 import { globalColors } from "../../styles/color-style";
 import { StyleSheet, TouchableOpacity } from "react-native";
+import { NavigateToScreen, NavigateToStack } from "../navigation-components/AppNavigations";
 
 interface ILeftMenuProps {
-    userName: string
+    userName: string,
+    navigation: any
 }
 
 const LeftMenuComponent = (props: ILeftMenuProps) => {
 
     return (
         <View style={[{ flex: 1, flexDirection: "column", opacity: 0.9, paddingVertical: 25, backgroundColor: globalColors.primary }]}>
-            <TouchableOpacity onPress={() => console.log("profile icon")}>
+            <TouchableOpacity onPress={() => { props.navigation.navigate(NavigateToStack.UserProfileScreensStack); }
+            }>
                 <View style={[{ alignItems: "center" }]}>
                     <Thumbnail
                         circular
@@ -157,7 +160,7 @@ const LeftMenuComponent = (props: ILeftMenuProps) => {
                     </Body>
                 </ListItem>
             </List>
-        </View>
+        </View >
     )
 }
 
