@@ -9,7 +9,7 @@ const globalStyle = StyleSheet.create({
     paddingS: { padding: 3 },
     paddingM: { padding: 5 },
     paddingL: { padding: 8 },
-    txtPrimaryColor: { color: globalColors.appPrimary },
+    txtPrimaryColor: { color: globalColors.primary },
     containerPadding: {
         padding: 10,
         paddingHorizontal: 15
@@ -34,12 +34,19 @@ const globalStyle = StyleSheet.create({
         left: 0,
         right: 0
     },
-    inputTextSizeL: {
+    posRelation: {
+        position: "relative"
+    },
+    textSizeL: {
         fontSize: 26,
         fontWeight: "400"
     },
-    inputTextSizeM: {
+    textSizeM: {
         fontSize: 18,
+        fontWeight: "400"
+    },
+    textSizeS: {
+        fontSize: 14,
         fontWeight: "400"
     },
     errorMessage: {
@@ -51,11 +58,12 @@ const globalStyle = StyleSheet.create({
         width: "75%"
     },
     bgAppPrimary: {
-        backgroundColor: globalColors.appPrimary
+        backgroundColor: globalColors.primary
     },
     bgLighGray: {
         backgroundColor: globalColors.lightGray1,
-    }
+    },
+
 
 });
 

@@ -1,4 +1,4 @@
-import LaundryHOC from "./LaundryHOC";
+import LaundryHOC from "./CleandryHOC";
 
 class GuestHOC extends LaundryHOC {
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Content, H1, Spinner, View, Text, H3 } from "native-base";
-import { NavigateToRoot } from "../../components/navigations/AppNavigations";
+import { NavigateToRoot } from "../../components/navigation-components/AppNavigations";
 import globalStyle from "../../styles/global-style";
 import { globalColors } from "../../styles/color-style";
 
@@ -25,7 +25,7 @@ class AppLoadingScreen extends React.Component<IProps, IState> {
         return (
             <Container style={{ position: "relative", justifyContent: "center" }}>
                 <View style={{ alignItems: "center" }}>
-                    <Spinner size="large" color={globalColors.appPrimary}>
+                    <Spinner size="large" color={globalColors.primary}>
                     </Spinner>
                     <H3>Loading..</H3>
                 </View>

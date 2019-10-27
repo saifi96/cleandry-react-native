@@ -14,9 +14,15 @@ const ImgSources = Object.freeze({
         bedsheetIron: require("../assests/icons/bedsheet-iron.png"),
         bleaching: require("../assests/icons/laundry-detergent.png"),
     },
-    drawerIcons: {
-        face1: require("../assests/icons/face-1.jpg"),
-        award: require("../assests/icons/badge-with-a-star.png")
+    leftMenuIcons: {
+        face: require("../assests/icons/face.jpg"),
+        home: require("../assests/icons/home.png"),
+        card: require("../assests/icons/card.png"),
+        chart: require("../assests/icons/chart.png"),
+        transfer: require("../assests/icons/transfer.png"),
+        reward: require("../assests/icons/reward.png"),
+        percentage: require("../assests/icons/percentage.png"),
+        instruction: require("../assests/icons/instruction.png")
     }
 });
 

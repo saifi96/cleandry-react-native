@@ -2,11 +2,10 @@ import * as React from 'react'
 import { Container, H1, Card, Text, Input, Button, View, Item, Icon, Form, Label, Header, Left, Body, Right, Content, Footer } from 'native-base';
 import { Grid, Row, Col } from "react-native-easy-grid";
 import globalStyle from '../../styles/global-style';
-import { NavigateToScreen, NavigateToRoot } from '../../components/navigations/AppNavigations';
+import { NavigateToScreen, NavigateToRoot } from '../../components/navigation-components/AppNavigations';
 import { globalColors } from '../../styles/color-style';
 import { StyleSheet, ScrollView } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import LinearGradient from 'react-native-linear-gradient';
 
 
 
@@ -36,7 +35,6 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                     <Right></Right>
                 </Header>
 
-
                 <Content
                     padder
                     enableAutomaticScroll={true}
@@ -65,7 +63,7 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                                 regular
                                 style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
-                                    style={globalStyle.inputTextSizeM}
+                                    style={globalStyle.textSizeM}
                                     placeholder="Name"
                                     placeholderTextColor={globalColors.placeholderText}
                                 />
@@ -77,7 +75,7 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                                 regular
                                 style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
-                                    style={globalStyle.inputTextSizeM}
+                                    style={globalStyle.textSizeM}
                                     placeholder="Email"
                                     placeholderTextColor={globalColors.placeholderText}
                                 />
@@ -89,7 +87,7 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                                 regular
                                 style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
-                                    style={globalStyle.inputTextSizeM}
+                                    style={globalStyle.textSizeM}
                                     keyboardType="number-pad"
                                     placeholder="Phone"
                                     placeholderTextColor={globalColors.placeholderText}
@@ -102,7 +100,7 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                                 regular
                                 style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
-                                    style={globalStyle.inputTextSizeM}
+                                    style={globalStyle.textSizeM}
                                     placeholder="E.g 10-07-1996"
                                     placeholderTextColor={globalColors.placeholderText} />
                                 <Icon name="calendar-month" type="MaterialCommunityIcons" />

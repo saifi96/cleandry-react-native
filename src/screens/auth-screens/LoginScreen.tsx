@@ -2,9 +2,8 @@ import * as React from 'react'
 import { Container, Content, H1, Card, Text, Input, Button, View, Item, Icon } from 'native-base';
 import { Grid, Row, Col } from "react-native-easy-grid";
 import globalStyle from '../../styles/global-style';
-import { NavigateToScreen, NavigateToRoot } from '../../components/navigations/AppNavigations';
+import { NavigateToScreen, NavigateToRoot } from '../../components/navigation-components/AppNavigations';
 import { globalColors } from '../../styles/color-style';
-import LinearGradient from "react-native-linear-gradient";
 
 export interface IProps {
     navigation: any
@@ -43,7 +42,7 @@ class LoginScreen extends React.Component<IProps, IState> {
                                             <Item regular style={globalStyle.borderRadiusM}>
                                                 <Input
                                                     disabled={true}
-                                                    style={[globalStyle.inputTextSizeL, { textAlign: "center" }]}
+                                                    style={[globalStyle.textSizeL, { textAlign: "center" }]}
                                                     placeholder="+91"
                                                     textAlignVertical="center"
                                                     keyboardType="number-pad" />
@@ -52,7 +51,7 @@ class LoginScreen extends React.Component<IProps, IState> {
                                         <Col size={8}>
                                             <Item regular style={globalStyle.borderRadiusM}>
                                                 <Input
-                                                    style={globalStyle.inputTextSizeL}
+                                                    style={globalStyle.textSizeL}
                                                     placeholder="800 25 800 23"
                                                     placeholderTextColor={globalColors.placeholderText}
                                                     textAlignVertical="center"
@@ -96,7 +95,7 @@ class LoginScreen extends React.Component<IProps, IState> {
                                     <Text
                                         textBreakStrategy="highQuality"
                                         uppercase={false}
-                                        style={[{ fontWeight: "400", fontSize: 16, color: globalColors.appPrimary }]}
+                                        style={[{ fontWeight: "400", fontSize: 16, color: globalColors.primary }]}
                                     >
                                         Don't have account register now
                                     </Text>

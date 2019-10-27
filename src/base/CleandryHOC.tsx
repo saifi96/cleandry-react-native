@@ -7,7 +7,7 @@ interface IState {
 
 interface IProps { };
 
-class LaundryHOC extends React.Component<IProps, IState>{
+class CleandryHOC extends React.Component<IProps, IState>{
 
     constructor(props: IProps) {
         super(props);
@@ -16,4 +16,4 @@ class LaundryHOC extends React.Component<IProps, IState>{
 
 }
 
-export default LaundryHOC;
+export default CleandryHOC;

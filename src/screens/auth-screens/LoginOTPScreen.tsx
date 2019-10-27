@@ -4,8 +4,7 @@ import { Item, Input, Container, Row, View, H1, Card, Button, Text, Header, H3, 
 import { Grid, Col } from 'react-native-easy-grid';
 import globalStyle from '../../styles/global-style';
 import { globalColors } from '../../styles/color-style';
-import LinearGradient from 'react-native-linear-gradient';
-import { NavigateToScreen } from '../../components/navigations/AppNavigations';
+import { NavigateToScreen } from '../../components/navigation-components/AppNavigations';
 
 
 interface IProps {
@@ -34,7 +33,7 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
             (i, j) => <Col key={j} style={styles.txtMargin}>
                 <Item regular style={{ borderRadius: 10 }}>
                     <Input
-                        style={[styles.inputRadius, globalStyle.inputTextSizeL, { borderRadius: 10 }]}
+                        style={[styles.inputRadius, globalStyle.textSizeL, { borderRadius: 10 }]}
                         keyboardType="numeric"
                         placeholder="0"
                         onChangeText={v => this.focusNext(j, v)}
