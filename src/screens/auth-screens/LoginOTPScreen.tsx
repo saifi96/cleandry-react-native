@@ -68,7 +68,7 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
     render() {
         return (
             <Container>
-                <Header noShadow style={[globalStyle.bgAppPrimary]}>
+                <Header noShadow style={[globalStyle.bgAppPrimary]} androidStatusBarColor={globalColors.primary}>
                     <Left>
                         <Button transparent onPress={() => { this.props.navigation.goBack() }}>
                             <Icon name="arrow-left" type="FontAwesome5" />
@@ -79,9 +79,7 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
                 </Header>
                 <Content
                     style={{ position: "relative" }}
-                    scrollsToTop={true}
                     scrollEnabled={true}
-                    snapToStart={true}
                     contentContainerStyle={{ minHeight: "100%" }}>
                     <Grid style={[globalStyle.posAsBackground]}>
                         <Row style={[globalStyle.bgAppPrimary]}>

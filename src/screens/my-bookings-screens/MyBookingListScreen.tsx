@@ -1,31 +1,38 @@
 import React from "react";
 import MainContainerComponent from "../../components/general-components/MainContainerComponent";
-import { Header, Button, Left, Icon, Body, Right, H3, Content, Text } from "native-base";
+import { Header, Button, Left, Icon, Body, Right, H3, Content } from "native-base";
 import globalStyle from "../../styles/global-style";
 import { globalColors } from "../../styles/color-style";
-import { NavigateToStack, NavigateToScreen, NavigateToRoot } from "../../components/navigation-components/AppNavigations";
-import UserData from "../../core/data-objects/UserData";
-import { ProfileViewComponent } from "../../components/profile-components/ProfileComponents";
-import { TrendingOfferComponent } from "../../components/dashboard-components/DashboardComponents";
+import { NavigateToScreen } from "../../components/navigation-components/AppNavigations";
+import { MyBookingListComponent } from "../../components/my-booking-components/MyBookingComponents";
+import MyBookingData from "../../core/data-objects/MyBookingData";
 
 
 interface IProps {
     navigation: any,
 }
 interface IState {
-    user: UserData;
+    MyBookings: Array<MyBookingData>;
 }
 
-class ProfileViewScreen extends React.Component<IProps, IState> {
+class MyBookingListScreen extends React.Component<IProps, IState> {
 
 
     constructor(props: IProps) {
         super(props);
-        let objUser: UserData = new UserData();
-        objUser.FullName = "Cleandry";
-        objUser.Email = "xyz@gmail.com";
-        objUser.Phone = 555;
-        this.state = { user: objUser };
+
+        let listDTOMyBooking = new Array<MyBookingData>();
+        let dtoMyBooking = new MyBookingData();
+        dtoMyBooking.ServiceName = "Cleandry";
+        dtoMyBooking.SubCategoryName = "Cleandry category title";
+
+        let dtoMyBooking2 = new MyBookingData();
+        dtoMyBooking2.ServiceName = "Navigo";
+        dtoMyBooking2.SubCategoryName = "Navigo category title";
+        listDTOMyBooking.push(dtoMyBooking);
+        listDTOMyBooking.push(dtoMyBooking2);
+
+        this.state = { MyBookings: listDTOMyBooking };
     }
 
 
@@ -47,17 +54,9 @@ class ProfileViewScreen extends React.Component<IProps, IState> {
                         </Button>
                     </Left>
                     <Body>
-                        <H3 style={[{ color: globalColors.white }]}>My Profile</H3>
+                        <H3 style={[{ color: globalColors.white }]}>My Bookings</H3>
                     </Body>
                     <Right>
-                        <Button
-                            transparent
-                            onPress={() => {
-                                this.props.navigation.navigate(NavigateToRoot.AuthScreensStack)
-                            }}
-                        >
-                            <Icon name="sign-out-alt" type="FontAwesome5" />
-                        </Button>
                     </Right>
                 </Header>
                 <Content
@@ -66,9 +65,10 @@ class ProfileViewScreen extends React.Component<IProps, IState> {
                     style={[globalStyle.posRelation]}
                 >
 
-                    <ProfileViewComponent user={this.state.user} navigation={this.props.navigation} />
-
-                    <TrendingOfferComponent />
+                    <MyBookingListComponent
+                        MyBookings={this.state.MyBookings}
+                        navigation={this.props.navigation}
+                    />
 
                 </Content>
             </MainContainerComponent>
@@ -76,4 +76,4 @@ class ProfileViewScreen extends React.Component<IProps, IState> {
     }
 }
 
-export default ProfileViewScreen;
+export default MyBookingListScreen;

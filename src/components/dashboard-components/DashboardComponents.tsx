@@ -181,6 +181,7 @@ const dashboardStyle = StyleSheet.create({
     },
     sectionTitle: {
         color: globalColors.primary,
+        marginBottom: 5
     },
     gridColContent: {
         alignItems: "center",

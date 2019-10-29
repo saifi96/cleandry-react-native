@@ -42,7 +42,9 @@ const LeftMenuComponent = (props: ILeftMenuProps) => {
                 <ListItem
                     thumbnail
                     noBorder={true}
-                    onPress={() => console.log("clicked")}
+                    onPress={() => {
+                        props.navigation.navigate(NavigateToStack.MyBookingScreensStack);
+                    }}
                 >
                     <Left>
                         <Thumbnail small square source={ImgSources.leftMenuIcons.card} />

@@ -9,6 +9,8 @@ import RegistrationScreen from "../../screens/registration-screen/RegistrationSc
 import DashboardScreen from "../../screens/dashboard-screen/DashboardScreen";
 import ProfileViewScreen from "../../screens/profile-screens/ProfileViewScreen";
 import ProfileEditScreen from "../../screens/profile-screens/ProfileEditScreen";
+import MyBookingListScreen from "../../screens/my-bookings-screens/MyBookingListScreen";
+import MyBookingDetailScreen from "../../screens/my-bookings-screens/MyBookingDetailScreen";
 
 
 
@@ -76,11 +78,23 @@ const UserProfileScreensStack = createStackNavigator({
 
 
 /**
+ * My Booking Screens Stack
+ */
+const MyBookingScreensStack = createStackNavigator({
+    MyBookingListScreen: MyBookingListScreen,
+    MyBookingDetailScreen: MyBookingDetailScreen
+}, {
+    initialRouteName: "MyBookingListScreen",
+    headerMode: "none"
+});
+
+/**
  * Dashboard Stack
  */
 const DashboardScreensStack = createStackNavigator({
     DashboardScreen: DashboardScreen,
-    UserProfileScreensStack: UserProfileScreensStack
+    UserProfileScreensStack: UserProfileScreensStack,
+    MyBookingScreensStack: MyBookingScreensStack,
 }, {
     initialRouteName: "DashboardScreen",
     headerMode: "none",
@@ -100,10 +114,6 @@ const GeneralContainerStack = createStackNavigator({
     headerMode: "none"
 });
 
-
-// const UserStack = createStackNavigator({
-
-// });
 
 /*----------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------*/
@@ -134,17 +144,16 @@ const AppContainer = createAppContainer(AppRootSwitchNavigator);
  */
 /*----------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------*/
-
-
 export const NavigateToRoot = Object.freeze({
     AppLoadingScreen: "AppLoadingScreen",
     GettingStartedScreenStack: "GettingStartedScreensStack",
     AuthScreensStack: "AuthScreensStack",
 });
 
-
 export const NavigateToStack = Object.freeze({
-    UserProfileScreensStack: "UserProfileScreensStack"
+    UserProfileScreensStack: "UserProfileScreensStack",
+    MyBookingScreensStack: "MyBookingScreensStack"
+
 });
 
 export const NavigateToScreen = Object.freeze({
@@ -156,4 +165,6 @@ export const NavigateToScreen = Object.freeze({
     DashboardScreen: "DashboardScreen",
     ProfileViewScreen: "ProfileViewScreen",
     ProfileEditScreen: "ProfileEditScreen",
+    MyBookingListScreen: "MyBookingListScreen",
+    MyBookingDetailScreen: "MyBookingDetailScreen"
 });

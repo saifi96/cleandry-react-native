@@ -7,6 +7,9 @@ import { CarouselComponent } from '../../components/general-components/CrouselCo
 import { OurTopServicesComponent, QuickCheckoutComponent, TrendingOfferComponent, RatingReviewComponent } from '../../components/dashboard-components/DashboardComponents';
 import MainContainerComponent from '../../components/general-components/MainContainerComponent';
 import { globalColors } from '../../styles/color-style';
+import Axios from 'axios';
+import ServiceData from '../../core/data-objects/ServiceData';
+import UserData from '../../core/data-objects/UserData';
 
 
 export interface IProps {

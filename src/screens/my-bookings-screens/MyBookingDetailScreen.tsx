@@ -3,29 +3,19 @@ import MainContainerComponent from "../../components/general-components/MainCont
 import { Header, Button, Left, Icon, Body, Right, H3, Content } from "native-base";
 import globalStyle from "../../styles/global-style";
 import { globalColors } from "../../styles/color-style";
-import { NavigateToScreen, NavigateToRoot } from "../../components/navigation-components/AppNavigations";
-import UserData from "../../core/data-objects/UserData";
-import { ProfileEditComponent } from "../../components/profile-components/ProfileComponents";
-import { TrendingOfferComponent } from "../../components/dashboard-components/DashboardComponents";
 
 
 interface IProps {
     navigation: any,
 }
 interface IState {
-    user: UserData;
 }
 
-class ProfileEditScreen extends React.Component<IProps, IState> {
+class MyBookingDetailScreen extends React.Component<IProps, IState> {
 
 
     constructor(props: IProps) {
         super(props);
-        let objUser: UserData = new UserData();
-        objUser.FullName = "Cleandry";
-        objUser.Email = "xyz@gmail.com";
-        objUser.Phone = 555;
-        this.state = { user: objUser };
     }
 
 
@@ -47,17 +37,9 @@ class ProfileEditScreen extends React.Component<IProps, IState> {
                         </Button>
                     </Left>
                     <Body>
-                        <H3 style={[{ color: globalColors.white }]}>Edit Profile</H3>
+                        <H3 style={[{ color: globalColors.white }]}>Booking Detail</H3>
                     </Body>
                     <Right>
-                        <Button
-                            transparent
-                            onPress={() => {
-                                this.props.navigation.navigate(NavigateToRoot.AuthScreensStack)
-                            }}
-                        >
-                            <Icon name="sign-out-alt" type="FontAwesome5" />
-                        </Button>
                     </Right>
                 </Header>
                 <Content
@@ -66,14 +48,10 @@ class ProfileEditScreen extends React.Component<IProps, IState> {
                     style={[globalStyle.posRelation]}
                 >
 
-                    <ProfileEditComponent user={this.state.user} navigation={this.props.navigation} />
-
-                    <TrendingOfferComponent />
-
                 </Content>
             </MainContainerComponent>
         )
     }
 }
 
-export default ProfileEditScreen;
+export default MyBookingDetailScreen;
