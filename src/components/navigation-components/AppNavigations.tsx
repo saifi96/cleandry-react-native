@@ -8,6 +8,7 @@ import GettingStartedScreen1 from "../../screens/getting-started-screens/Getting
 import RegistrationScreen from "../../screens/registration-screen/RegistrationScreen";
 import DashboardScreen from "../../screens/dashboard-screen/DashboardScreen";
 import ProfileViewScreen from "../../screens/profile-screens/ProfileViewScreen";
+import ProfileEditScreen from "../../screens/profile-screens/ProfileEditScreen";
 
 
 
@@ -66,7 +67,8 @@ const AuthScreensStack = createStackNavigator({
  * User Profil Screens Stack
  */
 const UserProfileScreensStack = createStackNavigator({
-    ProfileViewScreen: ProfileViewScreen
+    ProfileViewScreen: ProfileViewScreen,
+    ProfileEditScreen: ProfileEditScreen,
 }, {
     initialRouteName: "ProfileViewScreen",
     headerMode: "none"
@@ -151,5 +153,7 @@ export const NavigateToScreen = Object.freeze({
     LoginScreen: "LoginScreen",
     LoginOTPScreen: "LoginOTPScreen",
     RegistrationScreen: "RegistrationScreen",
-    DashboardScreen: "DashboardScreen"
+    DashboardScreen: "DashboardScreen",
+    ProfileViewScreen: "ProfileViewScreen",
+    ProfileEditScreen: "ProfileEditScreen",
 });

@@ -23,6 +23,11 @@ const ImgSources = Object.freeze({
         reward: require("../assests/icons/reward.png"),
         percentage: require("../assests/icons/percentage.png"),
         instruction: require("../assests/icons/instruction.png")
+    },
+    profileIcons: {
+        user: require("../assests/icons/user.png"),
+        email: require("../assests/icons/email.png"),
+        phone: require("../assests/icons/phone.png")
     }
 });
 

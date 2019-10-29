@@ -1,12 +1,10 @@
 import * as React from 'react'
-import { Container, H1, Card, Text, Input, Button, View, Item, Icon, Form, Label, Header, Left, Body, Right, Content, Footer } from 'native-base';
+import { Container, H1, Card, Text, Input, Button, View, Item, Icon, Form, Header, Left, Body, Right, Content } from 'native-base';
 import { Grid, Row, Col } from "react-native-easy-grid";
 import globalStyle from '../../styles/global-style';
 import { NavigateToScreen, NavigateToRoot } from '../../components/navigation-components/AppNavigations';
 import { globalColors } from '../../styles/color-style';
 import { StyleSheet, ScrollView } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-
 
 
 export interface IProps {
@@ -67,7 +65,8 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                                     placeholder="Name"
                                     placeholderTextColor={globalColors.placeholderText}
                                 />
-                                <Icon name='user' type="FontAwesome5" />
+                                <Icon name="user" type="FontAwesome5">
+                                </Icon>
                             </Item>
 
                             <Item
@@ -152,7 +151,8 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                                     <Text uppercase={false}>
                                         Google
                                         </Text>
-                                    <Icon name="google" type="FontAwesome5" />
+                                    <Icon name="google" type="FontAwesome5">
+                                    </Icon>
                                 </Button>
                             </View>
                             <View style={{ flex: 1 }}>
