@@ -66,7 +66,7 @@ const AuthScreensStack = createStackNavigator({
 
 
 /**
- * User Profil Screens Stack
+ * User Profile Screens Stack
  */
 const UserProfileScreensStack = createStackNavigator({
     ProfileViewScreen: ProfileViewScreen,
@@ -78,7 +78,7 @@ const UserProfileScreensStack = createStackNavigator({
 
 
 /**
- * My Booking Screens Stack
+ * MyBooking Screens Stack
  */
 const MyBookingScreensStack = createStackNavigator({
     MyBookingListScreen: MyBookingListScreen,
@@ -91,7 +91,7 @@ const MyBookingScreensStack = createStackNavigator({
 /**
  * Dashboard Stack
  */
-const DashboardScreensStack = createStackNavigator({
+const UserScreensStack = createStackNavigator({
     DashboardScreen: DashboardScreen,
     UserProfileScreensStack: UserProfileScreensStack,
     MyBookingScreensStack: MyBookingScreensStack,
@@ -106,12 +106,13 @@ const DashboardScreensStack = createStackNavigator({
 /**
  * Root Switch Stack
  */
-const GeneralContainerStack = createStackNavigator({
+const GeneralScreensStack = createStackNavigator({
+    GettingStartedScreensStack: GettingStartedScreensStack,
     AuthScreensStack: AuthScreensStack,
     RegistrationScreensStack: RegistrationScreensStack,
-    GettingStartedScreensStack: GettingStartedScreensStack,
 }, {
-    headerMode: "none"
+    initialRouteName: "GettingStartedScreensStack",
+    headerMode: "none",
 });
 
 
@@ -125,11 +126,8 @@ const GeneralContainerStack = createStackNavigator({
 const AppRootSwitchNavigator = createSwitchNavigator(
     {
         AppLoadingScreen: AppLoadingScreen,
-        GeneralContainerStack: GeneralContainerStack,
-        DashboardScreensStack: DashboardScreensStack
-        // GettingStartedScreensStack: GettingStartedScreensStack,
-        // RegistrationScreensStack: RegistrationScreensStack,
-        // AuthScreensStack: AuthScreensStack,
+        GeneralScreensStack: GeneralScreensStack,
+        UserScreensStack: UserScreensStack
     },
     {
         initialRouteName: "AppLoadingScreen"
@@ -146,7 +144,8 @@ const AppContainer = createAppContainer(AppRootSwitchNavigator);
 /*----------------------------------------------------------------------------------------------*/
 export const NavigateToRoot = Object.freeze({
     AppLoadingScreen: "AppLoadingScreen",
-    GettingStartedScreenStack: "GettingStartedScreensStack",
+    GeneralScreensStack: "GeneralScreensStack",
+    UserScreensStack: "UserScreensStack",
     AuthScreensStack: "AuthScreensStack",
 });
 

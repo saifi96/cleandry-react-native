@@ -1,3 +1,7 @@
+import { createAction } from "../../core/helpers/ReduxUtils";
+import UserData from "../../core/data-objects/UserData";
+import BookingData from "../../core/data-objects/BookingData";
+
 /**
  * Action Types
  */
@@ -11,6 +15,8 @@ export const UserAccountActionTypes = Object.freeze({
     REGISTER_REQUEST: "REGISTER_REQUEST",
     REGISTER_SUCCESS: "REGISTER_SUCCESS",
     REGISTER_FAILED: "REGISTER_FAILED",
+    USER_DETAILS: "USER_DETAILS",
+    USER_BOOKINGS: "USER_BOOKINGS"
 });
 
 
@@ -19,15 +25,8 @@ export const UserAccountActionTypes = Object.freeze({
  * Actions
  */
 export const UserAccountActions = {
-    loginRequest: () => createAction(UserAccountActionTypes.LOGIN_REQUEST, true),
-    loginSuccess: () => createAction(UserAccountActionTypes.LOGIN_SUCCESS, true),
-    loginFailed: () => createAction(UserAccountActionTypes.LOGIN_FAILED, true),
-    registerRequest: () => createAction(UserAccountActionTypes.REGISTER_REQUEST, true),
-    registerSuccess: () => createAction(UserAccountActionTypes.REGISTER_SUCCESS, null),
-    registerFailed: () => createAction(UserAccountActionTypes.REGISTER_FAILED, null),
-    otpVerificationRequest: () => createAction(UserAccountActionTypes.OTP_VERIFICATION_REQUEST, null),
-    otpVerificationSuccess: () => createAction(UserAccountActionTypes.OTP_VERIFICATION_SUCCESS, null),
-    otpVerificationFailed: () => createAction(UserAccountActionTypes.OTP_VERIFICATION_FAILED, null),
+    userDetail: (payload: UserData) => createAction(UserAccountActionTypes.USER_DETAILS, payload),
+    userBookings: (payload: Array<BookingData>) => createAction(UserAccountActionTypes.USER_BOOKINGS, payload),
 }
 
 

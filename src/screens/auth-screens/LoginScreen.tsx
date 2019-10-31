@@ -1,16 +1,32 @@
 import * as React from 'react'
+import * as Redux from 'redux';
 import { Container, Content, H1, Card, Text, Input, Button, View, Item, Icon } from 'native-base';
 import { Grid, Row, Col } from "react-native-easy-grid";
 import globalStyle from '../../styles/global-style';
 import { NavigateToScreen, NavigateToRoot } from '../../components/navigation-components/AppNavigations';
 import { globalColors } from '../../styles/color-style';
+import IAppGlobalProps from '../../base/interfaces/IAppGlobalProps';
+import { AppState } from '../../redux/reducers/Index';
+import IMapAppStateToProps from '../../base/interfaces/IMapAppStateToProps';
+import IMapAppDispatchToProps from '../../base/interfaces/IMapAppDispatchToProps';
+import { connect } from 'react-redux';
 
-export interface IProps {
-    navigation: any
+
+interface IMapOwnStateToProps extends IMapAppStateToProps {
 }
-export interface IState { }
 
-class LoginScreen extends React.Component<IProps, IState> {
+interface IMapOwnDispatchToProps extends IMapAppDispatchToProps {
+}
+
+interface IOwnProps extends IAppGlobalProps {
+}
+
+type Props = IOwnProps & IMapOwnStateToProps & IMapOwnDispatchToProps;
+
+interface IState {
+}
+
+class LoginScreen extends React.Component<Props, IState> {
 
     getOTP = (): void => {
         this.props.navigation.navigate(NavigateToScreen.LoginOTPScreen);
@@ -134,4 +150,12 @@ class LoginScreen extends React.Component<IProps, IState> {
     }
 }
 
-export default LoginScreen;
+
+const mapStateToProps = (state: AppState, ownProps: IOwnProps): IMapOwnStateToProps => ({
+    appGlobalState: state.AppGlobalState,
+});
+
+const mapDispatchToProps = (dispatch: Redux.Dispatch<any>, ownProps: IOwnProps): IMapOwnDispatchToProps => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

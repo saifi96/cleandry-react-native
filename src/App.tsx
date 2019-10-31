@@ -1,11 +1,15 @@
 import React from "react";
 import AppNavigations from "./components/navigation-components/AppNavigations";
+import { Provider } from "react-redux";
+import store from "./redux/Store";
 
 class App extends React.Component {
 
   render() {
     return (
-      <AppNavigations />
+      <Provider store={store}>
+        <AppNavigations />
+      </Provider>
     )
   }
 }

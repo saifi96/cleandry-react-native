@@ -1,4 +1,4 @@
-export default class MyBookingData {
+export default class BookingData {
 
     private _ServiceImgSrc: string = "";
     public get ServiceImgSrc(): string {
@@ -64,7 +64,4 @@ export default class MyBookingData {
     public set Price(value: number) {
         this._Price = value;
     }
-
-
-
 }

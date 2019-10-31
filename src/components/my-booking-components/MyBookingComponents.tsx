@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, List, ListItem, Left, Body, Thumbnail } from "native-base";
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
-import MyBookingData from "../../core/data-objects/MyBookingData";
+import MyBookingData from "../../core/data-objects/BookingData";
 import globalStyle from "../../styles/global-style";
 import ImgSources from "../../core/img-sources";
 import { Grid, Row, Col } from "react-native-easy-grid";

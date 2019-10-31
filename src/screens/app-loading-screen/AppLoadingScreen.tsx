@@ -1,19 +1,32 @@
 import React from "react";
+import * as Redux from "redux";
 import { Container, Content, H1, Spinner, View, Text, H3 } from "native-base";
 import { NavigateToRoot } from "../../components/navigation-components/AppNavigations";
-import globalStyle from "../../styles/global-style";
 import { globalColors } from "../../styles/color-style";
+import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
+import IMapAppStateToProps from "../../base/interfaces/IMapAppStateToProps";
+import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps";
+import { AppState } from "../../redux/reducers/Index";
+import { connect } from "react-redux";
 
 
-interface IProps {
-    navigation: any
+
+
+interface IMapOwnStateToProps extends IMapAppStateToProps {
 }
+
+interface IMapOwnDispatchToProps extends IMapAppDispatchToProps {
+}
+
+interface IOwnProps extends IAppGlobalProps {
+}
+
+type Props = IOwnProps & IMapOwnStateToProps & IMapOwnDispatchToProps;
 
 interface IState {
-
 }
 
-class AppLoadingScreen extends React.Component<IProps, IState> {
+class AppLoadingScreen extends React.Component<Props, IState> {
 
     componentDidMount() {
         setTimeout(() => {
@@ -31,7 +44,7 @@ class AppLoadingScreen extends React.Component<IProps, IState> {
                 </View>
                 <View style={{ alignItems: "center", position: "absolute", bottom: 5, left: 0, right: 0 }}>
                     <Text>
-                        Copywrite &#9400; Cleandry 2019
+                        &#9400; Copywrite Cleandry 2019
                     </Text>
                 </View>
             </Container>
@@ -39,4 +52,11 @@ class AppLoadingScreen extends React.Component<IProps, IState> {
     }
 }
 
-export default AppLoadingScreen;
+const mapStateToProps = (state: AppState, ownProps: IOwnProps): IMapOwnStateToProps => ({
+    appGlobalState: state.AppGlobalState,
+});
+
+const mapDispatchToProps = (dispatch: Redux.Dispatch<any>, ownProps: IOwnProps): IMapOwnDispatchToProps => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppLoadingScreen);

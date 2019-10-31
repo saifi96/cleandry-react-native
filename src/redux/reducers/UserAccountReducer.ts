@@ -1,10 +1,14 @@
 import { Action } from "../../core/helpers/ReduxUtils";
 import { UserAccountActionTypes } from "../actions/UserAccountActions";
-import { eAPIActionStatus } from "../../core/constants/DataEnumbs";
-import { CommonStore } from "../stores/CommonStore";
-import APICallStore from "../stores/APICallStore";
+import { UserAccountState } from "../states/UserAccountState";
+import UserData from "../../core/data-objects/UserData";
+import BookingData from "../../core/data-objects/BookingData";
 
-const UserAccountReducer = (state = new CommonStore(), action: Action) => {
+const initialState: UserAccountState = {
+    userDetail: new UserData(),
+    userBookings: new Array<BookingData>()
+}
+const UserAccountReducer = (state = new UserAccountState(), action: Action): UserAccountState => {
 
     if (action.payload == null || action.payload == undefined) {
         return state;
@@ -13,43 +17,12 @@ const UserAccountReducer = (state = new CommonStore(), action: Action) => {
     let newState = { ...state };
 
     switch (action.type) {
-        case UserAccountActionTypes.LOGIN_REQUEST:
-        case UserAccountActionTypes.REGISTER_REQUEST:
-        case UserAccountActionTypes.OTP_VERIFICATION_REQUEST:
-            {
-                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.id == action.type);
-                if (index > -1) {
-                    newState.activeAPICalls.splice(index, 1);
-                }
-
-                let apiCallStore = new APICallStore();
-                apiCallStore.id = action.type;
-                apiCallStore.status = eAPIActionStatus.Requested;
-                apiCallStore.message = action.payload;
-                newState.activeAPICalls.push(apiCallStore);
-            }
+        case UserAccountActionTypes.USER_DETAILS:
+            newState.userDetail = action.payload;
             break;
-        case UserAccountActionTypes.LOGIN_SUCCESS:
-        case UserAccountActionTypes.REGISTER_SUCCESS:
-        case UserAccountActionTypes.OTP_VERIFICATION_SUCCESS:
-            {
-                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.id == action.type);
-                if (index > -1) {
-                    newState.activeAPICalls[index].status = eAPIActionStatus.Success;
-                    newState.activeAPICalls[index].message = action.payload;
-                }
-            }
+        case UserAccountActionTypes.USER_BOOKINGS:
+            newState.userBookings = action.payload;
             break;
-        case UserAccountActionTypes.LOGIN_FAILED:
-        case UserAccountActionTypes.REGISTER_FAILED:
-        case UserAccountActionTypes.OTP_VERIFICATION_FAILED:
-            {
-                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.id == action.type);
-                if (index > -1) {
-                    newState.activeAPICalls[index].status = eAPIActionStatus.Failed;
-                    newState.activeAPICalls[index].message = action.payload;
-                }
-            }
         default:
             break;
     }
