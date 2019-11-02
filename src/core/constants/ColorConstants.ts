@@ -1,5 +1,4 @@
-export const globalColors = Object.freeze({
-    //primary: "#213ebf",
+export const ColorConstants = Object.freeze({
     primary: "#3367d6",
     white: "#FFFFFF",
     lightGray1: "#f2f2f2",

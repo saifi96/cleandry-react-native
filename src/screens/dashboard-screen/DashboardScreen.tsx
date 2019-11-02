@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { Button, Icon, Header, Left, Body, Right, Content, Drawer } from 'native-base';
-import globalStyle from '../../styles/global-style';
-import ImgSources from '../../core/img-sources';
+import GlobalStyle from '../../styles/GlobalStyle';
+import ImgPathConstants from '../../core/constants/ImgPathConstants';
 import LeftMenuComponent from '../../components/general-components/LeftMenuComponent';
 import { CarouselComponent } from '../../components/general-components/CrouselComponent';
 import { OurTopServicesComponent, QuickCheckoutComponent, TrendingOfferComponent, RatingReviewComponent } from '../../components/dashboard-components/DashboardComponents';
 import MainContainerComponent from '../../components/general-components/MainContainerComponent';
-import { globalColors } from '../../styles/color-style';
+import { ColorConstants } from '../../core/constants/ColorConstants';
 import Axios from 'axios';
 import ServiceData from '../../core/data-objects/ServiceData';
 import UserData from '../../core/data-objects/UserData';
@@ -58,8 +58,8 @@ class DashboardScreen extends React.Component<IProps, IState> {
                 <MainContainerComponent isLoading={false}>
 
                     <Header
-                        style={[globalStyle.bgAppPrimary]}
-                        androidStatusBarColor={globalColors.primary}>
+                        style={[GlobalStyle.bgAppPrimary]}
+                        androidStatusBarColor={ColorConstants.primary}>
                         <Left>
                             <Button
                                 transparent
@@ -74,10 +74,10 @@ class DashboardScreen extends React.Component<IProps, IState> {
                     <Content
                         padder
                         enableAutomaticScroll={true}
-                        style={[globalStyle.posRelation]}
+                        style={[GlobalStyle.posRelation]}
                     >
 
-                        <CarouselComponent entries={ImgSources.dashboardCrousel} />
+                        <CarouselComponent entries={ImgPathConstants.dashboardCrousel} />
 
                         <OurTopServicesComponent />
 

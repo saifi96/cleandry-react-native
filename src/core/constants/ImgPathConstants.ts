@@ -1,4 +1,4 @@
-const ImgSources = Object.freeze({
+const ImgPathConstants = Object.freeze({
     dashboardCrousel: [
         require("../assests/images/laundry-banner.jpg"),
         require("../assests/images/crousle.jpg"),
@@ -31,4 +31,4 @@ const ImgSources = Object.freeze({
     }
 });
 
-export default ImgSources;
+export default ImgPathConstants;

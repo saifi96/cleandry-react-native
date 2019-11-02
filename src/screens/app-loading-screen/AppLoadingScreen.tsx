@@ -2,7 +2,7 @@ import React from "react";
 import * as Redux from "redux";
 import { Container, Content, H1, Spinner, View, Text, H3 } from "native-base";
 import { NavigateToRoot } from "../../components/navigation-components/AppNavigations";
-import { globalColors } from "../../styles/color-style";
+import { ColorConstants } from "../../core/constants/ColorConstants";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
 import IMapAppStateToProps from "../../base/interfaces/IMapAppStateToProps";
 import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps";
@@ -38,7 +38,7 @@ class AppLoadingScreen extends React.Component<Props, IState> {
         return (
             <Container style={{ position: "relative", justifyContent: "center" }}>
                 <View style={{ alignItems: "center" }}>
-                    <Spinner size="large" color={globalColors.primary}>
+                    <Spinner size="large" color={ColorConstants.primary}>
                     </Spinner>
                     <H3>Loading..</H3>
                 </View>

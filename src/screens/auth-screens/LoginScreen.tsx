@@ -2,9 +2,9 @@ import * as React from 'react'
 import * as Redux from 'redux';
 import { Container, Content, H1, Card, Text, Input, Button, View, Item, Icon } from 'native-base';
 import { Grid, Row, Col } from "react-native-easy-grid";
-import globalStyle from '../../styles/global-style';
+import GlobalStyle from '../../styles/GlobalStyle';
 import { NavigateToScreen, NavigateToRoot } from '../../components/navigation-components/AppNavigations';
-import { globalColors } from '../../styles/color-style';
+import { ColorConstants } from '../../core/constants/ColorConstants';
 import IAppGlobalProps from '../../base/interfaces/IAppGlobalProps';
 import { AppState } from '../../redux/reducers/Index';
 import IMapAppStateToProps from '../../base/interfaces/IMapAppStateToProps';
@@ -35,14 +35,14 @@ class LoginScreen extends React.Component<Props, IState> {
     render() {
         return (
             <Container style={{ position: "relative" }}>
-                <Grid style={globalStyle.posAsBackground}>
-                    <Row style={[globalStyle.bgAppPrimary]}>
+                <Grid style={GlobalStyle.posAsBackground}>
+                    <Row style={[GlobalStyle.bgAppPrimary]}>
                     </Row>
                     <Row>
                     </Row>
                 </Grid>
-                <View style={[globalStyle.posAtBottom, { flex: 1, flexDirection: "column", bottom: -15 }]}>
-                    <Card style={[globalStyle.borderRadiusL, { flex: 1, padding: 10, paddingTop: 25, paddingBottom: 25, marginLeft: 15, marginRight: 15 }]}>
+                <View style={[GlobalStyle.posAtBottom, { flex: 1, flexDirection: "column", bottom: -15 }]}>
+                    <Card style={[GlobalStyle.borderRadiusL, { flex: 1, padding: 10, paddingTop: 25, paddingBottom: 25, marginLeft: 15, marginRight: 15 }]}>
                         <Grid>
                             <Row style={{ flexDirection: "column" }}>
                                 <H1>Please Login Now</H1>
@@ -51,25 +51,25 @@ class LoginScreen extends React.Component<Props, IState> {
                                 </Text>
                             </Row>
 
-                            <Row style={globalStyle.verticalSpacing}>
-                                <Card style={[globalStyle.borderRadiusL, { flex: 1, paddingHorizontal: 20, paddingVertical: 25 }]}>
+                            <Row style={GlobalStyle.verticalSpacing}>
+                                <Card style={[GlobalStyle.borderRadiusL, { flex: 1, paddingHorizontal: 20, paddingVertical: 25 }]}>
                                     <Row>
                                         <Col size={2}>
-                                            <Item regular style={globalStyle.borderRadiusM}>
+                                            <Item regular style={GlobalStyle.borderRadiusM}>
                                                 <Input
                                                     disabled={true}
-                                                    style={[globalStyle.textSizeL, { textAlign: "center" }]}
+                                                    style={[GlobalStyle.textSizeL, { textAlign: "center" }]}
                                                     placeholder="+91"
                                                     textAlignVertical="center"
                                                     keyboardType="number-pad" />
                                             </Item>
                                         </Col>
                                         <Col size={8}>
-                                            <Item regular style={globalStyle.borderRadiusM}>
+                                            <Item regular style={GlobalStyle.borderRadiusM}>
                                                 <Input
-                                                    style={globalStyle.textSizeL}
+                                                    style={GlobalStyle.textSizeL}
                                                     placeholder="800 25 800 23"
-                                                    placeholderTextColor={globalColors.placeholderText}
+                                                    placeholderTextColor={ColorConstants.placeholderText}
                                                     textAlignVertical="center"
                                                     keyboardType="number-pad" />
                                             </Item>
@@ -78,7 +78,7 @@ class LoginScreen extends React.Component<Props, IState> {
                                 </Card>
                             </Row>
 
-                            <Row style={[globalStyle.verticalSpacing, { justifyContent: "center" }]}>
+                            <Row style={[GlobalStyle.verticalSpacing, { justifyContent: "center" }]}>
 
 
 
@@ -87,7 +87,7 @@ class LoginScreen extends React.Component<Props, IState> {
                                     large
                                     block
                                     rounded
-                                    style={[globalStyle.width75Per, globalStyle.bgAppPrimary]}
+                                    style={[GlobalStyle.width75Per, GlobalStyle.bgAppPrimary]}
                                     onPress={this.getOTP}
                                 >
                                     <Text
@@ -111,7 +111,7 @@ class LoginScreen extends React.Component<Props, IState> {
                                     <Text
                                         textBreakStrategy="highQuality"
                                         uppercase={false}
-                                        style={[{ fontWeight: "400", fontSize: 16, color: globalColors.primary }]}
+                                        style={[{ fontWeight: "400", fontSize: 16, color: ColorConstants.primary }]}
                                     >
                                         Don't have account register now
                                     </Text>
@@ -123,7 +123,7 @@ class LoginScreen extends React.Component<Props, IState> {
                                     <Button
                                         iconRight={true}
                                         large
-                                        style={[globalStyle.borderRadiusM, { margin: 5, backgroundColor: globalColors.danger }]}>
+                                        style={[GlobalStyle.borderRadiusM, { margin: 5, backgroundColor: ColorConstants.danger }]}>
                                         <Text uppercase={false}>
                                             Google
                                         </Text>
@@ -134,7 +134,7 @@ class LoginScreen extends React.Component<Props, IState> {
                                     <Button
                                         iconRight={true}
                                         large
-                                        style={[globalStyle.borderRadiusM, { margin: 5 }]}>
+                                        style={[GlobalStyle.borderRadiusM, { margin: 5 }]}>
                                         <Text uppercase={false}>
                                             Facebook
                                         </Text>

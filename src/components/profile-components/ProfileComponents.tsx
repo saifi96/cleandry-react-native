@@ -1,10 +1,10 @@
 import React from "react";
 import { View, List, ListItem, Left, Thumbnail, Body, H3, H2, Button, Text, Form, Item, Input } from "native-base";
-import ImgSources from "../../core/img-sources";
-import { globalColors } from "../../styles/color-style";
+import ImgPathConstants from "../../core/constants/ImgPathConstants";
+import { ColorConstants } from "../../core/constants/ColorConstants";
 import { StyleSheet } from "react-native";
 import UserData from "../../core/data-objects/UserData";
-import globalStyle from "../../styles/global-style";
+import GlobalStyle from "../../styles/GlobalStyle";
 import { NavigateToScreen } from "../navigation-components/AppNavigations";
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -26,7 +26,7 @@ export const ProfileViewComponent = (props: IProfileViewProps) => {
                 alignSelf: "center",
                 borderWidth: 5,
                 borderRadius: 100,
-                borderColor: globalColors.primary,
+                borderColor: ColorConstants.primary,
                 marginBottom: -75,
                 zIndex: 2
             }]}>
@@ -34,11 +34,11 @@ export const ProfileViewComponent = (props: IProfileViewProps) => {
                     large
                     resizeMode="contain"
                     style={{ padding: 70, borderRadius: 100 }}
-                    source={ImgSources.leftMenuIcons.face}
+                    source={ImgPathConstants.leftMenuIcons.face}
                 />
             </View>
 
-            <View style={[{ backgroundColor: globalColors.lightGray1 }, globalStyle.borderRadiusM]}>
+            <View style={[{ backgroundColor: ColorConstants.lightGray1 }, GlobalStyle.borderRadiusM]}>
 
                 <List style={{ marginTop: 100 }}>
                     <ListItem
@@ -46,8 +46,8 @@ export const ProfileViewComponent = (props: IProfileViewProps) => {
                         noBorder={true}
                     >
                         <Left>
-                            <FontAwesome5Icon name="user" size={26} color={globalColors.primary} solid />
-                            {/* <Thumbnail style={[profileStyle.iconXS]} square source={ImgSources.profileIcons.user} /> */}
+                            <FontAwesome5Icon name="user" size={26} color={ColorConstants.primary} solid />
+                            {/* <Thumbnail style={[profileStyle.iconXS]} square source={ImgPathConstants.profileIcons.user} /> */}
                         </Left>
                         <Body>
                             <H3 style={[profileStyle.textWhite]}>{props.user.FullName}</H3>
@@ -58,8 +58,8 @@ export const ProfileViewComponent = (props: IProfileViewProps) => {
                         noBorder={true}
                     >
                         <Left>
-                            <FontAwesome5Icon name="envelope" size={26} color={globalColors.primary} solid />
-                            {/* <Thumbnail style={[profileStyle.iconXS]} square source={ImgSources.profileIcons.email} /> */}
+                            <FontAwesome5Icon name="envelope" size={26} color={ColorConstants.primary} solid />
+                            {/* <Thumbnail style={[profileStyle.iconXS]} square source={ImgPathConstants.profileIcons.email} /> */}
                         </Left>
                         <Body>
                             <H3 style={[profileStyle.textWhite]}>{props.user.Email}</H3>
@@ -70,8 +70,8 @@ export const ProfileViewComponent = (props: IProfileViewProps) => {
                         noBorder={true}
                     >
                         <Left>
-                            <FontAwesome5Icon name="phone-square" size={30} color={globalColors.primary} solid />
-                            {/* <Thumbnail style={[profileStyle.iconXS]} square source={ImgSources.profileIcons.phone} /> */}
+                            <FontAwesome5Icon name="phone-square" size={30} color={ColorConstants.primary} solid />
+                            {/* <Thumbnail style={[profileStyle.iconXS]} square source={ImgPathConstants.profileIcons.phone} /> */}
                         </Left>
                         <Body>
                             <H3 style={[profileStyle.textWhite]}>{props.user.Phone}</H3>
@@ -82,8 +82,8 @@ export const ProfileViewComponent = (props: IProfileViewProps) => {
                         noBorder={true}
                     >
                         <Left>
-                            <FontAwesome5Icon name="id-card" size={26} color={globalColors.primary} solid />
-                            {/* <Thumbnail style={[profileStyle.iconXS]} square source={ImgSources.leftMenuIcons.transfer} /> */}
+                            <FontAwesome5Icon name="id-card" size={26} color={ColorConstants.primary} solid />
+                            {/* <Thumbnail style={[profileStyle.iconXS]} square source={ImgPathConstants.leftMenuIcons.transfer} /> */}
                         </Left>
                         <Body>
                             <H3 style={[profileStyle.textWhite]}>Adhere Number</H3>
@@ -91,16 +91,16 @@ export const ProfileViewComponent = (props: IProfileViewProps) => {
                     </ListItem>
                 </List>
 
-                <View style={[globalStyle.verticalSpacing, { alignSelf: "center", flex: 1, flexDirection: "row" }]}>
+                <View style={[GlobalStyle.verticalSpacing, { alignSelf: "center", flex: 1, flexDirection: "row" }]}>
                     <Button
                         full
                         primary
-                        style={[globalStyle.borderRadiusM, globalStyle.width75Per, globalStyle.bgAppPrimary]}
+                        style={[GlobalStyle.borderRadiusM, GlobalStyle.width75Per, GlobalStyle.bgAppPrimary]}
                         onPress={() => {
                             props.navigation.navigate(NavigateToScreen.ProfileEditScreen);
                         }}
                     >
-                        <Text uppercase={false} style={globalStyle.textSizeM}>Edit Information</Text>
+                        <Text uppercase={false} style={GlobalStyle.textSizeM}>Edit Information</Text>
                     </Button>
                 </View>
             </View>
@@ -120,7 +120,7 @@ export const ProfileEditComponent = (props: IProfileViewProps) => {
                 alignSelf: "center",
                 borderWidth: 5,
                 borderRadius: 100,
-                borderColor: globalColors.primary,
+                borderColor: ColorConstants.primary,
                 marginBottom: -75,
                 zIndex: 2
             }]}>
@@ -128,22 +128,22 @@ export const ProfileEditComponent = (props: IProfileViewProps) => {
                     large
                     resizeMode="contain"
                     style={{ padding: 70, borderRadius: 100 }}
-                    source={ImgSources.leftMenuIcons.face}
+                    source={ImgPathConstants.leftMenuIcons.face}
                 />
             </View>
 
-            <View style={[{ backgroundColor: globalColors.lightGray1 }, globalStyle.borderRadiusM]}>
+            <View style={[{ backgroundColor: ColorConstants.lightGray1 }, GlobalStyle.borderRadiusM]}>
 
-                <Form style={[globalStyle.verticalSpacing, { marginTop: 100, paddingHorizontal: 15 }]}>
+                <Form style={[GlobalStyle.verticalSpacing, { marginTop: 100, paddingHorizontal: 15 }]}>
 
                     <Item
                         fixedLabel={true}
                         regular
-                        style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
+                        style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                         <Input
-                            style={globalStyle.textSizeM}
+                            style={GlobalStyle.textSizeM}
                             placeholder="Name"
-                            placeholderTextColor={globalColors.placeholderText}
+                            placeholderTextColor={ColorConstants.placeholderText}
                         />
                         <FontAwesome5Icon
                             name="user"
@@ -154,11 +154,11 @@ export const ProfileEditComponent = (props: IProfileViewProps) => {
                     <Item
                         fixedLabel={true}
                         regular
-                        style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
+                        style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                         <Input
-                            style={globalStyle.textSizeM}
+                            style={GlobalStyle.textSizeM}
                             placeholder="Email"
-                            placeholderTextColor={globalColors.placeholderText}
+                            placeholderTextColor={ColorConstants.placeholderText}
                         />
                         <FontAwesome5Icon
                             name="envelope"
@@ -169,12 +169,12 @@ export const ProfileEditComponent = (props: IProfileViewProps) => {
                     <Item
                         fixedLabel={true}
                         regular
-                        style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
+                        style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                         <Input
-                            style={globalStyle.textSizeM}
+                            style={GlobalStyle.textSizeM}
                             keyboardType="number-pad"
                             placeholder="Phone"
-                            placeholderTextColor={globalColors.placeholderText}
+                            placeholderTextColor={ColorConstants.placeholderText}
                         />
                         <FontAwesome5Icon
                             name="phone-square"
@@ -185,11 +185,11 @@ export const ProfileEditComponent = (props: IProfileViewProps) => {
                     <Item
                         fixedLabel={true}
                         regular
-                        style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
+                        style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                         <Input
-                            style={globalStyle.textSizeM}
+                            style={GlobalStyle.textSizeM}
                             placeholder="E.g 10-07-1996"
-                            placeholderTextColor={globalColors.placeholderText} />
+                            placeholderTextColor={ColorConstants.placeholderText} />
                         <FontAwesome5Icon
                             name="calendar-alt"
                             style={[profileStyle.iconStyle]}
@@ -198,13 +198,13 @@ export const ProfileEditComponent = (props: IProfileViewProps) => {
 
                 </Form>
 
-                <View style={[globalStyle.verticalSpacing, { alignSelf: "center", flex: 1, flexDirection: "row" }]}>
+                <View style={[GlobalStyle.verticalSpacing, { alignSelf: "center", flex: 1, flexDirection: "row" }]}>
                     <Button
                         full
                         primary
-                        style={[globalStyle.borderRadiusM, globalStyle.width75Per, globalStyle.bgAppPrimary]}
+                        style={[GlobalStyle.borderRadiusM, GlobalStyle.width75Per, GlobalStyle.bgAppPrimary]}
                     >
-                        <Text uppercase={false} style={globalStyle.textSizeM}>Save</Text>
+                        <Text uppercase={false} style={GlobalStyle.textSizeM}>Save</Text>
                     </Button>
                 </View>
             </View>
@@ -223,7 +223,7 @@ const profileStyle = StyleSheet.create({
     },
     iconStyle: {
         marginRight: 10,
-        color: globalColors.primary,
+        color: ColorConstants.primary,
         fontSize: 26
     }
 })

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Thumbnail } from "native-base";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import { Dimensions } from "react-native";
-import { globalColors } from "../../styles/color-style";
+import { ColorConstants } from "../../core/constants/ColorConstants";
 
 
 
@@ -70,7 +70,7 @@ export const CarouselComponent = (props: ICarouselProps) => {
                     width: 10,
                     height: 10,
                     borderRadius: 5,
-                    backgroundColor: globalColors.primary
+                    backgroundColor: ColorConstants.primary
                 }}
                 inactiveDotStyle={{
 

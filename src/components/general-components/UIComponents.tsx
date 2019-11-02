@@ -1,7 +1,7 @@
 import React from "react";
 import { Thumbnail, View, Button } from "native-base";
 import { ImageSourcePropType, Text, TouchableOpacity } from "react-native";
-import { globalColors } from "../../styles/color-style";
+import { ColorConstants } from "../../core/constants/ColorConstants";
 
 
 interface IGridButtonProps {
@@ -15,7 +15,7 @@ export const GridButton = (props: IGridButtonProps) => {
         <View style={{
             borderRadius: 5, padding: 3,
             borderWidth: 1,
-            borderColor: globalColors.lightGray2
+            borderColor: ColorConstants.lightGray2
         }}>
             <TouchableOpacity
                 onPress={() => {

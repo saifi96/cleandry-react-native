@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Container, H1, Card, Text, Input, Button, View, Item, Icon, Form, Header, Left, Body, Right, Content } from 'native-base';
 import { Grid, Row, Col } from "react-native-easy-grid";
-import globalStyle from '../../styles/global-style';
+import GlobalStyle from '../../styles/GlobalStyle';
 import { NavigateToScreen, NavigateToRoot } from '../../components/navigation-components/AppNavigations';
-import { globalColors } from '../../styles/color-style';
+import { ColorConstants } from '../../core/constants/ColorConstants';
 import { StyleSheet, ScrollView } from 'react-native';
 
 
@@ -21,7 +21,7 @@ class RegistrationScreen extends React.Component<IProps, IState> {
     render() {
         return (
             <Container style={{ position: "relative" }}>
-                <Header noShadow style={globalStyle.bgAppPrimary}>
+                <Header noShadow style={GlobalStyle.bgAppPrimary}>
                     <Left>
                         <Button
                             transparent
@@ -39,14 +39,14 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                     style={{ position: "relative" }}
                     contentContainerStyle={{ minHeight: "100%" }}
                 >
-                    <Grid style={[globalStyle.posAsBackground]}>
-                        <Row style={globalStyle.bgAppPrimary}>
+                    <Grid style={[GlobalStyle.posAsBackground]}>
+                        <Row style={GlobalStyle.bgAppPrimary}>
                         </Row>
                         <Row>
                         </Row>
                     </Grid>
 
-                    <Card style={[globalStyle.borderRadiusL, { flex: 1, padding: 10, paddingTop: 50, paddingBottom: 0, marginBottom: -15, marginTop: "10%" }]}>
+                    <Card style={[GlobalStyle.borderRadiusL, { flex: 1, padding: 10, paddingTop: 50, paddingBottom: 0, marginBottom: -15, marginTop: "10%" }]}>
                         <View style={{ flexDirection: "column" }}>
                             <H1>Register Now</H1>
                             <Text style={{ marginTop: 5 }}>
@@ -54,16 +54,16 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                             </Text>
                         </View>
 
-                        <Form style={[globalStyle.verticalSpacing]}>
+                        <Form style={[GlobalStyle.verticalSpacing]}>
 
                             <Item
                                 fixedLabel={true}
                                 regular
-                                style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
+                                style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
-                                    style={globalStyle.textSizeM}
+                                    style={GlobalStyle.textSizeM}
                                     placeholder="Name"
-                                    placeholderTextColor={globalColors.placeholderText}
+                                    placeholderTextColor={ColorConstants.placeholderText}
                                 />
                                 <Icon name="user" type="FontAwesome5">
                                 </Icon>
@@ -72,11 +72,11 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                             <Item
                                 fixedLabel={true}
                                 regular
-                                style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
+                                style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
-                                    style={globalStyle.textSizeM}
+                                    style={GlobalStyle.textSizeM}
                                     placeholder="Email"
-                                    placeholderTextColor={globalColors.placeholderText}
+                                    placeholderTextColor={ColorConstants.placeholderText}
                                 />
                                 <Icon name="email-outline" type="MaterialCommunityIcons" />
                             </Item>
@@ -84,12 +84,12 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                             <Item
                                 fixedLabel={true}
                                 regular
-                                style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
+                                style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
-                                    style={globalStyle.textSizeM}
+                                    style={GlobalStyle.textSizeM}
                                     keyboardType="number-pad"
                                     placeholder="Phone"
-                                    placeholderTextColor={globalColors.placeholderText}
+                                    placeholderTextColor={ColorConstants.placeholderText}
                                 />
                                 <Icon name="cellphone-android" type="MaterialCommunityIcons" />
                             </Item>
@@ -97,23 +97,23 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                             <Item
                                 fixedLabel={true}
                                 regular
-                                style={[globalStyle.borderRadiusM, globalStyle.itemSpacing, { padding: 3 }]}>
+                                style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
-                                    style={globalStyle.textSizeM}
+                                    style={GlobalStyle.textSizeM}
                                     placeholder="E.g 10-07-1996"
-                                    placeholderTextColor={globalColors.placeholderText} />
+                                    placeholderTextColor={ColorConstants.placeholderText} />
                                 <Icon name="calendar-month" type="MaterialCommunityIcons" />
                             </Item>
 
                         </Form>
 
-                        <View style={[globalStyle.verticalSpacing, { justifyContent: "center", flexDirection: "row" }]}>
+                        <View style={[GlobalStyle.verticalSpacing, { justifyContent: "center", flexDirection: "row" }]}>
                             <Button
                                 iconRight={true}
                                 large
                                 block
                                 rounded
-                                style={[globalStyle.width75Per, globalStyle.bgAppPrimary]}
+                                style={[GlobalStyle.width75Per, GlobalStyle.bgAppPrimary]}
                                 onPress={this.getOTP}
                             >
                                 <Text
@@ -147,7 +147,7 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                                 <Button
                                     iconRight={true}
                                     large
-                                    style={[globalStyle.borderRadiusM, { margin: 5, backgroundColor: globalColors.danger }]}>
+                                    style={[GlobalStyle.borderRadiusM, { margin: 5, backgroundColor: ColorConstants.danger }]}>
                                     <Text uppercase={false}>
                                         Google
                                         </Text>
@@ -159,7 +159,7 @@ class RegistrationScreen extends React.Component<IProps, IState> {
                                 <Button
                                     iconRight={true}
                                     large
-                                    style={[globalStyle.borderRadiusM, globalStyle.bgAppPrimary, { margin: 5 }]}>
+                                    style={[GlobalStyle.borderRadiusM, GlobalStyle.bgAppPrimary, { margin: 5 }]}>
                                     <Text uppercase={false}>
                                         Facebook
                                         </Text>
@@ -186,6 +186,6 @@ const styles = StyleSheet.create({
         // borderRightWidth: 1,
         // borderTopWidth: 1,
         // borderBottomWidth: 1,
-        // borderColor: globalColors.danger
+        // borderColor: ColorConstants.danger
     }
 })

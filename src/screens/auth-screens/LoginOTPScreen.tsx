@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, Animated } from 'react-native';
 import { Item, Input, Container, Row, View, H1, Card, Button, Text, Header, H3, Left, Icon, Body, Title, Right, Content } from 'native-base';
 import { Grid, Col } from 'react-native-easy-grid';
-import globalStyle from '../../styles/global-style';
-import { globalColors } from '../../styles/color-style';
+import GlobalStyle from '../../styles/GlobalStyle';
+import { ColorConstants } from '../../core/constants/ColorConstants';
 import { NavigateToScreen } from '../../components/navigation-components/AppNavigations';
 
 
@@ -33,7 +33,7 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
             (i, j) => <Col key={j} style={styles.txtMargin}>
                 <Item regular style={{ borderRadius: 10 }}>
                     <Input
-                        style={[styles.inputRadius, globalStyle.textSizeL, { borderRadius: 10 }]}
+                        style={[styles.inputRadius, GlobalStyle.textSizeL, { borderRadius: 10 }]}
                         keyboardType="numeric"
                         placeholder="0"
                         onChangeText={v => this.focusNext(j, v)}
@@ -68,7 +68,7 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
     render() {
         return (
             <Container>
-                <Header noShadow style={[globalStyle.bgAppPrimary]} androidStatusBarColor={globalColors.primary}>
+                <Header noShadow style={[GlobalStyle.bgAppPrimary]} androidStatusBarColor={ColorConstants.primary}>
                     <Left>
                         <Button transparent onPress={() => { this.props.navigation.goBack() }}>
                             <Icon name="arrow-left" type="FontAwesome5" />
@@ -81,29 +81,29 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
                     style={{ position: "relative" }}
                     scrollEnabled={true}
                     contentContainerStyle={{ minHeight: "100%" }}>
-                    <Grid style={[globalStyle.posAsBackground]}>
-                        <Row style={[globalStyle.bgAppPrimary]}>
+                    <Grid style={[GlobalStyle.posAsBackground]}>
+                        <Row style={[GlobalStyle.bgAppPrimary]}>
                         </Row>
                         <Row>
                         </Row>
                     </Grid>
-                    <View style={[globalStyle.posAtBottom, { backgroundColor: globalColors.white, bottom: 50 }]}>
-                        <Grid style={globalStyle.containerPadding}>
-                            <Row style={[globalStyle.verticalSpacing, { flexDirection: "column" }]}>
+                    <View style={[GlobalStyle.posAtBottom, { backgroundColor: ColorConstants.white, bottom: 50 }]}>
+                        <Grid style={GlobalStyle.containerPadding}>
+                            <Row style={[GlobalStyle.verticalSpacing, { flexDirection: "column" }]}>
                                 <H3>
                                     We have sent you OTP at
                                 </H3>
-                                <H1 style={[{ color: globalColors.primaryText, marginTop: 5 }]}>+91 800 244 0033</H1>
+                                <H1 style={[{ color: ColorConstants.primaryText, marginTop: 5 }]}>+91 800 244 0033</H1>
                             </Row>
-                            <Row style={globalStyle.verticalSpacing}>
-                                <Card style={[globalStyle.borderRadiusL, { flex: 1, padding: 20, paddingVertical: 40 }]}>
+                            <Row style={GlobalStyle.verticalSpacing}>
+                                <Card style={[GlobalStyle.borderRadiusL, { flex: 1, padding: 20, paddingVertical: 40 }]}>
                                     <Grid>
                                         {this.renderInputs()}
                                     </Grid>
                                     {
                                         this.state.errorOTPMsg.length > 0
                                             ?
-                                            <Text style={[globalStyle.errorMessage, { textAlign: "center" }]}
+                                            <Text style={[GlobalStyle.errorMessage, { textAlign: "center" }]}
                                                 allowFontScaling={true}
                                                 textBreakStrategy="balanced"
                                             >
@@ -115,12 +115,12 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
                                 </Card>
                             </Row>
 
-                            <Row style={[globalStyle.verticalSpacing, { justifyContent: "center" }]}>
+                            <Row style={[GlobalStyle.verticalSpacing, { justifyContent: "center" }]}>
                                 <Button
                                     large
                                     block
                                     iconRight={true}
-                                    style={[globalStyle.borderRadiusM, globalStyle.width75Per, globalStyle.bgAppPrimary, { alignSelf: "center" }]}
+                                    style={[GlobalStyle.borderRadiusM, GlobalStyle.width75Per, GlobalStyle.bgAppPrimary, { alignSelf: "center" }]}
                                     onPress={() => {
                                         this.props.navigation.navigate(NavigateToScreen.DashboardScreen);
                                     }}

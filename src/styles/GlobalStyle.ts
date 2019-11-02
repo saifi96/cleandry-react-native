@@ -1,15 +1,15 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { globalColors } from './color-style';
+import { ColorConstants } from '../core/constants/ColorConstants';
 
-const globalStyle = StyleSheet.create({
+const GlobalStyle = StyleSheet.create({
     borderRadiusS: { borderRadius: 5 },
     borderRadiusM: { borderRadius: 10 },
     borderRadiusL: { borderRadius: 15 },
     paddingS: { padding: 3 },
     paddingM: { padding: 5 },
     paddingL: { padding: 8 },
-    txtPrimaryColor: { color: globalColors.primary },
+    txtPrimaryColor: { color: ColorConstants.primary },
     containerPadding: {
         padding: 10,
         paddingHorizontal: 15
@@ -50,7 +50,7 @@ const globalStyle = StyleSheet.create({
         fontWeight: "400"
     },
     errorMessage: {
-        color: globalColors.danger,
+        color: ColorConstants.danger,
         textAlignVertical: "center",
         marginVertical: 5
     },
@@ -58,13 +58,13 @@ const globalStyle = StyleSheet.create({
         width: "75%"
     },
     bgAppPrimary: {
-        backgroundColor: globalColors.primary
+        backgroundColor: ColorConstants.primary
     },
     bgLighGray: {
-        backgroundColor: globalColors.lightGray1,
+        backgroundColor: ColorConstants.lightGray1,
     },
 
 
 });
 
-export default globalStyle;
+export default GlobalStyle;

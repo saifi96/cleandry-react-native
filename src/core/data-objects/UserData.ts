@@ -1,28 +1,40 @@
 export default class UserData {
 
-    private mFullName: string = "";
-    private mEmail: string = "";
-    private mPhone: number = 0;
-
-    public get FullName(): string {
-        return this.mFullName;
+    private _FirstName: string = "";
+    public get FirstName(): string {
+        return this._FirstName;
     }
-    public set FullName(value: string) {
-        this.mFullName = value;
+    public set FirstName(v: string) {
+        this._FirstName = v;
     }
 
+
+    private _LastName: string = "";
+    public get LastName(): string {
+        return this._LastName;
+    }
+    public set LastName(v: string) {
+        this._LastName = v;
+    }
+
+
+    private _Email: string = "";
     public get Email(): string {
-        return this.mEmail;
+        return this._Email;
     }
-    public set Email(value: string) {
-        this.mEmail = value;
+    public set Email(v: string) {
+        this._Email = v;
     }
 
 
+    private _Phone: number = 0;
     public get Phone(): number {
-        return this.mPhone;
+        return this._Phone;
     }
-    public set Phone(value: number) {
-        this.mPhone = value;
+    public set Phone(v: number) {
+        this._Phone = v;
     }
+
+    public FullName: string = `${this.FirstName} ${this.LastName}`
+
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import MainContainerComponent from "../../components/general-components/MainContainerComponent";
 import { Header, Button, Left, Icon, Body, Right, H3, Content } from "native-base";
-import globalStyle from "../../styles/global-style";
-import { globalColors } from "../../styles/color-style";
+import GlobalStyle from "../../styles/GlobalStyle";
+import { ColorConstants } from "../../core/constants/ColorConstants";
 
 
 interface IProps {
@@ -24,8 +24,8 @@ class MyBookingDetailScreen extends React.Component<IProps, IState> {
         return (
             <MainContainerComponent isLoading={false}>
                 <Header
-                    style={[globalStyle.bgAppPrimary]}
-                    androidStatusBarColor={globalColors.primary}>
+                    style={[GlobalStyle.bgAppPrimary]}
+                    androidStatusBarColor={ColorConstants.primary}>
                     <Left>
                         <Button
                             transparent
@@ -37,7 +37,7 @@ class MyBookingDetailScreen extends React.Component<IProps, IState> {
                         </Button>
                     </Left>
                     <Body>
-                        <H3 style={[{ color: globalColors.white }]}>Booking Detail</H3>
+                        <H3 style={[{ color: ColorConstants.white }]}>Booking Detail</H3>
                     </Body>
                     <Right>
                     </Right>
@@ -45,7 +45,7 @@ class MyBookingDetailScreen extends React.Component<IProps, IState> {
                 <Content
                     padder
                     enableAutomaticScroll={true}
-                    style={[globalStyle.posRelation]}
+                    style={[GlobalStyle.posRelation]}
                 >
 
                 </Content>

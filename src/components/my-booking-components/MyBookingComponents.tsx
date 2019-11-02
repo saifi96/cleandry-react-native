@@ -2,8 +2,8 @@ import React from "react";
 import { View, Text, List, ListItem, Left, Body, Thumbnail } from "native-base";
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import MyBookingData from "../../core/data-objects/BookingData";
-import globalStyle from "../../styles/global-style";
-import ImgSources from "../../core/img-sources";
+import GlobalStyle from "../../styles/GlobalStyle";
+import ImgPathConstants from "../../core/constants/ImgPathConstants";
 import { Grid, Row, Col } from "react-native-easy-grid";
 
 
@@ -29,14 +29,14 @@ export const MyBookingListComponent = (props: IMyBookingListProps) => {
                                 onPress={() => {
                                     console.log();
                                 }}
-                                style={[globalStyle.bgLighGray,
-                                globalStyle.borderRadiusM, { marginBottom: 10 }]}
+                                style={[GlobalStyle.bgLighGray,
+                                GlobalStyle.borderRadiusM, { marginBottom: 10 }]}
                             >
                                 <Left>
                                     <Thumbnail
                                         large
                                         circular
-                                        source={ImgSources.dashboardCrousel[0]}
+                                        source={ImgPathConstants.dashboardCrousel[0]}
                                     />
                                 </Left>
                                 <Body style={{ paddingBottom: 0, paddingTop: 0 }}>
@@ -130,14 +130,14 @@ export const MyBookingDetailComponent = (props: IMyBookingListProps) => {
                     onPress={() => {
                         console.log();
                     }}
-                    style={[globalStyle.bgLighGray,
-                    globalStyle.borderRadiusM]}
+                    style={[GlobalStyle.bgLighGray,
+                    GlobalStyle.borderRadiusM]}
                 >
                     <Left>
                         <Thumbnail
                             large
                             circular
-                            source={ImgSources.dashboardCrousel[0]}
+                            source={ImgPathConstants.dashboardCrousel[0]}
                         />
                     </Left>
                     <Body style={{ paddingBottom: 0, paddingTop: 0 }}>

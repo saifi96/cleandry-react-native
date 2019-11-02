@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, ImageSourcePropType } from "react-native";
-import { globalColors } from "../../styles/color-style";
+import { ColorConstants } from "../../core/constants/ColorConstants";
 import { Text, Thumbnail, View, Item, Input, Button } from "native-base";
 import { Grid, Row, Col } from "react-native-easy-grid";
-import ImgSources from "../../core/img-sources";
+import ImgPathConstants from "../../core/constants/ImgPathConstants";
 import { Function } from "@babel/types";
 import { GridButton } from "../general-components/UIComponents";
-import globalStyle from "../../styles/global-style";
+import GlobalStyle from "../../styles/GlobalStyle";
 import { CarouselComponent } from "../general-components/CrouselComponent";
 
 
@@ -20,25 +20,25 @@ export const OurTopServicesComponent = () => {
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Washing"
-                            iconSource={ImgSources.serviceIcons.washing}
+                            iconSource={ImgPathConstants.serviceIcons.washing}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Ironing"
-                            iconSource={ImgSources.serviceIcons.ironing}
+                            iconSource={ImgPathConstants.serviceIcons.ironing}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Dry Clean"
-                            iconSource={ImgSources.serviceIcons.dryClean}
+                            iconSource={ImgPathConstants.serviceIcons.dryClean}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Wash & Iron"
-                            iconSource={ImgSources.serviceIcons.washIron}
+                            iconSource={ImgPathConstants.serviceIcons.washIron}
                         />
                     </Col>
                 </Row>
@@ -47,25 +47,25 @@ export const OurTopServicesComponent = () => {
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Dress Iron"
-                            iconSource={ImgSources.serviceIcons.dressIron}
+                            iconSource={ImgPathConstants.serviceIcons.dressIron}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Bedsheet"
-                            iconSource={ImgSources.serviceIcons.bedsheetIron}
+                            iconSource={ImgPathConstants.serviceIcons.bedsheetIron}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Cloths"
-                            iconSource={ImgSources.serviceIcons.dryClean}
+                            iconSource={ImgPathConstants.serviceIcons.dryClean}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Bleaching"
-                            iconSource={ImgSources.serviceIcons.bleaching}
+                            iconSource={ImgPathConstants.serviceIcons.bleaching}
                         />
                     </Col>
                 </Row>
@@ -84,22 +84,22 @@ export const QuickCheckoutComponent = () => {
                     <Col size={4}>
                         <Item
                             regular
-                            style={[globalStyle.borderRadiusM, { backgroundColor: globalColors.white }]}
+                            style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
-                            <Input style={globalStyle.textSizeM}
+                            <Input style={GlobalStyle.textSizeM}
                                 placeholder="Select Service Type"
-                                placeholderTextColor={globalColors.placeholderText}
+                                placeholderTextColor={ColorConstants.placeholderText}
                             />
                         </Item>
                     </Col>
                     <Col size={2}>
                         <Item
                             regular
-                            style={[globalStyle.borderRadiusM, { backgroundColor: globalColors.white }]}
+                            style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
-                            <Input style={globalStyle.textSizeM}
+                            <Input style={GlobalStyle.textSizeM}
                                 placeholder="Clothes"
-                                placeholderTextColor={globalColors.placeholderText}
+                                placeholderTextColor={ColorConstants.placeholderText}
                             />
                         </Item>
                     </Col>
@@ -109,22 +109,22 @@ export const QuickCheckoutComponent = () => {
                     <Col size={4}>
                         <Item
                             regular
-                            style={[globalStyle.borderRadiusM, { backgroundColor: globalColors.white }]}
+                            style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
-                            <Input style={globalStyle.textSizeM}
+                            <Input style={GlobalStyle.textSizeM}
                                 placeholder="Schedule Delivery"
-                                placeholderTextColor={globalColors.placeholderText}
+                                placeholderTextColor={ColorConstants.placeholderText}
                             />
                         </Item>
                     </Col>
                     <Col size={2}>
                         <Item
                             regular
-                            style={[globalStyle.borderRadiusM, { backgroundColor: globalColors.white }]}
+                            style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
-                            <Input style={globalStyle.textSizeM}
+                            <Input style={GlobalStyle.textSizeM}
                                 placeholder="KG"
-                                placeholderTextColor={globalColors.placeholderText}
+                                placeholderTextColor={ColorConstants.placeholderText}
                             />
                         </Item>
                     </Col>
@@ -135,8 +135,8 @@ export const QuickCheckoutComponent = () => {
                         <Button
                             full
                             block
-                            style={[globalStyle.borderRadiusM, globalStyle.bgAppPrimary, { margin: 5, width: "50%", alignSelf: "center" }]}>
-                            <Text uppercase={false} style={[globalStyle.textSizeM]}>
+                            style={[GlobalStyle.borderRadiusM, GlobalStyle.bgAppPrimary, { margin: 5, width: "50%", alignSelf: "center" }]}>
+                            <Text uppercase={false} style={[GlobalStyle.textSizeM]}>
                                 Get Estimate
                             </Text>
                         </Button>
@@ -152,7 +152,7 @@ export const TrendingOfferComponent = () => {
     return (
         <View style={[dashboardStyle.section]}>
             <Text style={[dashboardStyle.sectionTitle]}>Trending Offers</Text>
-            <CarouselComponent entries={ImgSources.dashboardCrousel} />
+            <CarouselComponent entries={ImgPathConstants.dashboardCrousel} />
         </View>
     )
 }
@@ -162,7 +162,7 @@ export const RatingReviewComponent = () => {
     return (
         <View style={[dashboardStyle.section]}>
             <Text style={[dashboardStyle.sectionTitle]}>Rating Review</Text>
-            <CarouselComponent entries={ImgSources.dashboardCrousel} />
+            <CarouselComponent entries={ImgPathConstants.dashboardCrousel} />
         </View>
     )
 }
@@ -174,13 +174,13 @@ export const RatingReviewComponent = () => {
 
 const dashboardStyle = StyleSheet.create({
     section: {
-        backgroundColor: globalColors.lightGray1,
+        backgroundColor: ColorConstants.lightGray1,
         borderRadius: 5,
         padding: 5,
         marginVertical: 5
     },
     sectionTitle: {
-        color: globalColors.primary,
+        color: ColorConstants.primary,
         marginBottom: 5
     },
     gridColContent: {

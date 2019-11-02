@@ -1,6 +1,6 @@
 import { Action } from "../../core/helpers/ReduxUtils";
 import { UserAccountActionTypes } from "../actions/UserAccountActions";
-import { eAPIActionStatus } from "../../core/constants/DataEnumbs";
+import { eAPIActionStatus } from "../../core/enums/DataEnums";
 import { UserAccountState } from "../states/UserAccountState";
 import AppGlobalState, { APICallDetail } from "../states/AppGlobalState";
 import { AppGlobalActionTypes } from "../actions/AppGlobalActions";
@@ -37,19 +37,22 @@ const AppGlobalReducer = (state = initialState, action: Action): AppGlobalState 
             break;
         case AppGlobalActionTypes.SUCCESS_API_CALL:
             {
-                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == action.payload);
+                let apiCallDetail = action.payload as APICallDetail;
+                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == apiCallDetail.callerId);
                 if (index > -1) {
                     newState.activeAPICalls[index].status = eAPIActionStatus.Success;
-                    newState.activeAPICalls[index].message = action.payload;
+                    newState.activeAPICalls[index].message = apiCallDetail.message;
+                    newState.activeAPICalls[index].data = apiCallDetail.data;
                 }
             }
             break;
         case AppGlobalActionTypes.FAILED_API_CALL:
             {
-                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == action.payload);
+                let apiCallDetail = action.payload as APICallDetail;
+                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == apiCallDetail.callerId);
                 if (index > -1) {
                     newState.activeAPICalls[index].status = eAPIActionStatus.Failed;
-                    newState.activeAPICalls[index].message = action.payload;
+                    newState.activeAPICalls[index].message = apiCallDetail.message;
                 }
             }
             break;

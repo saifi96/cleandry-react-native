@@ -1,4 +1,4 @@
-import { eAPIActionStatus } from "../../core/constants/DataEnumbs";
+import { eAPIActionStatus } from "../../core/enums/DataEnums";
 
 export class APICallDetail {
     public callerId: string = "";
@@ -7,9 +7,9 @@ export class APICallDetail {
     public data: any = null;
 }
 
-export default interface AppGlobalState {
-    activeAPICalls: Array<APICallDetail>;
-    isLoading: boolean;
-    isLoggedInUser: boolean;
-    isAppDataLoaded: boolean;
+export default class AppGlobalState {
+    public activeAPICalls: Array<APICallDetail> = [];
+    public isLoading: boolean = false;
+    public isLoggedInUser: boolean = false;
+    public isAppDataLoaded: boolean = false;
 }

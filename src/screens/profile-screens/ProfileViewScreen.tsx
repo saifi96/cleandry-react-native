@@ -1,8 +1,8 @@
 import React from "react";
 import MainContainerComponent from "../../components/general-components/MainContainerComponent";
 import { Header, Button, Left, Icon, Body, Right, H3, Content, Text } from "native-base";
-import globalStyle from "../../styles/global-style";
-import { globalColors } from "../../styles/color-style";
+import GlobalStyle from "../../styles/GlobalStyle";
+import { ColorConstants } from "../../core/constants/ColorConstants";
 import { NavigateToStack, NavigateToScreen, NavigateToRoot } from "../../components/navigation-components/AppNavigations";
 import UserData from "../../core/data-objects/UserData";
 import { ProfileViewComponent } from "../../components/profile-components/ProfileComponents";
@@ -34,8 +34,8 @@ class ProfileViewScreen extends React.Component<IProps, IState> {
         return (
             <MainContainerComponent isLoading={false}>
                 <Header
-                    style={[globalStyle.bgAppPrimary]}
-                    androidStatusBarColor={globalColors.primary}>
+                    style={[GlobalStyle.bgAppPrimary]}
+                    androidStatusBarColor={ColorConstants.primary}>
                     <Left>
                         <Button
                             transparent
@@ -47,7 +47,7 @@ class ProfileViewScreen extends React.Component<IProps, IState> {
                         </Button>
                     </Left>
                     <Body>
-                        <H3 style={[{ color: globalColors.white }]}>My Profile</H3>
+                        <H3 style={[{ color: ColorConstants.white }]}>My Profile</H3>
                     </Body>
                     <Right>
                         <Button
@@ -63,7 +63,7 @@ class ProfileViewScreen extends React.Component<IProps, IState> {
                 <Content
                     padder
                     enableAutomaticScroll={true}
-                    style={[globalStyle.posRelation]}
+                    style={[GlobalStyle.posRelation]}
                 >
 
                     <ProfileViewComponent user={this.state.user} navigation={this.props.navigation} />
