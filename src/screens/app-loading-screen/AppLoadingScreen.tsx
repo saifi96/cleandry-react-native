@@ -2,13 +2,12 @@ import React from "react";
 import * as Redux from "redux";
 import { Container, Content, H1, Spinner, View, Text, H3 } from "native-base";
 import { NavigateToRoot } from "../../components/navigation-components/AppNavigations";
-import { ColorConstants } from "../../core/constants/ColorConstants";
+import ColorConstants from "../../core/constants/ColorConstants";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
 import IMapAppStateToProps from "../../base/interfaces/IMapAppStateToProps";
 import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps";
 import { AppState } from "../../redux/reducers/Index";
 import { connect } from "react-redux";
-
 
 
 

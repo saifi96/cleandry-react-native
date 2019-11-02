@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, ImageSourcePropType } from "react-native";
-import { ColorConstants } from "../../core/constants/ColorConstants";
+import ColorConstants from "../../core/constants/ColorConstants";
 import { Text, Thumbnail, View, Item, Input, Button } from "native-base";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import ImgPathConstants from "../../core/constants/ImgPathConstants";

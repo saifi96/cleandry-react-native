@@ -2,7 +2,7 @@ import React from "react";
 import MainContainerComponent from "../../components/general-components/MainContainerComponent";
 import { Header, Button, Left, Icon, Body, Right, H3, Content } from "native-base";
 import GlobalStyle from "../../styles/GlobalStyle";
-import { ColorConstants } from "../../core/constants/ColorConstants";
+import ColorConstants from "../../core/constants/ColorConstants";
 import { NavigateToScreen } from "../../components/navigation-components/AppNavigations";
 import { MyBookingListComponent } from "../../components/my-booking-components/MyBookingComponents";
 import MyBookingData from "../../core/data-objects/BookingData";

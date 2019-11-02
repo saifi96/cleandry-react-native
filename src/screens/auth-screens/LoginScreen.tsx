@@ -4,7 +4,7 @@ import { Container, Content, H1, Card, Text, Input, Button, View, Item, Icon } f
 import { Grid, Row, Col } from "react-native-easy-grid";
 import GlobalStyle from '../../styles/GlobalStyle';
 import { NavigateToScreen, NavigateToRoot } from '../../components/navigation-components/AppNavigations';
-import { ColorConstants } from '../../core/constants/ColorConstants';
+import ColorConstants from '../../core/constants/ColorConstants';
 import IAppGlobalProps from '../../base/interfaces/IAppGlobalProps';
 import { AppState } from '../../redux/reducers/Index';
 import IMapAppStateToProps from '../../base/interfaces/IMapAppStateToProps';

@@ -6,10 +6,7 @@ import LeftMenuComponent from '../../components/general-components/LeftMenuCompo
 import { CarouselComponent } from '../../components/general-components/CrouselComponent';
 import { OurTopServicesComponent, QuickCheckoutComponent, TrendingOfferComponent, RatingReviewComponent } from '../../components/dashboard-components/DashboardComponents';
 import MainContainerComponent from '../../components/general-components/MainContainerComponent';
-import { ColorConstants } from '../../core/constants/ColorConstants';
-import Axios from 'axios';
-import ServiceData from '../../core/data-objects/ServiceData';
-import UserData from '../../core/data-objects/UserData';
+import ColorConstants from "../../core/constants/ColorConstants";
 
 
 export interface IProps {

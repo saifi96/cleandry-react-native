@@ -1,7 +1,7 @@
 import React from "react";
 import { Thumbnail, View, Button } from "native-base";
 import { ImageSourcePropType, Text, TouchableOpacity } from "react-native";
-import { ColorConstants } from "../../core/constants/ColorConstants";
+import ColorConstants from "../../core/constants/ColorConstants";
 
 
 interface IGridButtonProps {

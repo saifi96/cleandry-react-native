@@ -2,7 +2,7 @@ import React from "react";
 import MainContainerComponent from "../../components/general-components/MainContainerComponent";
 import { Header, Button, Left, Icon, Body, Right, H3, Content } from "native-base";
 import GlobalStyle from "../../styles/GlobalStyle";
-import { ColorConstants } from "../../core/constants/ColorConstants";
+import ColorConstants from "../../core/constants/ColorConstants";
 import { NavigateToScreen, NavigateToRoot } from "../../components/navigation-components/AppNavigations";
 import UserData from "../../core/data-objects/UserData";
 import { ProfileEditComponent } from "../../components/profile-components/ProfileComponents";

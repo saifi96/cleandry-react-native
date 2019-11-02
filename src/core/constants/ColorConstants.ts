@@ -1,4 +1,4 @@
-export const ColorConstants = Object.freeze({
+const ColorConstants = Object.freeze({
     primary: "#3367d6",
     white: "#FFFFFF",
     lightGray1: "#f2f2f2",
@@ -7,4 +7,6 @@ export const ColorConstants = Object.freeze({
     primaryText: "#173D66",
     placeholderText: "#959595"
 });
+
+export default ColorConstants;
 

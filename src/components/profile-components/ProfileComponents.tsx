@@ -1,7 +1,7 @@
 import React from "react";
 import { View, List, ListItem, Left, Thumbnail, Body, H3, H2, Button, Text, Form, Item, Input } from "native-base";
 import ImgPathConstants from "../../core/constants/ImgPathConstants";
-import { ColorConstants } from "../../core/constants/ColorConstants";
+import ColorConstants from "../../core/constants/ColorConstants";
 import { StyleSheet } from "react-native";
 import UserData from "../../core/data-objects/UserData";
 import GlobalStyle from "../../styles/GlobalStyle";

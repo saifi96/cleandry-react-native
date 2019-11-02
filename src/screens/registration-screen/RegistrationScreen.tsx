@@ -3,7 +3,7 @@ import { Container, H1, Card, Text, Input, Button, View, Item, Icon, Form, Heade
 import { Grid, Row, Col } from "react-native-easy-grid";
 import GlobalStyle from '../../styles/GlobalStyle';
 import { NavigateToScreen, NavigateToRoot } from '../../components/navigation-components/AppNavigations';
-import { ColorConstants } from '../../core/constants/ColorConstants';
+import ColorConstants from '../../core/constants/ColorConstants';
 import { StyleSheet, ScrollView } from 'react-native';
 
 

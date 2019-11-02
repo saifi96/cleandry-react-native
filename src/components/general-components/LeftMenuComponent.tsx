@@ -2,7 +2,7 @@ import React from "react";
 import { View, List, ListItem, Left, Thumbnail, Body, H3, Icon, H2 } from "native-base";
 import GlobalStyle from "../../styles/GlobalStyle";
 import ImgPathConstants from "../../core/constants/ImgPathConstants";
-import { ColorConstants } from "../../core/constants/ColorConstants";
+import ColorConstants from "../../core/constants/ColorConstants";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { NavigateToScreen, NavigateToStack } from "../navigation-components/AppNavigations";
 

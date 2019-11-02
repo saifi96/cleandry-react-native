@@ -3,7 +3,7 @@ import { StyleSheet, Animated } from 'react-native';
 import { Item, Input, Container, Row, View, H1, Card, Button, Text, Header, H3, Left, Icon, Body, Title, Right, Content } from 'native-base';
 import { Grid, Col } from 'react-native-easy-grid';
 import GlobalStyle from '../../styles/GlobalStyle';
-import { ColorConstants } from '../../core/constants/ColorConstants';
+import ColorConstants from '../../core/constants/ColorConstants';
 import { NavigateToScreen } from '../../components/navigation-components/AppNavigations';
 
 

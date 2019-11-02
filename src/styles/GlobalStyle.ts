@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { ColorConstants } from '../core/constants/ColorConstants';
+import ColorConstants from '../core/constants/ColorConstants';
 
 const GlobalStyle = StyleSheet.create({
     borderRadiusS: { borderRadius: 5 },
