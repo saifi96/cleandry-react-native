@@ -38,7 +38,8 @@ export const CarouselComponent = (props: ICarouselProps) => {
         <View
             onLayout={(event) => {
                 setState({
-                    ...state, sliderWidth: event.nativeEvent.layout.width,
+                    ...state,
+                    sliderWidth: event.nativeEvent.layout.width,
                     itemWidth: event.nativeEvent.layout.width
                 });
             }}

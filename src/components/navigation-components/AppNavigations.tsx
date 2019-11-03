@@ -11,7 +11,7 @@ import ProfileViewScreen from "../../screens/profile-screens/ProfileViewScreen";
 import ProfileEditScreen from "../../screens/profile-screens/ProfileEditScreen";
 import MyBookingListScreen from "../../screens/my-bookings-screens/MyBookingListScreen";
 import MyBookingDetailScreen from "../../screens/my-bookings-screens/MyBookingDetailScreen";
-
+import RewardScreen from "../../screens/reward-screen/RewardScreen";
 
 
 
@@ -95,6 +95,7 @@ const UserScreensStack = createStackNavigator({
     DashboardScreen: DashboardScreen,
     UserProfileScreensStack: UserProfileScreensStack,
     MyBookingScreensStack: MyBookingScreensStack,
+    //RewardScreensStack: RewardScreen
 }, {
     initialRouteName: "DashboardScreen",
     headerMode: "none",
@@ -127,10 +128,11 @@ const AppRootSwitchNavigator = createSwitchNavigator(
     {
         AppLoadingScreen: AppLoadingScreen,
         GeneralScreensStack: GeneralScreensStack,
-        UserScreensStack: UserScreensStack
+        UserScreensStack: UserScreensStack,
+        RewardScreen: RewardScreen
     },
     {
-        initialRouteName: "AppLoadingScreen"
+        initialRouteName: "RewardScreen"
     });
 
 
@@ -165,5 +167,6 @@ export const NavigateToScreen = Object.freeze({
     ProfileViewScreen: "ProfileViewScreen",
     ProfileEditScreen: "ProfileEditScreen",
     MyBookingListScreen: "MyBookingListScreen",
-    MyBookingDetailScreen: "MyBookingDetailScreen"
+    MyBookingDetailScreen: "MyBookingDetailScreen",
+    RewardScreen: "RewardScreen"
 });
