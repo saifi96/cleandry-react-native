@@ -31,9 +31,14 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
 
     startSpinner = () => {
         let thisComponent = this;
-        setInterval(function () {
+        let intervalId = setInterval(function () {
             thisComponent.setState({ rotationDegree: thisComponent.state.rotationDegree + 30 });
         }, 0);
+
+        setTimeout(function () {
+            clearInterval(intervalId);
+            thisComponent.setState({ rotationDegree: (6 * 60 - 30) });
+        }, 5000);
     }
 
     polarToCartesian(centerX: number, centerY: number, radius: number, angleInDegrees: number) {
