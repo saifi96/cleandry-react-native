@@ -1,13 +1,14 @@
 import Config from "../../Config";
 import Axios from "axios";
 import APIResultType from "../apis/APIResultType";
+import ServiceData from "../data-objects/ServiceData";
+import UserData from "../data-objects/UserData";
 
 
 export default class APICaller {
 
-    static async Get(queryString: string, bAuthHeader: boolean): Promise<APIResultType> {
-        let retAPIResult = new APIResultType();
-
+    static async Get<TData>(actionName: string, queryString: string, bAuthHeader: boolean): Promise<APIResultType<TData>> {
+        let retAPIResult = new APIResultType<TData>();
         try {
 
             let objAuth = {};
@@ -20,9 +21,17 @@ export default class APICaller {
                 headers: { objAuth }
             });
 
-            Object.assign(retAPIResult, apiRes.data);
+
+            if (apiRes.data != null && apiRes.data != undefined) {
+                retAPIResult.success = apiRes.data.success;
+                retAPIResult.msg = apiRes.data.msg;
+                if (apiRes.data.hasOwnProperty(actionName)) {
+                    retAPIResult.data = apiRes.data[actionName];
+                }
+            }
 
         } catch (error) {
+            console.log("error occur");
             retAPIResult.msg = "Error! Please check your internet connection";
             retAPIResult.success = -1;
         }
@@ -30,9 +39,9 @@ export default class APICaller {
         return retAPIResult;
     }
 
-    static async Post(data: Object, bAuthHeader: boolean): Promise<APIResultType> {
+    static async Post<TData>(data: Object, bAuthHeader: boolean): Promise<APIResultType<TData>> {
 
-        let retAPIResult = new APIResultType();
+        let retAPIResult = new APIResultType<TData>();
         try {
 
             let objAuth = {};

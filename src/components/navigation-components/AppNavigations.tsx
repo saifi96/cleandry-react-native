@@ -185,13 +185,13 @@ export const NavigateToStack = Object.freeze({
  */
 const AppRootSwitchNavigator = createSwitchNavigator(
     {
-        ServiceScreen: ServiceScreen,
+        //ServiceScreen: ServiceScreen,
         AppLoadingScreen: AppLoadingScreen,
         GeneralScreensStack: GeneralScreensStack,
         UserScreensStack: UserScreensStack,
     },
     {
-        initialRouteName: "ServiceScreen"
+        initialRouteName: "AppLoadingScreen"
     });
 
 

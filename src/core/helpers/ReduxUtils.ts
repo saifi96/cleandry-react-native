@@ -9,5 +9,5 @@ export class Action {
 }
 
 export const createAction = (type: string, payload: any) => {
-    return new Action(type, payload)
+    return { type: type, payload: payload }
 }

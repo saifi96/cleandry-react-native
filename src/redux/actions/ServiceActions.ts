@@ -15,9 +15,10 @@ export const ServiceActionTypes = Object.freeze({
  * Actions
  */
 export const ServiceActions = {
-    apiGetServicesRequest: () => createAction(ServiceActionTypes.API_GET_SERVICES_REQUEST, null),
+    apiGetServicesRequest: (): any => createAction(ServiceActionTypes.API_GET_SERVICES_REQUEST, null),
     storeServices: (payload: Array<ServiceData>) => createAction(ServiceActionTypes.STORE_SERVICES, payload),
 }
+
 
 
 

@@ -3,12 +3,13 @@ import APICaller from "../helpers/APICaller";
 import UserData from "../data-objects/UserData";
 import { APIActionNames } from "../constants/APIConstants";
 import APIResultType from "./APIResultType";
+import ServiceData from "../data-objects/ServiceData";
 
 
 export default class API {
 
-    static async registrationRequest(argUser: UserData): Promise<APIResultType> {
-        return await APICaller.Get(`
+    static async registrationRequest(argUser: UserData): Promise<APIResultType<UserData>> {
+        return await APICaller.Get(APIActionNames.register, `
         ?action=${APIActionNames.register}
         &first_name=${argUser.FirstName}
         &last_name=${argUser.LastName}
@@ -18,8 +19,8 @@ export default class API {
             false);
     }
 
-    static async loginRequest(argEmail: string, argPassword: string): Promise<APIResultType> {
-        return await APICaller.Get(`
+    static async loginRequest(argEmail: string, argPassword: string): Promise<APIResultType<UserData>> {
+        return await APICaller.Get(APIActionNames.login, `
         ?action=${APIActionNames.login}
         &user_email=${argEmail}
         &user_pwd=password`,
@@ -29,10 +30,20 @@ export default class API {
     static async otpVerificationRequest() {
     }
 
-    static async getAllServices(): Promise<APIResultType> {
-        return await APICaller.Get(`
-        ?action=${APIActionNames.getAllServices}
-        `, false);
+    static async getAllServices(): Promise<APIResultType<Array<ServiceData>>> {
+
+        let result = new APIResultType<Array<ServiceData>>();
+        try {
+
+            result = await APICaller.Get(APIActionNames.getAllServices, `
+            ?action=${APIActionNames.getAllServices}
+            `, false);
+        }
+        catch (err) {
+            console.log("haha");
+        }
+
+        return result;
     }
 }
 
