@@ -62,6 +62,7 @@ class RewardScreen extends React.Component<Props, IState> {
                 >
 
                     <SpinAndWinComponent />
+
                 </Content>
             </MainContainerComponent>
         )

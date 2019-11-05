@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button, Text } from "native-base";
+import { View, Button, Text, H3 } from "native-base";
 import Svg, { Circle, Path, G, Polygon, TextPath, Text as SvgText, TSpan, Defs } from "react-native-svg";
 import ColorConstants from "../../core/constants/ColorConstants";
 import { Dimensions } from "react-native";
@@ -9,6 +9,7 @@ import GlobalStyle from "../../styles/GlobalStyle";
 interface IProps extends IAppGlobalProps {
 
 }
+
 type Props = IProps
 
 
@@ -16,6 +17,9 @@ interface IState {
     svgWidth: number;
     svgHeight: number;
     rotationDegree: number;
+    isSpinned: boolean;
+    rewardMsg: string;
+    rewardId: number;
 }
 
 class SpinAndWinComponent extends React.Component<Props, IState> {
@@ -25,20 +29,31 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
         this.state = {
             svgWidth: Dimensions.get("screen").width - 20,
             svgHeight: Dimensions.get("screen").width - 20,
-            rotationDegree: 0
+            isSpinned: false,
+            rotationDegree: 0,
+            rewardMsg: "",
+            rewardId: 0
         }
     }
 
 
     startSpinner = () => {
-        let thisComponent = this;
+        let _thisComponent = this;
         let intervalId = setInterval(function () {
-            thisComponent.setState({ ...thisComponent.state, rotationDegree: thisComponent.state.rotationDegree + 60 });
+            _thisComponent.setState({
+                rotationDegree: _thisComponent.state.rotationDegree + 60
+            });
         }, 0);
 
         setTimeout(function () {
+
             clearInterval(intervalId);
-            thisComponent.setState({ rotationDegree: (5 * 60 - 30) });
+            _thisComponent.setState({
+                isSpinned: true,
+                rotationDegree: (5 * 60 - 30),
+                rewardMsg: 'Congrates you won Rs. 100'
+            });
+
         }, 1000);
     }
 
@@ -84,6 +99,10 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
     }
 
 
+    useReward() {
+
+    }
+
     render() {
 
         const cWidth = this.state.svgWidth;
@@ -96,16 +115,14 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
         return (
             <View style={{ flex: 1, flexDirection: "column" }}>
                 <View
-                    style={{ marginTop: 25 }}
+                    style={{ marginTop: 25, marginBottom: 25 }}
                     onLayout={(event) => {
                         this.setState({
-                            ...this.state,
                             svgWidth: event.nativeEvent.layout.width,
                             svgHeight: event.nativeEvent.layout.width
                         });
                     }}
                 >
-
                     <Svg
                         height={this.state.svgHeight}
                         width={this.state.svgWidth}
@@ -156,7 +173,7 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
                                         href="#cSector1"
                                     >
                                         Sorry
-                                 </TextPath>
+                                </TextPath>
                                 </SvgTitleTextWrapper>
 
                                 <SvgTitleTextWrapper>
@@ -164,7 +181,7 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
                                         href="#cSector2"
                                     >
                                         Win
-                                </TextPath>
+                            </TextPath>
                                 </SvgTitleTextWrapper>
 
                                 <SvgTitleTextWrapper>
@@ -172,7 +189,7 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
                                         href="#cSector3"
                                     >
                                         Chance to win
-                                 </TextPath>
+                                </TextPath>
                                 </SvgTitleTextWrapper>
 
                                 <SvgTitleTextWrapper>
@@ -180,7 +197,7 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
                                         href="#cSector4"
                                     >
                                         Win
-                                 </TextPath>
+                                </TextPath>
                                 </SvgTitleTextWrapper>
 
                                 <SvgTitleTextWrapper>
@@ -188,7 +205,7 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
                                         href="#cSector5"
                                     >
                                         Chance to win
-                                 </TextPath>
+                                </TextPath>
                                 </SvgTitleTextWrapper>
 
                                 <SvgTitleTextWrapper>
@@ -196,7 +213,7 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
                                         href="#cSector6"
                                     >
                                         Chance to win
-                                </TextPath>
+                            </TextPath>
                                 </SvgTitleTextWrapper>
                             </G>
 
@@ -234,44 +251,44 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
                                     <TextPath href="#cSector1Des">
                                         <TSpan dy="-3%">
                                             Better
-                                        </TSpan>
+                                    </TSpan>
                                         <TSpan dy="5%" dx="-12%">
                                             luck next
-                                        </TSpan>
+                                    </TSpan>
                                         <TSpan dy="5%" dx="-17%">
                                             time
-                                        </TSpan>
+                                    </TSpan>
                                     </TextPath>
                                 </SvgDesTextWrapper>
 
                                 <SvgDesTextWrapper>
                                     <TextPath href="#cSector2Des">
                                         Rs.100
-                                    </TextPath>
+                                </TextPath>
                                 </SvgDesTextWrapper>
 
                                 <SvgDesTextWrapper>
                                     <TextPath href="#cSector3Des">
                                         Rs.21,00
-                                    </TextPath>
+                                </TextPath>
                                 </SvgDesTextWrapper>
 
                                 <SvgDesTextWrapper>
                                     <TextPath href="#cSector4Des">
                                         Rs.11,000
-                                    </TextPath>
+                                </TextPath>
                                 </SvgDesTextWrapper>
 
                                 <SvgDesTextWrapper>
                                     <TextPath href="#cSector5Des">
                                         Rs.1,000
-                                    </TextPath>
+                                </TextPath>
                                 </SvgDesTextWrapper>
 
                                 <SvgDesTextWrapper>
                                     <TextPath href="#cSector6Des">
                                         Rs.1800
-                                    </TextPath>
+                                </TextPath>
                                 </SvgDesTextWrapper>
                             </G>
                             <Circle
@@ -289,10 +306,10 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
                         <G id="indicator">
                             <Polygon
                                 points={`
-                                        ${cOriginXAxis - c3Radius},${cOriginYAxis} 
-                                        ${cOriginXAxis}, ${cOriginYAxis - c3Radius * 3} 
-                                        ${cOriginXAxis + c3Radius}, ${cOriginYAxis}
-                                        `}
+                                    ${cOriginXAxis - c3Radius},${cOriginYAxis} 
+                                    ${cOriginXAxis}, ${cOriginYAxis - c3Radius * 3} 
+                                    ${cOriginXAxis + c3Radius}, ${cOriginYAxis}
+                                    `}
                                 strokeWidth="2"
                                 fill={ColorConstants.lightGray2}
                             />
@@ -309,20 +326,35 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
                         </G>
 
                     </Svg>
+                </View>
 
-                </View>
-                <View style={GlobalStyle.verticalSpacing}>
-                    <Button
-                        full
-                        primary
-                        style={GlobalStyle.borderRadiusM}
-                        onPress={() => this.startSpinner()}
-                    >
-                        <Text>Tap to spin</Text>
-                    </Button>
-                </View>
+                {
+                    this.state.isSpinned ?
+                        <View style={[GlobalStyle.verticalSpacing, { alignItems: "center" }]}>
+                            <H3 style={{ marginBottom: 25 }}>{this.state.rewardMsg}</H3>
+                            <Button
+                                block
+                                primary
+                                style={[GlobalStyle.borderRadiusM, GlobalStyle.width75Per, { alignSelf: "center" }]}
+                                onPress={this.useReward}
+                            >
+                                <Text>Use it now</Text>
+                            </Button>
+                        </View>
+                        :
+                        <Button
+                            block
+                            primary
+                            style={[GlobalStyle.verticalSpacing,
+                            GlobalStyle.borderRadiusM,
+                            GlobalStyle.width75Per, { alignSelf: "center" }]}
+                            onPress={this.startSpinner}
+                        >
+                            <Text>Tap to spin</Text>
+                        </Button>
+                }
+
             </View >
-
         )
     }
 }
