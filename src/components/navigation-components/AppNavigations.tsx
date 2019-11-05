@@ -27,116 +27,6 @@ class AppNavigations extends React.Component {
 export default AppNavigations;
 
 
-/*----------------------------------------------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------*/
-
-
-/**
- * Getting Started Screens Stack 
- */
-const GettingStartedScreensStack = createStackNavigator({
-    GettingStartedScreen1: GettingStartedScreen1
-}, {
-    initialRouteName: "GettingStartedScreen1"
-});
-
-
-/**
- * Registration Screens Stack
- */
-const RegistrationScreensStack = createStackNavigator({
-    RegistrationScreen: RegistrationScreen
-}, {
-    initialRouteName: "RegistrationScreen",
-    headerMode: "none"
-});
-
-
-/**
- * Auth Screens Stack
- */
-const AuthScreensStack = createStackNavigator({
-    LoginScreen: LoginScreen,
-    LoginOTPScreen: LoginOTPScreen,
-    RegistrationScreensStack: RegistrationScreensStack
-}, {
-    initialRouteName: "LoginScreen",
-    headerMode: "none"
-});
-
-
-/**
- * User Profile Screens Stack
- */
-const UserProfileScreensStack = createStackNavigator({
-    ProfileViewScreen: ProfileViewScreen,
-    ProfileEditScreen: ProfileEditScreen,
-}, {
-    initialRouteName: "ProfileViewScreen",
-    headerMode: "none"
-});
-
-
-/**
- * MyBooking Screens Stack
- */
-const MyBookingScreensStack = createStackNavigator({
-    MyBookingListScreen: MyBookingListScreen,
-    MyBookingDetailScreen: MyBookingDetailScreen
-}, {
-    initialRouteName: "MyBookingListScreen",
-    headerMode: "none"
-});
-
-/**
- * Dashboard Stack
- */
-const UserScreensStack = createStackNavigator({
-    DashboardScreen: DashboardScreen,
-    UserProfileScreensStack: UserProfileScreensStack,
-    MyBookingScreensStack: MyBookingScreensStack,
-    //RewardScreensStack: RewardScreen
-}, {
-    initialRouteName: "DashboardScreen",
-    headerMode: "none",
-})
-
-
-
-
-/**
- * Root Switch Stack
- */
-const GeneralScreensStack = createStackNavigator({
-    GettingStartedScreensStack: GettingStartedScreensStack,
-    AuthScreensStack: AuthScreensStack,
-    RegistrationScreensStack: RegistrationScreensStack,
-}, {
-    initialRouteName: "GettingStartedScreensStack",
-    headerMode: "none",
-});
-
-
-/*----------------------------------------------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------*/
-
-
-/**
- * Root Switch Navigation
- */
-const AppRootSwitchNavigator = createSwitchNavigator(
-    {
-        AppLoadingScreen: AppLoadingScreen,
-        GeneralScreensStack: GeneralScreensStack,
-        UserScreensStack: UserScreensStack,
-        RewardScreen: RewardScreen
-    },
-    {
-        initialRouteName: "RewardScreen"
-    });
-
-
-const AppContainer = createAppContainer(AppRootSwitchNavigator);
 
 
 /**
@@ -170,3 +60,124 @@ export const NavigateToScreen = Object.freeze({
     MyBookingDetailScreen: "MyBookingDetailScreen",
     RewardScreen: "RewardScreen"
 });
+
+/*----------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+
+/**
+ * Getting Started Screens Stack 
+ */
+const GettingStartedScreensStack = createStackNavigator({
+    GettingStartedScreen1: GettingStartedScreen1
+}, {
+    initialRouteName: "GettingStartedScreen1"
+});
+
+
+/**
+ * Registration Screens Stack
+ */
+const RegistrationScreensStack = createStackNavigator({
+    RegistrationScreen: RegistrationScreen
+}, {
+    initialRouteName: NavigateToScreen.RegistrationScreen,
+    headerMode: "none"
+});
+
+
+/**
+ * Auth Screens Stack
+ */
+const AuthScreensStack = createStackNavigator({
+    LoginScreen: LoginScreen,
+    LoginOTPScreen: LoginOTPScreen,
+    RegistrationScreensStack: RegistrationScreensStack
+}, {
+    initialRouteName: NavigateToScreen.LoginScreen,
+    headerMode: "none"
+});
+
+
+/**
+ * User Profile Screens Stack
+ */
+const UserProfileScreensStack = createStackNavigator({
+    ProfileViewScreen: ProfileViewScreen,
+    ProfileEditScreen: ProfileEditScreen,
+}, {
+    initialRouteName: NavigateToScreen.ProfileViewScreen,
+    headerMode: "none"
+});
+
+
+/**
+ * MyBooking Screens Stack
+ */
+const MyBookingScreensStack = createStackNavigator({
+    MyBookingListScreen: MyBookingListScreen,
+    MyBookingDetailScreen: MyBookingDetailScreen
+}, {
+    initialRouteName: NavigateToScreen.MyBookingListScreen,
+    headerMode: "none"
+});
+
+/**
+ * Reward Screens Stack
+ */
+const RewardScreensStack = createStackNavigator({
+    RewardScreen: RewardScreen
+}, {
+    initialRouteName: NavigateToScreen.RewardScreen,
+    headerMode: "none"
+});
+
+/**
+ * Dashboard Stack
+ */
+const UserScreensStack = createStackNavigator({
+    DashboardScreen: DashboardScreen,
+    UserProfileScreensStack: UserProfileScreensStack,
+    MyBookingScreensStack: MyBookingScreensStack,
+    RewardScreensStack: RewardScreensStack
+}, {
+    initialRouteName: NavigateToScreen.DashboardScreen,
+    headerMode: "none",
+})
+
+
+
+
+/**
+ * Root Switch Stack
+ */
+const GeneralScreensStack = createStackNavigator({
+    GettingStartedScreensStack: GettingStartedScreensStack,
+    AuthScreensStack: AuthScreensStack,
+    RegistrationScreensStack: RegistrationScreensStack,
+}, {
+    initialRouteName: "GettingStartedScreensStack",
+    headerMode: "none",
+});
+
+
+/*----------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
+
+
+/**
+ * Root Switch Navigation
+ */
+const AppRootSwitchNavigator = createSwitchNavigator(
+    {
+        AppLoadingScreen: AppLoadingScreen,
+        GeneralScreensStack: GeneralScreensStack,
+        UserScreensStack: UserScreensStack,
+    },
+    {
+        initialRouteName: "AppLoadingScreen"
+    });
+
+
+const AppContainer = createAppContainer(AppRootSwitchNavigator);
+
