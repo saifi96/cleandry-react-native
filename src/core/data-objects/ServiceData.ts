@@ -1,3 +1,5 @@
+import ClothTypeData from "./ClothTypeData";
+
 export default class ServiceData {
 
     private _id: number = 0;
@@ -38,6 +40,23 @@ export default class ServiceData {
     }
     public set position(value: number) {
         this._position = value;
+    }
+
+    private _service_limit: number = 0;
+    public get service_limit(): number {
+        return this._service_limit;
+    }
+    public set service_limit(v: number) {
+        this._service_limit = v;
+    }
+
+
+    private _cloth_types: Array<ClothTypeData> = [];
+    public get cloth_types(): Array<ClothTypeData> {
+        return this._cloth_types;
+    }
+    public set cloth_types(v: Array<ClothTypeData>) {
+        this._cloth_types = v;
     }
 
 }

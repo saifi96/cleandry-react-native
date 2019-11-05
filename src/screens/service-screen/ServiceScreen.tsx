@@ -3,7 +3,7 @@ import MainContainerComponent from "../../components/general-components/MainCont
 import { Header, Button, Left, Icon, Body, Right, H3, Content, View } from "native-base";
 import GlobalStyle from "../../styles/GlobalStyle";
 import ColorConstants from "../../core/constants/ColorConstants";
-import { NavigateToScreen, NavigateToRoot } from "../../components/navigation-components/AppNavigations";
+import { NavigateToScreen } from "../../components/navigation-components/AppNavigations";
 import IMapAppStateToProps from "../../base/interfaces/IMapAppStateToProps";
 import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
@@ -27,7 +27,6 @@ class ServiceScreen extends React.Component<Props, IState> {
 
     constructor(props: Props) {
         super(props);
-
     }
 
     render() {
@@ -60,7 +59,7 @@ class ServiceScreen extends React.Component<Props, IState> {
                     style={[GlobalStyle.posRelation]}
                 >
 
-                    <ServiceSelectionComponent />
+                    <ServiceSelectionComponent services={[]} />
                 </Content>
             </MainContainerComponent>
         )

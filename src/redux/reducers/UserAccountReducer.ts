@@ -5,8 +5,8 @@ import UserData from "../../core/data-objects/UserData";
 import BookingData from "../../core/data-objects/BookingData";
 
 const initialState: UserAccountState = {
-    userDetail: new UserData(),
-    userBookings: new Array<BookingData>()
+    storeUserDetail: new UserData(),
+    storeUserBookings: new Array<BookingData>()
 }
 const UserAccountReducer = (state = new UserAccountState(), action: Action): UserAccountState => {
 
@@ -17,11 +17,11 @@ const UserAccountReducer = (state = new UserAccountState(), action: Action): Use
     let newState = { ...state };
 
     switch (action.type) {
-        case UserAccountActionTypes.USER_DETAILS:
-            newState.userDetail = action.payload;
+        case UserAccountActionTypes.STORE_USER_DETAIL:
+            newState.storeUserDetail = action.payload;
             break;
-        case UserAccountActionTypes.USER_BOOKINGS:
-            newState.userBookings = action.payload;
+        case UserAccountActionTypes.STORE_USER_BOOKINGS:
+            newState.storeUserBookings = action.payload;
             break;
         default:
             break;

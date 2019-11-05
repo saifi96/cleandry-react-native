@@ -26,7 +26,13 @@ export default class API {
             false);
     }
 
-    async otpVerificationRequest() {
+    static async otpVerificationRequest() {
+    }
+
+    static async getAllServices(): Promise<APIResultType> {
+        return await APICaller.Get(`
+        ?action=${APIActionNames.getAllServices}
+        `, false);
     }
 }
 

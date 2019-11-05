@@ -6,17 +6,11 @@ import BookingData from "../../core/data-objects/BookingData";
  * Action Types
  */
 export const UserAccountActionTypes = Object.freeze({
-    LOGIN_REQUEST: "LOGIN_REQUEST",
-    LOGIN_SUCCESS: "LOGIN_SUCCESS",
-    LOGIN_FAILED: "LOGIN_FAILED",
-    OTP_VERIFICATION_REQUEST: "OTP_VERIFICATION_REQUEST",
-    OTP_VERIFICATION_SUCCESS: "OTP_VERIFICATION_SUCCESS",
-    OTP_VERIFICATION_FAILED: "OTP_VERIFICATION_FAILED",
-    REGISTER_REQUEST: "REGISTER_REQUEST",
-    REGISTER_SUCCESS: "REGISTER_SUCCESS",
-    REGISTER_FAILED: "REGISTER_FAILED",
-    USER_DETAILS: "USER_DETAILS",
-    USER_BOOKINGS: "USER_BOOKINGS"
+    API_LOGIN_REQUEST: "API_LOGIN_REQUEST",
+    API_OTP_VERIFICATION_REQUEST: "API_OTP_VERIFICATION_REQUEST",
+    API_REGISTER_USER_REQUEST: "API_REGISTER_USER_REQUEST",
+    STORE_USER_DETAIL: "STORE_USER_DETAIL",
+    STORE_USER_BOOKINGS: "STORE_USER_BOOKINGS"
 });
 
 
@@ -25,8 +19,11 @@ export const UserAccountActionTypes = Object.freeze({
  * Actions
  */
 export const UserAccountActions = {
-    userDetail: (payload: UserData) => createAction(UserAccountActionTypes.USER_DETAILS, payload),
-    userBookings: (payload: Array<BookingData>) => createAction(UserAccountActionTypes.USER_BOOKINGS, payload),
+    apiLoginRequest: (payload: UserData) => createAction(UserAccountActionTypes.API_LOGIN_REQUEST, payload),
+    apiOTPVerificationRequest: (payload: number) => createAction(UserAccountActionTypes.API_OTP_VERIFICATION_REQUEST, payload),
+    apiRegisterUserRequest: (payload: UserData) => createAction(UserAccountActionTypes.API_REGISTER_USER_REQUEST, payload),
+    storeUserDetail: (payload: UserData) => createAction(UserAccountActionTypes.STORE_USER_DETAIL, payload),
+    storeUserBookings: (payload: Array<BookingData>) => createAction(UserAccountActionTypes.STORE_USER_BOOKINGS, payload),
 }
 
 
