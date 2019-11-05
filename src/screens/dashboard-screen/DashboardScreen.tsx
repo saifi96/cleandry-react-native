@@ -76,7 +76,7 @@ class DashboardScreen extends React.Component<IProps, IState> {
 
                         <CarouselComponent entries={ImgPathConstants.dashboardCrousel} />
 
-                        <OurTopServicesComponent />
+                        <OurTopServicesComponent navigation={this.props.navigation} />
 
                         <QuickCheckoutComponent />
 

@@ -12,6 +12,7 @@ import ProfileEditScreen from "../../screens/profile-screens/ProfileEditScreen";
 import MyBookingListScreen from "../../screens/my-bookings-screens/MyBookingListScreen";
 import MyBookingDetailScreen from "../../screens/my-bookings-screens/MyBookingDetailScreen";
 import RewardScreen from "../../screens/reward-screen/RewardScreen";
+import ServiceScreen from "../../screens/service-screen/ServiceScreen";
 
 
 
@@ -28,25 +29,9 @@ export default AppNavigations;
 
 
 
-
 /**
- * Navigation Screens Constants
+ * Navigate to screen constants
  */
-/*----------------------------------------------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------*/
-export const NavigateToRoot = Object.freeze({
-    AppLoadingScreen: "AppLoadingScreen",
-    GeneralScreensStack: "GeneralScreensStack",
-    UserScreensStack: "UserScreensStack",
-    AuthScreensStack: "AuthScreensStack",
-});
-
-export const NavigateToStack = Object.freeze({
-    UserProfileScreensStack: "UserProfileScreensStack",
-    MyBookingScreensStack: "MyBookingScreensStack"
-
-});
-
 export const NavigateToScreen = Object.freeze({
     AppLoadingScreen: "AppLoadingScreen",
     GettingStartedScreen1: "GettingStartedScreen1",
@@ -58,15 +43,19 @@ export const NavigateToScreen = Object.freeze({
     ProfileEditScreen: "ProfileEditScreen",
     MyBookingListScreen: "MyBookingListScreen",
     MyBookingDetailScreen: "MyBookingDetailScreen",
-    RewardScreen: "RewardScreen"
+    RewardScreen: "RewardScreen",
+    ServiceScreen: "ServiceScreen",
 });
 
-/*----------------------------------------------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------*/
 
+
+
+/*----------------------------------------------------------------------------------------------*/
+/* S T A C K   S C R E E N S*/
+/*----------------------------------------------------------------------------------------------*/
 
 /**
- * Getting Started Screens Stack 
+ * Getting started screens stack 
  */
 const GettingStartedScreensStack = createStackNavigator({
     GettingStartedScreen1: GettingStartedScreen1
@@ -76,7 +65,7 @@ const GettingStartedScreensStack = createStackNavigator({
 
 
 /**
- * Registration Screens Stack
+ * Registration screens stack
  */
 const RegistrationScreensStack = createStackNavigator({
     RegistrationScreen: RegistrationScreen
@@ -87,7 +76,7 @@ const RegistrationScreensStack = createStackNavigator({
 
 
 /**
- * Auth Screens Stack
+ * Auth screens stack
  */
 const AuthScreensStack = createStackNavigator({
     LoginScreen: LoginScreen,
@@ -100,7 +89,7 @@ const AuthScreensStack = createStackNavigator({
 
 
 /**
- * User Profile Screens Stack
+ * User profile screens stack
  */
 const UserProfileScreensStack = createStackNavigator({
     ProfileViewScreen: ProfileViewScreen,
@@ -112,7 +101,7 @@ const UserProfileScreensStack = createStackNavigator({
 
 
 /**
- * MyBooking Screens Stack
+ * Booking screens stack
  */
 const MyBookingScreensStack = createStackNavigator({
     MyBookingListScreen: MyBookingListScreen,
@@ -123,7 +112,7 @@ const MyBookingScreensStack = createStackNavigator({
 });
 
 /**
- * Reward Screens Stack
+ * Reward screens stack
  */
 const RewardScreensStack = createStackNavigator({
     RewardScreen: RewardScreen
@@ -133,23 +122,33 @@ const RewardScreensStack = createStackNavigator({
 });
 
 /**
- * Dashboard Stack
+ * Service screens Stack
+ */
+const ServiceScreensStack = createStackNavigator({
+    DashboardScreen: DashboardScreen,
+    ServiceScreen: ServiceScreen
+}, {
+    initialRouteName: NavigateToScreen.ServiceScreen,
+    headerMode: "none"
+});
+
+/**
+ * Dashboard screens stack
  */
 const UserScreensStack = createStackNavigator({
     DashboardScreen: DashboardScreen,
     UserProfileScreensStack: UserProfileScreensStack,
     MyBookingScreensStack: MyBookingScreensStack,
-    RewardScreensStack: RewardScreensStack
+    RewardScreensStack: RewardScreensStack,
+    ServiceScreensStack: ServiceScreensStack,
 }, {
     initialRouteName: NavigateToScreen.DashboardScreen,
     headerMode: "none",
 })
 
 
-
-
 /**
- * Root Switch Stack
+ * General screens stack
  */
 const GeneralScreensStack = createStackNavigator({
     GettingStartedScreensStack: GettingStartedScreensStack,
@@ -161,23 +160,51 @@ const GeneralScreensStack = createStackNavigator({
 });
 
 
+
+
+/**
+ * Navigate to stack constants
+ */
+export const NavigateToStack = Object.freeze({
+    UserScreensStack: "UserScreensStack",
+    UserProfileScreensStack: "UserProfileScreensStack",
+    MyBookingScreensStack: "MyBookingScreensStack",
+    ServiceScreensStack: "ServiceScreensStack",
+    RewardScreensStack: "RewardScreensStack",
+});
+
+
+
 /*----------------------------------------------------------------------------------------------*/
+/* R O O T   S W I T C H S*/
 /*----------------------------------------------------------------------------------------------*/
 
 
 /**
- * Root Switch Navigation
+ * Root switch navigator
  */
 const AppRootSwitchNavigator = createSwitchNavigator(
     {
+        ServiceScreen: ServiceScreen,
         AppLoadingScreen: AppLoadingScreen,
         GeneralScreensStack: GeneralScreensStack,
         UserScreensStack: UserScreensStack,
     },
     {
-        initialRouteName: "AppLoadingScreen"
+        initialRouteName: "ServiceScreen"
     });
 
+
+
+/**
+ * Navigate to root switch constants
+ */
+export const NavigateToRoot = Object.freeze({
+    AppLoadingScreen: "AppLoadingScreen",
+    GeneralScreensStack: "GeneralScreensStack",
+    UserScreensStack: "UserScreensStack",
+    AuthScreensStack: "AuthScreensStack",
+});
 
 const AppContainer = createAppContainer(AppRootSwitchNavigator);
 

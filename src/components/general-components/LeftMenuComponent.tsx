@@ -30,7 +30,7 @@ const LeftMenuComponent = (props: ILeftMenuProps) => {
                 <ListItem
                     thumbnail
                     noBorder={true}
-                    onPress={() => console.log("clicked")}
+                    onPress={() => props.navigation.navigate(NavigateToScreen.DashboardScreen)}
                 >
                     <Left>
                         <Thumbnail small square source={ImgPathConstants.leftMenuIcons.home} />
@@ -68,7 +68,7 @@ const LeftMenuComponent = (props: ILeftMenuProps) => {
                 <ListItem
                     thumbnail
                     noBorder={true}
-                    onPress={() => console.log("clicked")}
+                    onPress={() => props.navigation.navigate(NavigateToStack.MyBookingScreensStack)}
                 >
                     <Left>
                         <Thumbnail small square source={ImgPathConstants.leftMenuIcons.transfer} />
@@ -80,7 +80,7 @@ const LeftMenuComponent = (props: ILeftMenuProps) => {
                 <ListItem
                     thumbnail
                     noBorder={true}
-                    onPress={() => console.log("clicked")}
+                    onPress={() => props.navigation.navigate(NavigateToStack.RewardScreensStack)}
                 >
                     <Left>
                         <Thumbnail small square source={ImgPathConstants.leftMenuIcons.reward} />

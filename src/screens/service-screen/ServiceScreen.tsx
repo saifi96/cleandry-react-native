@@ -7,7 +7,7 @@ import { NavigateToScreen, NavigateToRoot } from "../../components/navigation-co
 import IMapAppStateToProps from "../../base/interfaces/IMapAppStateToProps";
 import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
-import SpinAndWinComponent from "../../components/reward-components/SpinAndWinComponent";
+import { ServiceSelectionComponent } from "../../components/service-components/ServiceComponents";
 
 interface IMapOwnStateToProps extends IMapAppStateToProps {
 }
@@ -23,7 +23,7 @@ type Props = IOwnProps & IMapOwnStateToProps & IMapOwnDispatchToProps;
 interface IState {
 }
 
-class RewardScreen extends React.Component<Props, IState> {
+class ServiceScreen extends React.Component<Props, IState> {
 
     constructor(props: Props) {
         super(props);
@@ -48,7 +48,7 @@ class RewardScreen extends React.Component<Props, IState> {
                         </Button>
                     </Left>
                     <Body>
-                        <H3 style={[{ color: ColorConstants.white }]}>Reward</H3>
+                        <H3 style={[{ color: ColorConstants.white }]}>Services</H3>
                     </Body>
                     <Right>
                     </Right>
@@ -60,11 +60,11 @@ class RewardScreen extends React.Component<Props, IState> {
                     style={[GlobalStyle.posRelation]}
                 >
 
-                    <SpinAndWinComponent />
+                    <ServiceSelectionComponent />
                 </Content>
             </MainContainerComponent>
         )
     }
 }
 
-export default RewardScreen;
+export default ServiceScreen;

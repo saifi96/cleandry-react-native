@@ -8,9 +8,15 @@ import { Function } from "@babel/types";
 import { GridButton } from "../general-components/UIComponents";
 import GlobalStyle from "../../styles/GlobalStyle";
 import { CarouselComponent } from "../general-components/CrouselComponent";
+import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
+import { NavigateToScreen } from "../navigation-components/AppNavigations";
 
 
-export const OurTopServicesComponent = () => {
+
+interface IOurTopServicesProps extends IAppGlobalProps {
+
+}
+export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
 
     return (
         <View style={[dashboardStyle.section]}>
@@ -21,6 +27,9 @@ export const OurTopServicesComponent = () => {
                         <GridButton
                             title="Washing"
                             iconSource={ImgPathConstants.serviceIcons.washing}
+                            onClick={() => {
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                            }}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
