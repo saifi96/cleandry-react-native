@@ -76,8 +76,8 @@ function* getAllServices() {
     apiCallDetail.status = eAPIActionStatus.Requested;
     apiCallDetail.callerId = ServiceActionTypes.API_GET_SERVICES_REQUEST;
 
-    put(AppGlobalActions.isLoading(true));
-    put(AppGlobalActions.requestAPICall(apiCallDetail.callerId));
+    yield put(AppGlobalActions.isLoading(true));
+    yield put(AppGlobalActions.requestAPICall(apiCallDetail.callerId));
     let apiResult: APIResultType<Array<ServiceData>> = yield call(API.getAllServices);
 
     apiCallDetail.message = apiResult.msg;
@@ -89,11 +89,11 @@ function* getAllServices() {
     }
     else {
         apiCallDetail.status = eAPIActionStatus.Failed;
-        put(AppGlobalActions.failedAPICall(apiCallDetail));
+        yield put(AppGlobalActions.failedAPICall(apiCallDetail));
     }
-
-    put(AppGlobalActions.isAppDataLoaded(true));
-    put(AppGlobalActions.isLoading(false));
+    console.log("app data loaded");
+    yield put(AppGlobalActions.isAppDataLoaded(true));
+    yield put(AppGlobalActions.isLoading(false));
 
 }
 /* #endregion */

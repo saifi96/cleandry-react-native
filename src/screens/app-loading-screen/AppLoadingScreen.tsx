@@ -31,33 +31,30 @@ interface IState {
 class AppLoadingScreen extends React.Component<Props, IState> {
 
     componentDidMount() {
-        // setTimeout(() => {
-        //     this.props.navigation.navigate(NavigateToRoot.AuthScreensStack);
-        // }, 3000);
         this.props.apiGetServicesRequest();
     }
 
-
+    static getDerivedStateFromProps(props: Props) {
+        if (props.appGlobalState.isAppDataLoaded) {
+            props.navigation.navigate(NavigateToRoot.UserScreensStack);
+        }
+    }
 
     render() {
-        if (this.props.appGlobalState.isAppDataLoaded) {
-            this.props.navigation.navigate(NavigateToRoot.UserScreensStack);
-        }
-        else
-            return (
-                <Container style={{ position: "relative", justifyContent: "center" }}>
-                    <View style={{ alignItems: "center" }}>
-                        <Spinner size="large" color={ColorConstants.primary}>
-                        </Spinner>
-                        <H3>Loading..</H3>
-                    </View>
-                    <View style={{ alignItems: "center", position: "absolute", bottom: 5, left: 0, right: 0 }}>
-                        <Text>
-                            &#9400; Copywrite Cleandry 2019
+        return (
+            <Container style={{ position: "relative", justifyContent: "center" }}>
+                <View style={{ alignItems: "center" }}>
+                    <Spinner size="large" color={ColorConstants.primary}>
+                    </Spinner>
+                    <H3>Loading..</H3>
+                </View>
+                <View style={{ alignItems: "center", position: "absolute", bottom: 5, left: 0, right: 0 }}>
+                    <Text>
+                        &#9400; Copywrite Cleandry 2019
                     </Text>
-                    </View>
-                </Container>
-            )
+                </View>
+            </Container>
+        )
     }
 }
 
