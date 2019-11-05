@@ -22,7 +22,7 @@ interface IState {
     rewardId: number;
 }
 
-class SpinAndWinComponent extends React.Component<Props, IState> {
+export default class SpinAndWinComponent extends React.Component<Props, IState> {
 
     constructor(props: Props) {
         super(props)
@@ -358,9 +358,6 @@ class SpinAndWinComponent extends React.Component<Props, IState> {
         )
     }
 }
-
-export default SpinAndWinComponent;
-
 
 
 const SvgTitleTextWrapper = (props: IAppGlobalProps) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import MainContainerComponent from "../../components/general-components/MainContainerComponent";
-import { Header, Button, Left, Icon, Body, Right, H3, Content } from "native-base";
+import { Header, Button, Left, Icon, Body, Right, H3, Content, View } from "native-base";
 import GlobalStyle from "../../styles/GlobalStyle";
 import ColorConstants from "../../core/constants/ColorConstants";
 import { NavigateToScreen, NavigateToRoot } from "../../components/navigation-components/AppNavigations";
@@ -25,11 +25,10 @@ interface IState {
 
 class RewardScreen extends React.Component<Props, IState> {
 
-
     constructor(props: Props) {
         super(props);
-    }
 
+    }
 
     render() {
 
@@ -62,7 +61,6 @@ class RewardScreen extends React.Component<Props, IState> {
                 >
 
                     <SpinAndWinComponent />
-
                 </Content>
             </MainContainerComponent>
         )
