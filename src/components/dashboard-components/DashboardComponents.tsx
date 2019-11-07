@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, ImageSourcePropType } from "react-native";
 import ColorConstants from "../../core/constants/ColorConstants";
-import { Text, Thumbnail, View, Item, Input, Button } from "native-base";
+import { Text, Thumbnail, View, Item, Input, Button, Picker } from "native-base";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import ImgPathConstants from "../../core/constants/ImgPathConstants";
-import { Function } from "@babel/types";
 import { GridButton } from "../general-components/UIComponents";
 import GlobalStyle from "../../styles/GlobalStyle";
 import { CarouselComponent } from "../general-components/CrouselComponent";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
 import { NavigateToScreen } from "../navigation-components/AppNavigations";
+import ServiceData from "../../core/data-objects/ServiceData";
+import ClothTypeData from "../../core/data-objects/ClothTypeData";
 
 
 
 interface IOurTopServicesProps extends IAppGlobalProps {
-
+    services: Array<ServiceData>;
 }
 export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
 
@@ -28,7 +29,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             title="Washing"
                             iconSource={ImgPathConstants.serviceIcons.washing}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 1 });
                             }}
                         />
                     </Col>
@@ -84,7 +85,20 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
     )
 }
 
-export const QuickCheckoutComponent = () => {
+
+interface IQuickCheckoutProps {
+    services: Array<ServiceData>;
+    clothTypes: Array<ClothTypeData>;
+}
+class QuickCheckoutState {
+    selectedServiceId: number = -1;
+    selectedClothTypeId: number = -1;
+    scheduleDate: string = "";
+    totalWeightInKg: number = -1;
+}
+export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
+    const [state, setState] = useState(new QuickCheckoutState());
+
     return (
         <View style={[dashboardStyle.section]}>
             <Text style={[dashboardStyle.sectionTitle]}>Quick Checkout</Text>
@@ -95,21 +109,53 @@ export const QuickCheckoutComponent = () => {
                             regular
                             style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
-                            <Input style={GlobalStyle.textSizeM}
-                                placeholder="Select Service Type"
-                                placeholderTextColor={ColorConstants.placeholderText}
-                            />
+                            <Picker
+                                mode="dropdown"
+                                note
+                                onValueChange={(value, index) => {
+                                    setState({ ...state, selectedServiceId: parseInt(value) });
+                                }}
+                            >
+                                <Picker.Item
+                                    label="Select service type"
+                                    value="0"
+                                    key="service_1" />
+                                {
+                                    props.services.map(iService =>
+                                        <Picker.Item
+                                            key={`service_${iService.id}`}
+                                            label={iService.title}
+                                            value={iService.id}
+                                        />
+                                    )
+                                }
+                            </Picker>
                         </Item>
                     </Col>
                     <Col size={2}>
                         <Item
                             regular
                             style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
+
                         >
-                            <Input style={GlobalStyle.textSizeM}
-                                placeholder="Clothes"
-                                placeholderTextColor={ColorConstants.placeholderText}
-                            />
+                            <Picker
+                                note
+                                mode="dropdown"
+                                onValueChange={(value, index) => {
+                                    setState({ ...state, selectedClothTypeId: parseInt(value) });
+                                }}
+                            >
+                                <Picker.Item label="Select cloth type" value="0" key="clothtype_1" />
+                                {
+                                    props.clothTypes.map(iClothType =>
+                                        <Picker.Item
+                                            key={`service_${iClothType.id}`}
+                                            label={iClothType.units_title}
+                                            value={iClothType.id}
+                                        />
+                                    )
+                                }
+                            </Picker>
                         </Item>
                     </Col>
                 </Row>

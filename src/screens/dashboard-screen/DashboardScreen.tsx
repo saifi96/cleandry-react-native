@@ -1,4 +1,5 @@
-import * as React from 'react'
+import * as React from 'react';
+import * as Redux from "redux";
 import { Button, Icon, Header, Left, Body, Right, Content, Drawer } from 'native-base';
 import GlobalStyle from '../../styles/GlobalStyle';
 import ImgPathConstants from '../../core/constants/ImgPathConstants';
@@ -7,22 +8,40 @@ import { CarouselComponent } from '../../components/general-components/CrouselCo
 import { OurTopServicesComponent, QuickCheckoutComponent, TrendingOfferComponent, RatingReviewComponent } from '../../components/dashboard-components/DashboardComponents';
 import MainContainerComponent from '../../components/general-components/MainContainerComponent';
 import ColorConstants from "../../core/constants/ColorConstants";
+import IMapAppStateToProps from '../../base/interfaces/IMapAppStateToProps';
+import IMapAppDispatchToProps from '../../base/interfaces/IMapAppDispatchToProps';
+import IAppGlobalProps from '../../base/interfaces/IAppGlobalProps';
+import { AppState } from '../../redux/reducers/Index';
+import { connect } from 'react-redux';
+import ServiceData from '../../core/data-objects/ServiceData';
+import ClothTypeData from '../../core/data-objects/ClothTypeData';
 
 
-export interface IProps {
-    navigation: any
+
+interface IMapOwnStateToProps extends IMapAppStateToProps {
+    services: Array<ServiceData>;
+    clothTypes: Array<ClothTypeData>;
 }
-export interface IState {
+
+interface IMapOwnDispatchToProps extends IMapAppDispatchToProps {
 }
 
-class DashboardScreen extends React.Component<IProps, IState> {
+interface IOwnProps extends IAppGlobalProps {
+}
+
+type Props = IOwnProps & IMapOwnStateToProps & IMapOwnDispatchToProps;
+
+interface IState {
+}
+
+class DashboardScreen extends React.Component<Props, IState> {
 
     /**
      * Element Reference
      */
     _drawer: any = React.createRef<Drawer>();
 
-    constructor(props: IProps) {
+    constructor(props: Props) {
         super(props);
     }
 
@@ -76,9 +95,15 @@ class DashboardScreen extends React.Component<IProps, IState> {
 
                         <CarouselComponent entries={ImgPathConstants.dashboardCrousel} />
 
-                        <OurTopServicesComponent navigation={this.props.navigation} />
+                        <OurTopServicesComponent
+                            services={this.props.services}
+                            navigation={this.props.navigation}
+                        />
 
-                        <QuickCheckoutComponent />
+                        <QuickCheckoutComponent
+                            services={this.props.services}
+                            clothTypes={this.props.clothTypes}
+                        />
 
                         <TrendingOfferComponent />
 
@@ -91,5 +116,15 @@ class DashboardScreen extends React.Component<IProps, IState> {
     }
 }
 
-export default DashboardScreen;
+
+const mapStateToProps = (state: AppState, ownProps: IOwnProps): IMapOwnStateToProps => ({
+    appGlobalState: state.AppGlobalState,
+    services: state.ServiceState.services,
+    clothTypes: state.ServiceState.clothTypes,
+});
+
+const mapDispatchToProps = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IMapOwnDispatchToProps => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen);
 

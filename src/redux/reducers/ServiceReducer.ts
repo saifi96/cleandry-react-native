@@ -15,6 +15,8 @@ const ServiceReducer = (state = new ServiceState(), action: Action): ServiceStat
         case ServiceActionTypes.STORE_SERVICES:
             newState.services = action.payload;
             break;
+        case ServiceActionTypes.STORE_CLOTH_TYPES:
+            newState.clothTypes = action.payload;
         default:
             break;
     }

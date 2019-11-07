@@ -64,7 +64,6 @@ const AppGlobalReducer = (state = initialState, action: Action): AppGlobalState 
             break;
         case AppGlobalActionTypes.IS_APP_DATA_LOADED:
             newState.isAppDataLoaded = action.payload;
-            console.log(newState.isAppDataLoaded);
             break;
         default:
             break;

@@ -1,14 +1,14 @@
 import React from "react";
 import * as Redux from "redux";
-import { Container, Content, H1, Spinner, View, Text, H3 } from "native-base";
-import { NavigateToRoot, NavigateToScreen, NavigateToStack } from "../../components/navigation-components/AppNavigations";
+import { Container, Spinner, View, Text, H3 } from "native-base";
+import { NavigateToRoot } from "../../components/navigation-components/AppNavigations";
 import ColorConstants from "../../core/constants/ColorConstants";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
 import IMapAppStateToProps from "../../base/interfaces/IMapAppStateToProps";
 import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps";
 import { AppState } from "../../redux/reducers/Index";
 import { connect } from "react-redux";
-import { ServiceActions } from "../../redux/actions/ServiceActions";
+import { AppGlobalActions } from "../../redux/actions/AppGlobalActions";
 
 
 
@@ -17,7 +17,7 @@ interface IMapOwnStateToProps extends IMapAppStateToProps {
 }
 
 interface IMapOwnDispatchToProps extends IMapAppDispatchToProps {
-    apiGetServicesRequest: typeof ServiceActions.apiGetServicesRequest;
+    loadAppInitialData: typeof AppGlobalActions.loadAppInitialData;
 }
 
 interface IOwnProps extends IAppGlobalProps {
@@ -31,12 +31,12 @@ interface IState {
 class AppLoadingScreen extends React.Component<Props, IState> {
 
     componentDidMount() {
-        this.props.apiGetServicesRequest();
+        this.props.loadAppInitialData();
     }
 
     static getDerivedStateFromProps(props: Props) {
         if (props.appGlobalState.isAppDataLoaded) {
-            props.navigation.navigate(NavigateToRoot.UserScreensStack);
+            return props.navigation.navigate(NavigateToRoot.UserScreensStack);
         }
     }
 
@@ -63,7 +63,7 @@ const mapStateToProps = (state: AppState, ownProps: IOwnProps): IMapOwnStateToPr
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IMapOwnDispatchToProps => ({
-    apiGetServicesRequest: () => dispatch(ServiceActions.apiGetServicesRequest())
+    loadAppInitialData: () => dispatch(AppGlobalActions.loadAppInitialData())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppLoadingScreen);

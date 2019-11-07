@@ -4,6 +4,7 @@ import UserData from "../data-objects/UserData";
 import { APIActionNames } from "../constants/APIConstants";
 import APIResultType from "./APIResultType";
 import ServiceData from "../data-objects/ServiceData";
+import ClothTypeData from "../data-objects/ClothTypeData";
 
 
 export default class API {
@@ -41,6 +42,21 @@ export default class API {
         }
         catch (err) {
             console.log("haha");
+        }
+
+        return result;
+    }
+
+    static async getAllclothTypes(): Promise<APIResultType<Array<ClothTypeData>>> {
+
+        let result = new APIResultType<Array<ClothTypeData>>();
+        try {
+
+            result = await APICaller.Get(APIActionNames.getAllServicesCategory, `
+            ?action=${APIActionNames.getAllServicesCategory}
+            `, false);
+        }
+        catch (err) {
         }
 
         return result;
