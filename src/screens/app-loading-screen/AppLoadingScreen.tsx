@@ -36,7 +36,7 @@ class AppLoadingScreen extends React.Component<Props, IState> {
 
     static getDerivedStateFromProps(props: Props) {
         if (props.appGlobalState.isAppDataLoaded) {
-            return props.navigation.navigate(NavigateToRoot.UserScreensStack);
+            return props.navigation.navigate(NavigateToRoot.AuthScreensStack);
         }
     }
 

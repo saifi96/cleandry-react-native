@@ -37,18 +37,27 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                         <GridButton
                             title="Ironing"
                             iconSource={ImgPathConstants.serviceIcons.ironing}
+                            onClick={() => {
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                            }}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Dry Clean"
                             iconSource={ImgPathConstants.serviceIcons.dryClean}
+                            onClick={() => {
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                            }}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Wash & Iron"
                             iconSource={ImgPathConstants.serviceIcons.washIron}
+                            onClick={() => {
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                            }}
                         />
                     </Col>
                 </Row>
@@ -58,24 +67,36 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                         <GridButton
                             title="Dress Iron"
                             iconSource={ImgPathConstants.serviceIcons.dressIron}
+                            onClick={() => {
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                            }}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Bedsheet"
                             iconSource={ImgPathConstants.serviceIcons.bedsheetIron}
+                            onClick={() => {
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                            }}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Cloths"
                             iconSource={ImgPathConstants.serviceIcons.dryClean}
+                            onClick={() => {
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                            }}
                         />
                     </Col>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Bleaching"
                             iconSource={ImgPathConstants.serviceIcons.bleaching}
+                            onClick={() => {
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                            }}
                         />
                     </Col>
                 </Row>

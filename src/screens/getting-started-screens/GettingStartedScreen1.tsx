@@ -3,6 +3,7 @@ import { Container, Content, H1 } from "native-base";
 
 class GettingStartedScreen1 extends React.Component {
 
+
     render() {
         return (
             <Container>

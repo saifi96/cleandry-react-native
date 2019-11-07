@@ -166,6 +166,7 @@ const GeneralScreensStack = createStackNavigator({
  * Navigate to stack constants
  */
 export const NavigateToStack = Object.freeze({
+    GeneralScreensStack: "GeneralScreensStack",
     UserScreensStack: "UserScreensStack",
     UserProfileScreensStack: "UserProfileScreensStack",
     MyBookingScreensStack: "MyBookingScreensStack",
@@ -185,7 +186,6 @@ export const NavigateToStack = Object.freeze({
  */
 const AppRootSwitchNavigator = createSwitchNavigator(
     {
-        //ServiceScreen: ServiceScreen,
         AppLoadingScreen: AppLoadingScreen,
         GeneralScreensStack: GeneralScreensStack,
         UserScreensStack: UserScreensStack,

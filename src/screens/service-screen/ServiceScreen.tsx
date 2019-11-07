@@ -8,7 +8,7 @@ import { NavigateToScreen } from "../../components/navigation-components/AppNavi
 import IMapAppStateToProps from "../../base/interfaces/IMapAppStateToProps";
 import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
-import { ServiceSelectionComponent } from "../../components/service-components/ServiceComponents";
+import { ServiceSelectionComponent, DeliveryDetailFormComponent } from "../../components/service-components/ServiceComponents";
 import ServiceData from "../../core/data-objects/ServiceData";
 import ClothTypeData from "../../core/data-objects/ClothTypeData";
 import { AppState } from "../../redux/reducers/Index";
@@ -69,6 +69,8 @@ class ServiceScreen extends React.Component<Props, IState> {
                         services={this.props.services}
                         clothTypes={this.props.clothTypes}
                     />
+
+                    <DeliveryDetailFormComponent />
                 </Content>
             </MainContainerComponent>
         )
