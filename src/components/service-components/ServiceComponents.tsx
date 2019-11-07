@@ -85,6 +85,18 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
                         iconRight
                     >
                         <Left>
+                            <Button
+                                icon
+                                small
+                                danger
+                                transparent
+                                style={{ marginLeft: -10, marginTop: 8 }}
+                                onPress={() => {
+                                    removeServiceItem(argServiceId, iServiceItem.id);
+                                }}
+                            >
+                                <Icon name='remove' type="FontAwesome" />
+                            </Button>
                             <Picker
                                 note
                                 mode="dropdown"
@@ -104,19 +116,33 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
                             </Picker>
                         </Left>
                         <Body>
-                            <Text>{iServiceItem.itemCount} X {iServiceItem.basePrice}</Text>
-                            <Text note>Total: {iServiceItem.itemCount * iServiceItem.basePrice}</Text>
+                            <View style={{ flexDirection: "row" }}>
+                                <Text note>
+                                    QTY:&nbsp;
+                                </Text>
+                                <Text>
+                                    {iServiceItem.itemCount} X&nbsp;
+                                </Text>
+                                <Text note>
+                                    &#8377;&nbsp;:
+                                </Text>
+                                <Text>
+                                    {iServiceItem.basePrice}
+                                </Text>
+                            </View>
+                            <Text note style={{ fontSize: 18, marginLeft: 0 }}>
+                                Total: &#8377; {iServiceItem.itemCount * iServiceItem.basePrice}
+                            </Text>
                         </Body>
                         <Right>
                             <Button
                                 icon
                                 small
                                 success
-                                rounded
-                                bordered
-                                style={{ marginLeft: -80, marginBottom: 5 }}
+                                transparent
+                                style={{ marginLeft: -80 }}
                                 onPress={() => {
-                                    addServiceItemCount(argServiceId, iServiceItem.id);
+                                    updateServiceItemCount(argServiceId, iServiceItem.id, 1);
                                 }}
                             >
                                 <Icon name='plus-square-o' type="FontAwesome" />
@@ -126,11 +152,10 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
                                 icon
                                 small
                                 danger
-                                rounded
-                                bordered
+                                transparent
                                 style={{ marginLeft: -80 }}
                                 onPress={() => {
-                                    removeServiceItemCount(argServiceId, iServiceItem.id);
+                                    updateServiceItemCount(argServiceId, iServiceItem.id, -1);
                                 }}
                             >
                                 <Icon name='minus-square-o' type="FontAwesome" />
@@ -143,23 +168,17 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
 
     }
 
-    function addServiceItemCount(argServiceId: number, argClothId: number) {
-
-        // let currentService = state.choosenServices.find(iService => iService.id == argServiceId);
-        // if (currentService != undefined) {
-        //     let currentServiceItem = currentService.clothTypes.find(iCloth => iCloth.id == argClothId);
-        //     if (currentServiceItem != undefined) {
-        //         currentServiceItem.itemCount++;
-        //     }
-        // }
-
-
+    function updateServiceItemCount(argServiceId: number, argClothId: number, unitChange: number) {
         let newState = { ...state };
         newState.choosenServices.map(iService => {
             if (iService.id == argServiceId) {
                 iService.clothTypes.map(iCloth => {
                     if (iCloth.id == argClothId) {
-                        iCloth.itemCount++;
+                        if (unitChange == 1) {
+                            iCloth.itemCount++;
+                        } if (unitChange == -1 && iCloth.itemCount > 0) {
+                            iCloth.itemCount--;
+                        }
                     }
                 })
             }
@@ -167,18 +186,15 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
         setState(newState);
     }
 
-    function removeServiceItemCount(argServiceId: number, argClothId: number) {
+    function removeServiceItem(argServiceId: number, argClothId: number) {
         let newState = { ...state };
-        newState.choosenServices.map(iService => {
-            if (iService.id == argServiceId) {
-                iService.clothTypes.map(iCloth => {
-                    if (iCloth.id == argClothId && iCloth.itemCount > 0) {
-                        iCloth.itemCount--;
-                    }
-                })
+        let serviceIndex = newState.choosenServices.findIndex(iService => iService.id == argServiceId);
+        if (serviceIndex > -1) {
+            let clothIndex = newState.choosenServices[serviceIndex].clothTypes.findIndex(iCloth => iCloth.id == argClothId);
+            if (clothIndex > -1) {
+                newState.choosenServices[serviceIndex].clothTypes.splice(clothIndex, 1);
             }
-        });
-
+        }
         setState(newState);
     }
 
@@ -192,10 +208,19 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
                             borderWidth: 1,
                             borderRadius: 5,
                             borderColor: ColorConstants.lightGray2,
+                            marginBottom: 10
                         }}>
                         <ListItem
                             thumbnail
                             noIndent
+                            noBorder
+                            onPress={() => {
+                                let expandedServiceId = -1;
+                                if (state.expandedServiceId < 1) {
+                                    expandedServiceId = iSerice.id;
+                                }
+                                setState({ ...state, expandedServiceId });
+                            }}
                         >
                             <Left style={{
                                 borderWidth: 1,
@@ -215,14 +240,7 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
                                 <Text note>{iSerice.description}</Text>
                             </Body>
                             <Right>
-                                <Icon name="chevron-right" type="FontAwesome5" onPress={() => {
-                                    let expandedServiceId = -1;
-                                    if (state.expandedServiceId < 1) {
-                                        expandedServiceId = iSerice.id;
-                                    }
-                                    setState({ ...state, expandedServiceId });
-                                }}
-                                />
+                                <Icon name={state.expandedServiceId == iSerice.id ? 'chevron-down' : 'chevron-right'} type="FontAwesome5" />
                             </Right>
                         </ListItem>
                         {

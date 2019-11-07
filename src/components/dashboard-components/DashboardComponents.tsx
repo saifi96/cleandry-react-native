@@ -29,7 +29,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             title="Washing"
                             iconSource={ImgPathConstants.serviceIcons.washing}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 1 });
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
                             }}
                         />
                     </Col>
@@ -91,10 +91,10 @@ interface IQuickCheckoutProps {
     clothTypes: Array<ClothTypeData>;
 }
 class QuickCheckoutState {
-    selectedServiceId: number = -1;
-    selectedClothTypeId: number = -1;
+    selectedServiceId: number = 0;
+    selectedClothTypeId: number = 0;
     scheduleDate: string = "";
-    totalWeightInKg: number = -1;
+    totalWeightInKg: number = 0;
 }
 export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
     const [state, setState] = useState(new QuickCheckoutState());
@@ -104,22 +104,24 @@ export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
             <Text style={[dashboardStyle.sectionTitle]}>Quick Checkout</Text>
             <Grid>
                 <Row>
-                    <Col size={4}>
+                    <Col size={3}>
                         <Item
                             regular
                             style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
                             <Picker
-                                mode="dropdown"
                                 note
+                                mode="dropdown"
+                                selectedValue={`${state.selectedServiceId}`}
                                 onValueChange={(value, index) => {
                                     setState({ ...state, selectedServiceId: parseInt(value) });
                                 }}
                             >
                                 <Picker.Item
-                                    label="Select service type"
-                                    value="0"
-                                    key="service_1" />
+                                    label="Select Service Type"
+                                    value={0}
+                                    key="service_1"
+                                />
                                 {
                                     props.services.map(iService =>
                                         <Picker.Item
@@ -141,11 +143,16 @@ export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
                             <Picker
                                 note
                                 mode="dropdown"
+                                selectedValue={`${state.selectedClothTypeId}`}
                                 onValueChange={(value, index) => {
                                     setState({ ...state, selectedClothTypeId: parseInt(value) });
                                 }}
                             >
-                                <Picker.Item label="Select cloth type" value="0" key="clothtype_1" />
+                                <Picker.Item
+                                    label="Cloth Type"
+                                    value={0}
+                                    key="clothtype_1"
+                                />
                                 {
                                     props.clothTypes.map(iClothType =>
                                         <Picker.Item
@@ -161,12 +168,12 @@ export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
                 </Row>
 
                 <Row style={[{ marginTop: 5 }]}>
-                    <Col size={4}>
+                    <Col size={3}>
                         <Item
                             regular
                             style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
-                            <Input style={GlobalStyle.textSizeM}
+                            <Input
                                 placeholder="Schedule Delivery"
                                 placeholderTextColor={ColorConstants.placeholderText}
                             />
@@ -177,7 +184,8 @@ export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
                             regular
                             style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
-                            <Input style={GlobalStyle.textSizeM}
+                            <Input
+                                keyboardType="numeric"
                                 placeholder="KG"
                                 placeholderTextColor={ColorConstants.placeholderText}
                             />

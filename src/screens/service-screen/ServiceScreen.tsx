@@ -12,6 +12,7 @@ import { ServiceSelectionComponent } from "../../components/service-components/S
 import ServiceData from "../../core/data-objects/ServiceData";
 import ClothTypeData from "../../core/data-objects/ClothTypeData";
 import { AppState } from "../../redux/reducers/Index";
+import { connect } from "react-redux";
 
 interface IMapOwnStateToProps extends IMapAppStateToProps {
     services: Array<ServiceData>;
@@ -64,7 +65,6 @@ class ServiceScreen extends React.Component<Props, IState> {
                     contentContainerStyle={{ minHeight: "100%" }}
                     style={[GlobalStyle.posRelation]}
                 >
-
                     <ServiceSelectionComponent
                         services={this.props.services}
                         clothTypes={this.props.clothTypes}
@@ -85,4 +85,5 @@ const mapStateToProps = (state: AppState, ownProps: IOwnProps): IMapOwnStateToPr
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IMapOwnDispatchToProps => ({
 });
-export default ServiceScreen;
+
+export default connect(mapStateToProps, mapDispatchToProps)(ServiceScreen);
