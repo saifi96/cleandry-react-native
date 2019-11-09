@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { View, ListItem, Left, Right, Text, List, Icon, Thumbnail, H3, Body, Picker, Button, Form } from "native-base";
+import { View, ListItem, Left, Right, Text, List, Icon, Thumbnail, H3, Body, Picker, Button, Form, Item, Input } from "native-base";
 import ImgPathConstants from "../../core/constants/ImgPathConstants";
 import ColorConstants from "../../core/constants/ColorConstants";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
 import ServiceData from "../../core/data-objects/ServiceData";
 import ClothTypeData from "../../core/data-objects/ClothTypeData";
+import GlobalStyle from "../../styles/GlobalStyle";
 
 interface IServiceSelectionProps extends IAppGlobalProps {
     services: Array<ServiceData>;
@@ -276,7 +277,58 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
 export const DeliveryDetailFormComponent = () => {
     return (
         <View>
+            <Form style={[GlobalStyle.verticalSpacing]}>
 
+                <Item
+                    fixedLabel={true}
+                    regular
+                    style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
+                    <Input
+                        style={GlobalStyle.textSizeM}
+                        keyboardType="numeric"
+                        placeholder="Enter pincode"
+                        placeholderTextColor={ColorConstants.placeholderText}
+                    />
+                    <Icon name="map-pin" type="FontAwesome5">
+                    </Icon>
+                </Item>
+
+                <Item
+                    fixedLabel={true}
+                    regular
+                    style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
+                    <Input
+                        style={GlobalStyle.textSizeM}
+                        placeholder="Enter address"
+                        placeholderTextColor={ColorConstants.placeholderText}
+                    />
+                    <Icon name="add-location" type="FontAwesome5" />
+                </Item>
+
+                <Item
+                    fixedLabel={true}
+                    regular
+                    style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
+                    <Input
+                        style={GlobalStyle.textSizeM}
+                        placeholder="Your name"
+                        placeholderTextColor={ColorConstants.placeholderText} />
+                    <Icon name="user" type="FontAwesome5" />
+                </Item>
+
+                <Item
+                    fixedLabel={true}
+                    regular
+                    style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
+                    <Input
+                        style={GlobalStyle.textSizeM}
+                        placeholder="Phone"
+                        placeholderTextColor={ColorConstants.placeholderText}
+                    />
+                    <Icon name="cellphone-android" type="MaterialCommunityIcons" />
+                </Item>
+
+            </Form>
         </View>
     )
 }

@@ -235,12 +235,10 @@ export default class SpinAndWinComponent extends React.Component<Props, IState> 
                                         d={this.describeLine(cOriginXAxis, cOriginYAxis, c1Radius, 120)}
                                         id="cSector4Des"
                                     />
-
                                     <Path
                                         d={this.describeLine(cOriginXAxis, cOriginYAxis, c1Radius, 180)}
                                         id="cSector5Des"
                                     />
-
                                     <Path
                                         d={this.describeLine(cOriginXAxis, cOriginYAxis, c1Radius, 240)}
                                         id="cSector6Des"
