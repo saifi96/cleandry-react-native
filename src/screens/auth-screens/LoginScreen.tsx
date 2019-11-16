@@ -24,11 +24,17 @@ interface IOwnProps extends IAppGlobalProps {
 type Props = IOwnProps & IMapOwnStateToProps & IMapOwnDispatchToProps;
 
 interface IState {
+    PhoneNo: string;
 }
 
 class LoginScreen extends React.Component<Props, IState> {
 
+    constructor(props: Props) {
+        this.state = { PhoneNo: '' };
+    }
+
     getOTP = (): void => {
+
         this.props.navigation.navigate(NavigateToScreen.LoginOTPScreen);
     }
 
@@ -68,7 +74,8 @@ class LoginScreen extends React.Component<Props, IState> {
                                             <Item regular style={GlobalStyle.borderRadiusM}>
                                                 <Input
                                                     style={GlobalStyle.textSizeL}
-                                                    placeholder="800 25 800 23"
+                                                    placeholder="Enter phone no."
+                                                    maxLength={10}
                                                     placeholderTextColor={ColorConstants.placeholderText}
                                                     textAlignVertical="center"
                                                     keyboardType="number-pad" />
@@ -79,9 +86,6 @@ class LoginScreen extends React.Component<Props, IState> {
                             </Row>
 
                             <Row style={[GlobalStyle.verticalSpacing, { justifyContent: "center" }]}>
-
-
-
                                 <Button
                                     iconRight={true}
                                     large
@@ -98,15 +102,15 @@ class LoginScreen extends React.Component<Props, IState> {
                                     </Text>
                                     <Icon name="arrow-right" type="FontAwesome5" />
                                 </Button>
-
                             </Row>
-
 
                             <View style={[{ marginBottom: 10 }, { alignSelf: "flex-end" }]}>
                                 <Button
                                     block
                                     transparent
-                                    onPress={() => { this.props.navigation.navigate(NavigateToScreen.RegistrationScreen); }}
+                                    onPress={() => {
+                                        this.props.navigation.navigate(NavigateToScreen.RegistrationScreen);
+                                    }}
                                 >
                                     <Text
                                         textBreakStrategy="highQuality"

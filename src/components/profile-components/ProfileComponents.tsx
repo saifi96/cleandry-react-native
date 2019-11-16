@@ -3,7 +3,7 @@ import { View, List, ListItem, Left, Thumbnail, Body, H3, H2, Button, Text, Form
 import ImgPathConstants from "../../core/constants/ImgPathConstants";
 import ColorConstants from "../../core/constants/ColorConstants";
 import { StyleSheet } from "react-native";
-import UserData from "../../core/data-objects/UserData";
+import UserModel from "../../core/models/UserModel";
 import GlobalStyle from "../../styles/GlobalStyle";
 import { NavigateToScreen } from "../navigation-components/AppNavigations";
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
@@ -11,7 +11,7 @@ import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 interface IProfileViewProps {
-    user: UserData;
+    user: UserModel;
     navigation: any;
 }
 

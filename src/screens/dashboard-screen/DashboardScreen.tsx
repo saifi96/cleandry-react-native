@@ -13,14 +13,14 @@ import IMapAppDispatchToProps from '../../base/interfaces/IMapAppDispatchToProps
 import IAppGlobalProps from '../../base/interfaces/IAppGlobalProps';
 import { AppState } from '../../redux/reducers/Index';
 import { connect } from 'react-redux';
-import ServiceData from '../../core/data-objects/ServiceData';
-import ClothTypeData from '../../core/data-objects/ClothTypeData';
+import ServiceModel from '../../core/models/ServiceModel';
+import ClothTypeModel from '../../core/models/ClothTypeModel';
 
 
 
 interface IMapOwnStateToProps extends IMapAppStateToProps {
-    services: Array<ServiceData>;
-    clothTypes: Array<ClothTypeData>;
+    services: Array<ServiceModel>;
+    clothTypes: Array<ClothTypeModel>;
 }
 
 interface IMapOwnDispatchToProps extends IMapAppDispatchToProps {

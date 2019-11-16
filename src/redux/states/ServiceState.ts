@@ -1,8 +1,8 @@
-import ServiceData from "../../core/data-objects/ServiceData";
-import ClothTypeData from "../../core/data-objects/ClothTypeData";
+import ServiceModel from "../../core/models/ServiceModel";
+import ClothTypeModel from "../../core/models/ClothTypeModel";
 
 
 export class ServiceState {
-    services: Array<ServiceData> = [];
-    clothTypes: Array<ClothTypeData> = [];
+    services: Array<ServiceModel> = [];
+    clothTypes: Array<ClothTypeModel> = [];
 }

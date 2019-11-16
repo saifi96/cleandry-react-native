@@ -1,4 +1,4 @@
-export default class ClothTypeData {
+export default class ClothTypeModel {
 
     private _id: number = -1;
     public get id(): number {

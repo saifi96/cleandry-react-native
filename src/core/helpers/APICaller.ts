@@ -1,8 +1,8 @@
 import Config from "../../Config";
 import Axios from "axios";
 import APIResultType from "../apis/APIResultType";
-import ServiceData from "../data-objects/ServiceData";
-import UserData from "../data-objects/UserData";
+import ServiceModel from "../models/ServiceModel";
+import UserModel from "../models/UserModel";
 
 
 export default class APICaller {

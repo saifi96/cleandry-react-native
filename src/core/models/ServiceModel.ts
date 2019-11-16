@@ -1,6 +1,6 @@
-import ClothTypeData from "./ClothTypeData";
+import ClothTypeModel from "./ClothTypeModel";
 
-export default class ServiceData {
+export default class ServiceModel {
 
     private _id: number = 0;
     public get id(): number {
@@ -51,11 +51,11 @@ export default class ServiceData {
     }
 
 
-    private _cloth_types: Array<ClothTypeData> = [];
-    public get cloth_types(): Array<ClothTypeData> {
+    private _cloth_types: Array<ClothTypeModel> = [];
+    public get cloth_types(): Array<ClothTypeModel> {
         return this._cloth_types;
     }
-    public set cloth_types(v: Array<ClothTypeData>) {
+    public set cloth_types(v: Array<ClothTypeModel>) {
         this._cloth_types = v;
     }
 

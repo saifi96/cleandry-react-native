@@ -8,15 +8,15 @@ import { NavigateToScreen } from "../../components/navigation-components/AppNavi
 import IMapAppStateToProps from "../../base/interfaces/IMapAppStateToProps";
 import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
-import { ServiceSelectionComponent, DeliveryDetailFormComponent } from "../../components/service-components/ServiceComponents";
-import ServiceData from "../../core/data-objects/ServiceData";
-import ClothTypeData from "../../core/data-objects/ClothTypeData";
+import { ServiceSelectionComponent, DeliveryDetailFormComponent, OrderDetailComponent } from "../../components/service-components/ServiceComponents";
+import ServiceModel from "../../core/models/ServiceModel";
+import ClothTypeModel from "../../core/models/ClothTypeModel";
 import { AppState } from "../../redux/reducers/Index";
 import { connect } from "react-redux";
 
 interface IMapOwnStateToProps extends IMapAppStateToProps {
-    services: Array<ServiceData>;
-    clothTypes: Array<ClothTypeData>;
+    services: Array<ServiceModel>;
+    clothTypes: Array<ClothTypeModel>;
 }
 
 interface IMapOwnDispatchToProps extends IMapAppDispatchToProps {
@@ -71,6 +71,8 @@ class ServiceScreen extends React.Component<Props, IState> {
                     />
 
                     <DeliveryDetailFormComponent />
+
+                    <OrderDetailComponent />
                 </Content>
             </MainContainerComponent>
         )

@@ -4,7 +4,7 @@ import { Header, Button, Left, Icon, Body, Right, H3, Content, Text } from "nati
 import GlobalStyle from "../../styles/GlobalStyle";
 import ColorConstants from "../../core/constants/ColorConstants";
 import { NavigateToStack, NavigateToScreen, NavigateToRoot } from "../../components/navigation-components/AppNavigations";
-import UserData from "../../core/data-objects/UserData";
+import UserModel from "../../core/models/UserModel";
 import { ProfileViewComponent } from "../../components/profile-components/ProfileComponents";
 import { TrendingOfferComponent } from "../../components/dashboard-components/DashboardComponents";
 
@@ -13,7 +13,7 @@ interface IProps {
     navigation: any,
 }
 interface IState {
-    user: UserData;
+    user: UserModel;
 }
 
 class ProfileViewScreen extends React.Component<IProps, IState> {
@@ -21,7 +21,7 @@ class ProfileViewScreen extends React.Component<IProps, IState> {
 
     constructor(props: IProps) {
         super(props);
-        let objUser: UserData = new UserData();
+        let objUser: UserModel = new UserModel();
         objUser.FullName = "Cleandry";
         objUser.Email = "xyz@gmail.com";
         objUser.Phone = 555;

@@ -1,7 +1,7 @@
-import UserData from "../../core/data-objects/UserData";
-import BookingData from "../../core/data-objects/BookingData";
+import UserModel from "../../core/models/UserModel";
+import BookingModel from "../../core/models/BookingModel";
 
 export class UserAccountState {
-    public storeUserDetail: UserData = new UserData();
-    public storeUserBookings: Array<BookingData> = [];
+    public storeUserDetail: UserModel = new UserModel();
+    public storeUserBookings: Array<BookingModel> = [];
 }

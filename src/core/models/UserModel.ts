@@ -1,4 +1,4 @@
-export default class UserData {
+export default class UserModel {
 
     private _FirstName: string = "";
     public get FirstName(): string {

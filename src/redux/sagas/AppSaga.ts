@@ -1,14 +1,14 @@
 import { takeLatest, call, takeEvery, put, take } from "redux-saga/effects";
 import { UserAccountActionTypes } from "../actions/UserAccountActions";
-import UserData from "../../core/data-objects/UserData";
+import UserModel from "../../core/models/UserModel";
 import { AppGlobalActions, AppGlobalActionTypes } from "../actions/AppGlobalActions";
 import APIResultType from "../../core/apis/APIResultType";
 import { APICallDetail } from "../states/AppGlobalState";
 import { eAPIActionStatus } from "../../core/enums/DataEnums";
 import API from "../../core/apis/AppAPIs";
 import { ServiceActionTypes, ServiceActions } from "../actions/ServiceActions";
-import ServiceData from "../../core/data-objects/ServiceData";
-import ClothTypeData from "../../core/data-objects/ClothTypeData";
+import ServiceModel from "../../core/models/ServiceModel";
+import ClothTypeModel from "../../core/models/ClothTypeModel";
 
 
 
@@ -24,7 +24,7 @@ function* loadAppInitialData() {
     callDetailServices.callerId = ServiceActionTypes.API_GET_SERVICES_REQUEST;
 
     yield put(AppGlobalActions.requestAPICall(callDetailServices.callerId));
-    let callResultServices: APIResultType<Array<ServiceData>> = yield call(API.getAllServices);
+    let callResultServices: APIResultType<Array<ServiceModel>> = yield call(API.getAllServices);
 
     callDetailServices.message = callResultServices.msg;
     if (callResultServices.success) {
@@ -45,7 +45,7 @@ function* loadAppInitialData() {
     callDetailClothTypes.callerId = ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST;
 
     yield put(AppGlobalActions.requestAPICall(callDetailClothTypes.callerId));
-    let callResultClothTypes: APIResultType<Array<ClothTypeData>> = yield call(API.getAllclothTypes);
+    let callResultClothTypes: APIResultType<Array<ClothTypeModel>> = yield call(API.getAllclothTypes);
 
     callDetailClothTypes.message = callResultClothTypes.msg;
     if (callResultClothTypes.success) {
@@ -72,7 +72,7 @@ function* registerNewUser() {
 
     put(AppGlobalActions.isLoading(true));
     put(AppGlobalActions.requestAPICall(apiCallDetail.callerId));
-    let apiResult = yield call(API.registrationRequest, new UserData());
+    let apiResult = yield call(API.registrationRequest, new UserModel());
 
     apiCallDetail.message = apiResult.msg;
 
@@ -127,7 +127,7 @@ function* getAllServices() {
 
     yield put(AppGlobalActions.isLoading(true));
     yield put(AppGlobalActions.requestAPICall(apiCallDetail.callerId));
-    let apiResult: APIResultType<Array<ServiceData>> = yield call(API.getAllServices);
+    let apiResult: APIResultType<Array<ServiceModel>> = yield call(API.getAllServices);
 
     apiCallDetail.message = apiResult.msg;
     if (apiResult.success) {
@@ -152,7 +152,7 @@ function* getAllClothTypes() {
 
     yield put(AppGlobalActions.isLoading(true));
     yield put(AppGlobalActions.requestAPICall(apiCallDetail.callerId));
-    let apiResult: APIResultType<Array<ClothTypeData>> = yield call(API.getAllclothTypes);
+    let apiResult: APIResultType<Array<ClothTypeModel>> = yield call(API.getAllclothTypes);
 
     apiCallDetail.message = apiResult.msg;
     if (apiResult.success) {

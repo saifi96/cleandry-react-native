@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, List, ListItem, Left, Body, Thumbnail } from "native-base";
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
-import BookingData from "../../core/data-objects/BookingData";
+import BookingModel from "../../core/models/BookingModel";
 import GlobalStyle from "../../styles/GlobalStyle";
 import ImgPathConstants from "../../core/constants/ImgPathConstants";
 import { Grid, Row, Col } from "react-native-easy-grid";
@@ -10,7 +10,7 @@ import { Grid, Row, Col } from "react-native-easy-grid";
 
 interface IMyBookingListProps {
     navigation: any;
-    MyBookings: Array<BookingData>;
+    MyBookings: Array<BookingModel>;
 }
 
 export const MyBookingListComponent = (props: IMyBookingListProps) => {
@@ -116,7 +116,7 @@ export const MyBookingListComponent = (props: IMyBookingListProps) => {
 
 interface IMyBookingDetailProps {
     navigation: any;
-    Booking: BookingData
+    Booking: BookingModel
 }
 export const MyBookingDetailComponent = (props: IMyBookingListProps) => {
 

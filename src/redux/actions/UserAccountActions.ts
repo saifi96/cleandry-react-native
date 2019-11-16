@@ -1,6 +1,6 @@
 import { createAction } from "../../core/helpers/ReduxUtils";
-import UserData from "../../core/data-objects/UserData";
-import BookingData from "../../core/data-objects/BookingData";
+import UserModel from "../../core/models/UserModel";
+import BookingModel from "../../core/models/BookingModel";
 
 /**
  * Action Types
@@ -19,11 +19,11 @@ export const UserAccountActionTypes = Object.freeze({
  * Actions
  */
 export const UserAccountActions = {
-    apiLoginRequest: (payload: UserData) => createAction(UserAccountActionTypes.API_LOGIN_REQUEST, payload),
+    apiLoginRequest: (payload: UserModel) => createAction(UserAccountActionTypes.API_LOGIN_REQUEST, payload),
     apiOTPVerificationRequest: (payload: number) => createAction(UserAccountActionTypes.API_OTP_VERIFICATION_REQUEST, payload),
-    apiRegisterUserRequest: (payload: UserData) => createAction(UserAccountActionTypes.API_REGISTER_USER_REQUEST, payload),
-    storeUserDetail: (payload: UserData) => createAction(UserAccountActionTypes.STORE_USER_DETAIL, payload),
-    storeUserBookings: (payload: Array<BookingData>) => createAction(UserAccountActionTypes.STORE_USER_BOOKINGS, payload),
+    apiRegisterUserRequest: (payload: UserModel) => createAction(UserAccountActionTypes.API_REGISTER_USER_REQUEST, payload),
+    storeUserDetail: (payload: UserModel) => createAction(UserAccountActionTypes.STORE_USER_DETAIL, payload),
+    storeUserBookings: (payload: Array<BookingModel>) => createAction(UserAccountActionTypes.STORE_USER_BOOKINGS, payload),
 }
 
 

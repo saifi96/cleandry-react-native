@@ -9,13 +9,13 @@ import GlobalStyle from "../../styles/GlobalStyle";
 import { CarouselComponent } from "../general-components/CrouselComponent";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
 import { NavigateToScreen } from "../navigation-components/AppNavigations";
-import ServiceData from "../../core/data-objects/ServiceData";
-import ClothTypeData from "../../core/data-objects/ClothTypeData";
+import ServiceModel from "../../core/models/ServiceModel";
+import ClothTypeModel from "../../core/models/ClothTypeModel";
 
 
 
 interface IOurTopServicesProps extends IAppGlobalProps {
-    services: Array<ServiceData>;
+    services: Array<ServiceModel>;
 }
 export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
 
@@ -108,8 +108,8 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
 
 
 interface IQuickCheckoutProps {
-    services: Array<ServiceData>;
-    clothTypes: Array<ClothTypeData>;
+    services: Array<ServiceModel>;
+    clothTypes: Array<ClothTypeModel>;
 }
 class QuickCheckoutState {
     selectedServiceId: number = 0;

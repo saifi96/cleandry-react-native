@@ -1,4 +1,4 @@
-export default class BookingData {
+export default class BookingModel {
 
     private _ServiceImgSrc: string = "";
     public get ServiceImgSrc(): string {

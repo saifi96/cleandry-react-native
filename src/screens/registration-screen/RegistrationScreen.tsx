@@ -178,14 +178,3 @@ class RegistrationScreen extends React.Component<IProps, IState> {
 export default RegistrationScreen;
 
 
-const styles = StyleSheet.create({
-    inputFormContainer: {
-        // borderRadius: 10,
-        // padding: 5,
-        // borderLeftWidth: 1,
-        // borderRightWidth: 1,
-        // borderTopWidth: 1,
-        // borderBottomWidth: 1,
-        // borderColor: ColorConstants.danger
-    }
-})

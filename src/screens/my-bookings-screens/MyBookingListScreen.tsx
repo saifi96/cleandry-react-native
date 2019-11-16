@@ -5,7 +5,7 @@ import GlobalStyle from "../../styles/GlobalStyle";
 import ColorConstants from "../../core/constants/ColorConstants";
 import { NavigateToScreen } from "../../components/navigation-components/AppNavigations";
 import { MyBookingListComponent } from "../../components/my-booking-components/MyBookingComponents";
-import MyBookingData from "../../core/data-objects/BookingData";
+import MyBookingData from "../../core/models/BookingModel";
 
 
 interface IProps {

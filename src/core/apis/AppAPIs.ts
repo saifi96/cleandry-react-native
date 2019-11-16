@@ -1,15 +1,15 @@
 import axios from "axios";
 import APICaller from "../helpers/APICaller";
-import UserData from "../data-objects/UserData";
+import UserModel from "../models/UserModel";
 import { APIActionNames } from "../constants/APIConstants";
 import APIResultType from "./APIResultType";
-import ServiceData from "../data-objects/ServiceData";
-import ClothTypeData from "../data-objects/ClothTypeData";
+import ServiceModel from "../models/ServiceModel";
+import ClothTypeModel from "../models/ClothTypeModel";
 
 
 export default class API {
 
-    static async registrationRequest(argUser: UserData): Promise<APIResultType<UserData>> {
+    static async registrationRequest(argUser: UserModel): Promise<APIResultType<UserModel>> {
         return await APICaller.Get(APIActionNames.register, `
         ?action=${APIActionNames.register}
         &first_name=${argUser.FirstName}
@@ -20,7 +20,7 @@ export default class API {
             false);
     }
 
-    static async loginRequest(argEmail: string, argPassword: string): Promise<APIResultType<UserData>> {
+    static async loginRequest(argEmail: string, argPassword: string): Promise<APIResultType<UserModel>> {
         return await APICaller.Get(APIActionNames.login, `
         ?action=${APIActionNames.login}
         &user_email=${argEmail}
@@ -31,9 +31,9 @@ export default class API {
     static async otpVerificationRequest() {
     }
 
-    static async getAllServices(): Promise<APIResultType<Array<ServiceData>>> {
+    static async getAllServices(): Promise<APIResultType<Array<ServiceModel>>> {
 
-        let result = new APIResultType<Array<ServiceData>>();
+        let result = new APIResultType<Array<ServiceModel>>();
         try {
 
             result = await APICaller.Get(APIActionNames.getAllServices, `
@@ -47,9 +47,9 @@ export default class API {
         return result;
     }
 
-    static async getAllclothTypes(): Promise<APIResultType<Array<ClothTypeData>>> {
+    static async getAllclothTypes(): Promise<APIResultType<Array<ClothTypeModel>>> {
 
-        let result = new APIResultType<Array<ClothTypeData>>();
+        let result = new APIResultType<Array<ClothTypeModel>>();
         try {
 
             result = await APICaller.Get(APIActionNames.getAllServicesCategory, `

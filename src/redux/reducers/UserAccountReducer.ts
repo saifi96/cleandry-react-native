@@ -1,12 +1,12 @@
 import { Action } from "../../core/helpers/ReduxUtils";
 import { UserAccountActionTypes } from "../actions/UserAccountActions";
 import { UserAccountState } from "../states/UserAccountState";
-import UserData from "../../core/data-objects/UserData";
-import BookingData from "../../core/data-objects/BookingData";
+import UserModel from "../../core/models/UserModel";
+import BookingModel from "../../core/models/BookingModel";
 
 const initialState: UserAccountState = {
-    storeUserDetail: new UserData(),
-    storeUserBookings: new Array<BookingData>()
+    storeUserDetail: new UserModel(),
+    storeUserBookings: new Array<BookingModel>()
 }
 const UserAccountReducer = (state = new UserAccountState(), action: Action): UserAccountState => {
 

@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { View, ListItem, Left, Right, Text, List, Icon, Thumbnail, H3, Body, Picker, Button, Form, Item, Input } from "native-base";
+import { View, ListItem, Left, Right, Text, List, Icon, Thumbnail, H3, Body, Picker, Button, Form, Item, Input, H1 } from "native-base";
 import ImgPathConstants from "../../core/constants/ImgPathConstants";
 import ColorConstants from "../../core/constants/ColorConstants";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
-import ServiceData from "../../core/data-objects/ServiceData";
-import ClothTypeData from "../../core/data-objects/ClothTypeData";
+import ServiceModel from "../../core/models/ServiceModel";
+import ClothTypeModel from "../../core/models/ClothTypeModel";
 import GlobalStyle from "../../styles/GlobalStyle";
+import { StyleSheet } from "react-native";
 
 interface IServiceSelectionProps extends IAppGlobalProps {
-    services: Array<ServiceData>;
-    clothTypes: Array<ClothTypeData>;
+    services: Array<ServiceModel>;
+    clothTypes: Array<ClothTypeModel>;
 }
 
 interface ChoosenServicesData {
@@ -18,7 +19,7 @@ interface ChoosenServicesData {
         id: number,
         itemCount: number,
         basePrice: number,
-        selectableCloths: Array<ClothTypeData>
+        selectableCloths: Array<ClothTypeModel>
     }>;
 }
 class ServiceSelectionState {
@@ -201,6 +202,7 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
 
     return (
         <View>
+            <H3 style={styles.sectionTitle}>Choose Services</H3>
             {
                 props.services.map(iSerice =>
                     <List
@@ -277,33 +279,8 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
 export const DeliveryDetailFormComponent = () => {
     return (
         <View>
-            <Form style={[GlobalStyle.verticalSpacing]}>
-
-                <Item
-                    fixedLabel={true}
-                    regular
-                    style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
-                    <Input
-                        style={GlobalStyle.textSizeM}
-                        keyboardType="numeric"
-                        placeholder="Enter pincode"
-                        placeholderTextColor={ColorConstants.placeholderText}
-                    />
-                    <Icon name="map-pin" type="FontAwesome5">
-                    </Icon>
-                </Item>
-
-                <Item
-                    fixedLabel={true}
-                    regular
-                    style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
-                    <Input
-                        style={GlobalStyle.textSizeM}
-                        placeholder="Enter address"
-                        placeholderTextColor={ColorConstants.placeholderText}
-                    />
-                    <Icon name="add-location" type="FontAwesome5" />
-                </Item>
+            <H3 style={styles.sectionTitle}>Delivery Detail</H3>
+            <Form>
 
                 <Item
                     fixedLabel={true}
@@ -322,13 +299,58 @@ export const DeliveryDetailFormComponent = () => {
                     style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                     <Input
                         style={GlobalStyle.textSizeM}
+                        keyboardType="numeric"
                         placeholder="Phone"
                         placeholderTextColor={ColorConstants.placeholderText}
                     />
                     <Icon name="cellphone-android" type="MaterialCommunityIcons" />
                 </Item>
 
+                <Item
+                    fixedLabel={true}
+                    regular
+                    style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
+                    <Input
+                        style={GlobalStyle.textSizeM}
+                        keyboardType="numeric"
+                        placeholder="Enter pincode"
+                        placeholderTextColor={ColorConstants.placeholderText}
+                    />
+                    <Icon name="my-location" type="MaterialIcons">
+                    </Icon>
+                </Item>
+
+                <Item
+                    fixedLabel={true}
+                    regular
+                    style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
+                    <Input
+                        style={GlobalStyle.textSizeM}
+                        placeholder="Enter address"
+                        placeholderTextColor={ColorConstants.placeholderText}
+                    />
+                    <Icon name="add-location" type="MaterialIcons" />
+                </Item>
+
             </Form>
+
         </View>
     )
 }
+
+export const OrderDetailComponent = () => {
+
+    return (
+        <View>
+            <H3 style={styles.sectionTitle}>Order Detail</H3>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    sectionTitle: {
+        marginVertical: 10,
+        fontWeight: "bold",
+        color: ColorConstants.placeholderText
+    }
+})
