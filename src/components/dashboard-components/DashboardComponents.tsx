@@ -11,6 +11,8 @@ import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
 import { NavigateToScreen } from "../navigation-components/AppNavigations";
 import ServiceModel from "../../core/models/ServiceModel";
 import ClothTypeModel from "../../core/models/ClothTypeModel";
+import DateTimePicker from "react-native-modal-datetime-picker";
+import GlobalFunctions from "../../core/helpers/GlobalFunctions";
 
 
 
@@ -116,10 +118,33 @@ class QuickCheckoutState {
     selectedClothTypeId: number = 0;
     scheduleDate: string = "";
     totalWeightInKg: number = 0;
+    showDateTimePicker: boolean = false;
 }
 export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
     const [state, setState] = useState(new QuickCheckoutState());
 
+    //#region Date picker functionality
+    function showDatePicker() {
+        setState({
+            ...state,
+            showDateTimePicker: true
+        });
+    }
+
+    function hideDatePicker() {
+        setState({
+            ...state,
+            showDateTimePicker: false
+        });
+    }
+
+    function confirmScheduleDate(argDate: Date) {
+        setState({
+            ...state,
+            scheduleDate: GlobalFunctions.GetShortDate(argDate)
+        })
+    }
+    //#endregion
     return (
         <View style={[dashboardStyle.section]}>
             <Text style={[dashboardStyle.sectionTitle]}>Quick Checkout</Text>
@@ -195,10 +220,23 @@ export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
                             style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
                             <Input
+                                onFocus={showDatePicker}
+                                onKeyPress={showDatePicker}
+                                onBlur={hideDatePicker}
+                                value={state.scheduleDate}
                                 placeholder="Schedule Delivery"
                                 placeholderTextColor={ColorConstants.placeholderText}
                             />
+
                         </Item>
+
+                        <DateTimePicker
+                            isVisible={state.showDateTimePicker}
+                            mode="date"
+                            onConfirm={confirmScheduleDate}
+                            onCancel={hideDatePicker}
+                            onHideAfterConfirm={hideDatePicker}
+                        />
                     </Col>
                     <Col size={2}>
                         <Item

@@ -102,7 +102,6 @@ class RegistrationScreen extends React.Component<Props, IState> {
     }
 
     confirmDOB(argDate: Date) {
-        debugger;
         this.setState({
             ...this.state,
             DOB: { ...this.state.DOB, Value: GlobalFunctions.GetShortDate(argDate) }
