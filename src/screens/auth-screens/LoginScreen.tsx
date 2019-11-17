@@ -34,7 +34,7 @@ class LoginScreen extends React.Component<Props, IState> {
     constructor(props: Props) {
         super(props);
         this.state = { PhoneNo: new FormFieldModel() };
-        this.getOTP.bind(this);
+        this.getOTP = this.getOTP.bind(this);
     }
 
     getOTP() {
@@ -44,7 +44,7 @@ class LoginScreen extends React.Component<Props, IState> {
         if (GlobalFunctions.IsUndefinedNullOrEmpty(fieldPhoneNo.Value)) {
             fieldPhoneNo.Message = 'Error! Phone number is required';
         }
-        else if (Validations.isValidateMobile(fieldPhoneNo.Value)) {
+        else if (!Validations.isValidateMobile(fieldPhoneNo.Value)) {
             fieldPhoneNo.Message = 'Error! Please enter valid phone number';
         }
         else {
@@ -57,7 +57,10 @@ class LoginScreen extends React.Component<Props, IState> {
                 { phoneNo: `+91 ${fieldPhoneNo.Value}` });
         }
         else {
-            this.setState({ ...this.state, PhoneNo: fieldPhoneNo });
+            this.setState({
+                ...this.state,
+                PhoneNo: fieldPhoneNo
+            });
         }
 
     }
@@ -85,7 +88,10 @@ class LoginScreen extends React.Component<Props, IState> {
                                 <Card style={[GlobalStyle.borderRadiusL, { flex: 1, paddingHorizontal: 20, paddingVertical: 25 }]}>
                                     <Row>
                                         <Col size={2}>
-                                            <Item regular style={GlobalStyle.borderRadiusM}>
+                                            <Item
+                                                regular
+                                                error={this.state.PhoneNo.IsError}
+                                                style={GlobalStyle.borderRadiusM}>
                                                 <Input
                                                     disabled={true}
                                                     style={[GlobalStyle.textSizeL, { textAlign: "center" }]}
@@ -97,6 +103,7 @@ class LoginScreen extends React.Component<Props, IState> {
                                         <Col size={8}>
                                             <Item
                                                 regular
+                                                error={this.state.PhoneNo.IsError}
                                                 style={GlobalStyle.borderRadiusM}
                                             >
                                                 <Input

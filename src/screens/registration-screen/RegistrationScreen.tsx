@@ -34,13 +34,13 @@ class RegistrationScreen extends React.Component<Props, IState> {
             Email: new FormFieldModel(),
             Phone: new FormFieldModel(),
             DOB: new FormFieldModel(),
-            ShowDateTimePicker: true,
+            ShowDateTimePicker: false,
         }
 
-        this.showDatePicker.bind(this);
-        this.hideDatePicker.bind(this);
-        this.confirmDOB.bind(this);
-        this.getOTP.bind(this);
+        this.showDatePicker = this.showDatePicker.bind(this);
+        this.hideDatePicker = this.hideDatePicker.bind(this);
+        this.confirmDOB = this.confirmDOB.bind(this);
+        this.getOTP = this.getOTP.bind(this);
     }
 
     getOTP() {
@@ -48,7 +48,7 @@ class RegistrationScreen extends React.Component<Props, IState> {
         let formState = { ...this.state };
         let bIsValid = true;
 
-        if (!Validations.isValidName(formState.Name.Value)) {
+        if (!Validations.isValidName(formState.Name.Value.trim())) {
             bIsValid = false;
             formState.Name.IsError = true;
         }
@@ -57,7 +57,7 @@ class RegistrationScreen extends React.Component<Props, IState> {
         }
 
         if (!GlobalFunctions.IsUndefinedNullOrEmpty(formState.Email.Value)) {
-            if (!Validations.isValidateEmail(formState.Email.Value)) {
+            if (!Validations.isValidateEmail(formState.Email.Value.trim())) {
                 bIsValid = false;
                 formState.Email.IsError = true;
             }
@@ -66,7 +66,7 @@ class RegistrationScreen extends React.Component<Props, IState> {
             }
         }
 
-        if (!Validations.isValidateMobile(formState.Phone.Value)) {
+        if (!Validations.isValidateMobile(formState.Phone.Value.trim())) {
             bIsValid = false;
             formState.Phone.IsError = true;
         }
@@ -77,7 +77,11 @@ class RegistrationScreen extends React.Component<Props, IState> {
         //ToDo
         //Date of birth validation
         if (bIsValid) {
-            this.props.navigation.navigate(NavigateToScreen.LoginOTPScreen, { PhoneNo: `+91 ${formState.Phone.Value}` });
+            this.props.navigation.navigate(NavigateToScreen.LoginOTPScreen,
+                { phoneNo: `+91 ${formState.Phone.Value}` });
+        }
+        else {
+            this.setState({ ...formState });
         }
 
     }
@@ -98,6 +102,7 @@ class RegistrationScreen extends React.Component<Props, IState> {
     }
 
     confirmDOB(argDate: Date) {
+        debugger;
         this.setState({
             ...this.state,
             DOB: { ...this.state.DOB, Value: GlobalFunctions.GetShortDate(argDate) }
@@ -146,11 +151,11 @@ class RegistrationScreen extends React.Component<Props, IState> {
                             <Item
                                 fixedLabel={true}
                                 regular
-                                error={this.state.Name.IsError ? true : false}
+                                error={this.state.Name.IsError}
                                 style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
                                     style={GlobalStyle.textSizeM}
-                                    placeholder="Name"
+                                    placeholder="Name*"
                                     onChangeText={(txt) => {
                                         this.setState({
                                             ...this.state,
@@ -166,7 +171,7 @@ class RegistrationScreen extends React.Component<Props, IState> {
                             <Item
                                 fixedLabel={true}
                                 regular
-                                error={this.state.Email.IsError ? true : false}
+                                error={this.state.Email.IsError}
                                 style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
                                     style={GlobalStyle.textSizeM}
@@ -185,11 +190,11 @@ class RegistrationScreen extends React.Component<Props, IState> {
                             <Item
                                 fixedLabel={true}
                                 regular
-                                error={this.state.Phone.IsError ? true : false}
+                                error={this.state.Phone.IsError}
                                 style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
                                     style={GlobalStyle.textSizeM}
-                                    keyboardType="number-pad"
+                                    keyboardType="phone-pad"
                                     onChangeText={(txt) => {
                                         this.setState({
                                             ...this.state,
@@ -206,16 +211,20 @@ class RegistrationScreen extends React.Component<Props, IState> {
                             <Item
                                 fixedLabel={true}
                                 regular
-                                error={this.state.DOB.IsError ? true : false}
+                                error={this.state.DOB.IsError}
                                 style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
                                     style={GlobalStyle.textSizeM}
-                                    placeholder="DD-MM-YYYY"
+                                    placeholder="DD/MM/YYYY"
                                     value={this.state.DOB.Value}
                                     onFocus={this.showDatePicker}
                                     onBlur={this.hideDatePicker}
                                     placeholderTextColor={ColorConstants.placeholderText} />
-                                <Icon name="calendar-month" type="MaterialCommunityIcons" />
+                                <Icon
+                                    name="calendar-month"
+                                    type="MaterialCommunityIcons"
+                                    onPress={this.showDatePicker}
+                                />
                             </Item>
 
                         </Form>
@@ -223,12 +232,9 @@ class RegistrationScreen extends React.Component<Props, IState> {
                         <DateTimePicker
                             isVisible={this.state.ShowDateTimePicker}
                             mode="date"
-                            onConfirm={(argDate: Date) => {
-                                this.confirmDOB(argDate);
-                            }}
-                            onCancel={(argDate: Date) => {
-                                this.hideDatePicker();
-                            }}
+                            onConfirm={this.confirmDOB}
+                            onCancel={this.hideDatePicker}
+                            onHideAfterConfirm={this.hideDatePicker}
                         />
 
                         <View style={[GlobalStyle.verticalSpacing, { justifyContent: "center", flexDirection: "row" }]}>

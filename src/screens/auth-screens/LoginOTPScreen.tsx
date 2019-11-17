@@ -22,6 +22,8 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = { otp: [], errorOTPMsg: "" };
+
+        this.verifyOTP = this.verifyOTP.bind(this);
     }
 
     componentDidMount() {
@@ -108,7 +110,7 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
                                 <H3>
                                     We have sent you OTP at
                                 </H3>
-                                <H1 style={[{ color: ColorConstants.primaryText, marginTop: 5 }]}>{this.props.navigation.getParam('PhoneNo')}</H1>
+                                <H1 style={[{ color: ColorConstants.primaryText, marginTop: 5 }]}>{this.props.navigation.getParam('phoneNo')}</H1>
                             </Row>
                             <Row style={GlobalStyle.verticalSpacing}>
                                 <Card style={[GlobalStyle.borderRadiusL, { flex: 1, padding: 20, paddingVertical: 40 }]}>
