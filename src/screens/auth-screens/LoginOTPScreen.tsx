@@ -14,13 +14,14 @@ interface IState {
     otp: string[];
     errorOTPMsg: string;
 }
+
 class LoginOTPScreen extends React.Component<IProps, IState> {
 
     otpTextInput: any[] = [];
 
     constructor(props: IProps) {
         super(props);
-        this.state = { otp: [], errorOTPMsg: "Invalid OTP" };
+        this.state = { otp: [], errorOTPMsg: "" };
     }
 
     componentDidMount() {
@@ -36,6 +37,7 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
                         style={[styles.inputRadius, GlobalStyle.textSizeL, { borderRadius: 10 }]}
                         keyboardType="numeric"
                         placeholder="0"
+                        maxLength={1}
                         onChangeText={v => this.focusNext(j, v)}
                         onKeyPress={e => this.focusPrevious(e.nativeEvent.key, j)}
                         ref={ref => this.otpTextInput[j] = ref}
@@ -64,8 +66,21 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
         //this.props.getOtp(otp.join(''));
     }
 
+    verifyOTP() {
+
+        if (this.state.otp.length == 5) {
+            //Make API call to verify otp
+            this.props.navigation.navigate(NavigateToScreen.DashboardScreen);
+        }
+        else {
+            this.setState({ ...this.state, errorOTPMsg: "Please Enter OTP" });
+        }
+    }
+
 
     render() {
+
+
         return (
             <Container>
                 <Header noShadow style={[GlobalStyle.bgAppPrimary]} androidStatusBarColor={ColorConstants.primary}>
@@ -93,7 +108,7 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
                                 <H3>
                                     We have sent you OTP at
                                 </H3>
-                                <H1 style={[{ color: ColorConstants.primaryText, marginTop: 5 }]}>+91 800 244 0033</H1>
+                                <H1 style={[{ color: ColorConstants.primaryText, marginTop: 5 }]}>{this.props.navigation.getParam('PhoneNo')}</H1>
                             </Row>
                             <Row style={GlobalStyle.verticalSpacing}>
                                 <Card style={[GlobalStyle.borderRadiusL, { flex: 1, padding: 20, paddingVertical: 40 }]}>
@@ -121,9 +136,7 @@ class LoginOTPScreen extends React.Component<IProps, IState> {
                                     block
                                     iconRight={true}
                                     style={[GlobalStyle.borderRadiusM, GlobalStyle.width75Per, GlobalStyle.bgAppPrimary, { alignSelf: "center" }]}
-                                    onPress={() => {
-                                        this.props.navigation.navigate(NavigateToScreen.DashboardScreen);
-                                    }}
+                                    onPress={this.verifyOTP}
                                 >
                                     <Text uppercase={false}>Verify Now</Text>
                                     <Icon name="arrow-right" type="FontAwesome5" />
