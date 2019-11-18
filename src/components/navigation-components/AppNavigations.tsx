@@ -14,6 +14,12 @@ import MyBookingDetailScreen from "../../screens/my-bookings-screens/MyBookingDe
 import RewardScreen from "../../screens/reward-screen/RewardScreen";
 import ServiceScreen from "../../screens/service-screen/ServiceScreen";
 import RateChartScreen from "../../screens/rate-chart-screen/RateChartScreen";
+import NotificationListScreen from "../../screens/notification-screens/NotificationListScreen";
+import NotificationDetailScreen from "../../screens/notification-screens/NotificationDetailScreen";
+import FAQScreen from "../../screens/faq-screen/FAQScreen";
+import AboutUsScreen from "../../screens/about-us-screen/AboutUsScreen";
+import TermsAndConditionScreen from "../../screens/terms-and-conditions-screen/TermsAndConditionsScreen";
+import PrivacyPolicyScreen from "../../screens/privacy-policy-screen/PrivacyPolicyScreen";
 
 
 
@@ -47,6 +53,12 @@ export const NavigateToScreen = Object.freeze({
     RateChartScreen: "RateChartScreen",
     RewardScreen: "RewardScreen",
     ServiceScreen: "ServiceScreen",
+    NotificationListScreen: "NotificationListScreen",
+    NotificationDetailScreen: "NotificationDetailScreen",
+    FAQScreen: "FAQScreen",
+    AboutUsScreen: "AboutUsScreen",
+    TermsAndConditionsScreen: "TermsAndConditionScreen",
+    PrivacyPolicyScreen: "PrivacyPolicyScreen"
 });
 
 
@@ -125,6 +137,17 @@ const RateChartScreensStack = createStackNavigator({
 });
 
 /**
+ * Offers and notification screens stack
+ */
+const NotificationScreensStack = createStackNavigator({
+    NotificationListScreen: NotificationListScreen,
+    NotificationDetailScreen: NotificationDetailScreen
+}, {
+    initialRouteName: NavigateToScreen.NotificationListScreen,
+    headerMode: "none"
+});
+
+/**
  * Reward screens stack
  */
 const RewardScreensStack = createStackNavigator({
@@ -133,6 +156,49 @@ const RewardScreensStack = createStackNavigator({
     initialRouteName: NavigateToScreen.RewardScreen,
     headerMode: "none"
 });
+
+/**
+ * FAQ screens stack
+ */
+const FAQScreensStack = createStackNavigator({
+    FAQScreen: FAQScreen
+}, {
+    initialRouteName: NavigateToScreen.FAQScreen,
+    headerMode: "none"
+});
+
+/**
+ * About us screens stack
+ */
+const AboutUsScreensStack = createStackNavigator({
+    AboutUsScreen: AboutUsScreen
+}, {
+    initialRouteName: NavigateToScreen.AboutUsScreen,
+    headerMode: "none"
+});
+
+/**
+ * Privacy policy screens stack
+ */
+const PrivacyPolicyScreensStack = createStackNavigator({
+    PrivacyPolicyScreens: PrivacyPolicyScreen
+}, {
+    initialRouteName: NavigateToScreen.PrivacyPolicyScreen,
+    headerMode: "none"
+});
+
+/**
+ * Terms and conditions screens stack
+ */
+const TermsAndConditionsScreensStack = createStackNavigator({
+    TermsAndConditionScreen: TermsAndConditionScreen
+}, {
+    initialRouteName: NavigateToScreen.TermsAndConditionsScreen,
+    headerMode: "none"
+});
+
+
+
 
 /**
  * Service screens Stack
@@ -156,7 +222,12 @@ const UserScreensStack = createStackNavigator({
     MyBookingScreensStack: MyBookingScreensStack,
     RateChartScreensStack: RateChartScreensStack,
     RewardScreensStack: RewardScreensStack,
+    NotificationScreensStack: NotificationScreensStack,
     ServiceScreensStack: ServiceScreensStack,
+    FAQScreensStack: FAQScreensStack,
+    AboutUsScreensStack: AboutUsScreensStack,
+    PrivacyPolicyScreensStack: PrivacyPolicyScreensStack,
+    TermsAndConditionsScreensStack: TermsAndConditionsScreensStack
 }, {
     initialRouteName: NavigateToScreen.DashboardScreen,
     headerMode: "none",
@@ -189,6 +260,11 @@ export const NavigateToStack = Object.freeze({
     ServiceScreensStack: "ServiceScreensStack",
     RateChartScreensStack: "RateChartScreensStack",
     RewardScreensStack: "RewardScreensStack",
+    NotificationScreensStack: "NotificationScreensStack",
+    FAQScreensStack: "FAQScreensStack",
+    AboutUsScreensStack: "AboutUsScreensStack",
+    PrivacyPolicyScreensStack: "PrivacyPolicyScreensStack",
+    TermsAndConditionsScreensStack: "TermsAndConditionsScreensStack"
 });
 
 

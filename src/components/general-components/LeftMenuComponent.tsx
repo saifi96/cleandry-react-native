@@ -94,7 +94,7 @@ const LeftMenuComponent = (props: ILeftMenuProps) => {
                 <ListItem
                     thumbnail
                     noBorder={true}
-                    onPress={() => console.log("clicked")}
+                    onPress={() => props.navigation.navigate(NavigateToStack.NotificationScreensStack)}
                 >
                     <Left>
                         <Thumbnail small square source={ImgPathConstants.leftMenuIcons.percentage} />
@@ -106,7 +106,7 @@ const LeftMenuComponent = (props: ILeftMenuProps) => {
                 <ListItem
                     thumbnail
                     noBorder={true}
-                    onPress={() => console.log("clicked")}
+                    onPress={() => props.navigation.navigate(NavigateToStack.FAQScreensStack)}
                 >
                     <Left>
                         <Thumbnail small square source={ImgPathConstants.leftMenuIcons.instruction} />
@@ -118,7 +118,7 @@ const LeftMenuComponent = (props: ILeftMenuProps) => {
                 <ListItem
                     thumbnail
                     noBorder={true}
-                    onPress={() => console.log("clicked")}
+                    onPress={() => props.navigation.navigate(NavigateToStack.AboutUsScreensStack)}
                 >
                     <Left>
                         <Thumbnail small square source={ImgPathConstants.leftMenuIcons.instruction} />
@@ -142,7 +142,7 @@ const LeftMenuComponent = (props: ILeftMenuProps) => {
                 <ListItem
                     thumbnail
                     noBorder={true}
-                    onPress={() => console.log("clicked")}
+                    onPress={() => props.navigation.navigate(NavigateToStack.PrivacyPolicyScreensStack)}
                 >
                     <Left>
                         <Thumbnail small square source={ImgPathConstants.leftMenuIcons.instruction} />

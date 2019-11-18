@@ -4,6 +4,7 @@ import { Header, Button, Left, Icon, Body, Right, H3, Content } from "native-bas
 import GlobalStyle from "../../styles/GlobalStyle";
 import ColorConstants from "../../core/constants/ColorConstants";
 import { NavigateToScreen } from "../../components/navigation-components/AppNavigations";
+import { NotificationDetailComponent } from "../../components/notification-components/NotificationComponents";
 
 
 interface IProps {
@@ -12,7 +13,7 @@ interface IProps {
 interface IState {
 }
 
-class NotificationScreen extends React.Component<IProps, IState> {
+class NotificationDetailScreen extends React.Component<IProps, IState> {
 
 
     constructor(props: IProps) {
@@ -32,14 +33,14 @@ class NotificationScreen extends React.Component<IProps, IState> {
                         <Button
                             transparent
                             onPress={() => {
-                                this.props.navigation.navigate(NavigateToScreen.DashboardScreen);
+                                this.props.navigation.goBack();
                             }}
                         >
                             <Icon name="arrow-left" type="FontAwesome5" />
                         </Button>
                     </Left>
                     <Body>
-                        <H3 style={[{ color: ColorConstants.white }]}>Offers & Notification</H3>
+                        <H3 style={[{ color: ColorConstants.white }]}>Notification Detail</H3>
                     </Body>
                     <Right>
                     </Right>
@@ -49,12 +50,13 @@ class NotificationScreen extends React.Component<IProps, IState> {
                     enableAutomaticScroll={true}
                     style={[GlobalStyle.posRelation]}
                 >
-
-
+                    <NotificationDetailComponent
+                        navigation={this.props.navigation}
+                    />
                 </Content>
             </MainContainerComponent>
         )
     }
 }
 
-export default NotificationScreen;
+export default NotificationDetailScreen;
