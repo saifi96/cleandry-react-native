@@ -13,6 +13,7 @@ import MyBookingListScreen from "../../screens/my-bookings-screens/MyBookingList
 import MyBookingDetailScreen from "../../screens/my-bookings-screens/MyBookingDetailScreen";
 import RewardScreen from "../../screens/reward-screen/RewardScreen";
 import ServiceScreen from "../../screens/service-screen/ServiceScreen";
+import RateChartScreen from "../../screens/rate-chart-screen/RateChartScreen";
 
 
 
@@ -43,6 +44,7 @@ export const NavigateToScreen = Object.freeze({
     ProfileEditScreen: "ProfileEditScreen",
     MyBookingListScreen: "MyBookingListScreen",
     MyBookingDetailScreen: "MyBookingDetailScreen",
+    RateChartScreen: "RateChartScreen",
     RewardScreen: "RewardScreen",
     ServiceScreen: "ServiceScreen",
 });
@@ -111,6 +113,17 @@ const MyBookingScreensStack = createStackNavigator({
     headerMode: "none"
 });
 
+
+/**
+ * Rate chart screens stack
+ */
+const RateChartScreensStack = createStackNavigator({
+    RateChartScreen: RateChartScreen
+}, {
+    initialRouteName: NavigateToScreen.RateChartScreen,
+    headerMode: "none"
+});
+
 /**
  * Reward screens stack
  */
@@ -132,6 +145,8 @@ const ServiceScreensStack = createStackNavigator({
     headerMode: "none"
 });
 
+
+
 /**
  * Dashboard screens stack
  */
@@ -139,6 +154,7 @@ const UserScreensStack = createStackNavigator({
     DashboardScreen: DashboardScreen,
     UserProfileScreensStack: UserProfileScreensStack,
     MyBookingScreensStack: MyBookingScreensStack,
+    RateChartScreensStack: RateChartScreensStack,
     RewardScreensStack: RewardScreensStack,
     ServiceScreensStack: ServiceScreensStack,
 }, {
@@ -171,6 +187,7 @@ export const NavigateToStack = Object.freeze({
     UserProfileScreensStack: "UserProfileScreensStack",
     MyBookingScreensStack: "MyBookingScreensStack",
     ServiceScreensStack: "ServiceScreensStack",
+    RateChartScreensStack: "RateChartScreensStack",
     RewardScreensStack: "RewardScreensStack",
 });
 

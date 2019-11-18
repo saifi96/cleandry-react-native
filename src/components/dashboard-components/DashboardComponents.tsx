@@ -145,6 +145,7 @@ export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
         })
     }
     //#endregion
+
     return (
         <View style={[dashboardStyle.section]}>
             <Text style={[dashboardStyle.sectionTitle]}>Quick Checkout</Text>

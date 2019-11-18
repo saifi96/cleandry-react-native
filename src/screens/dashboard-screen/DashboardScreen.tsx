@@ -50,7 +50,7 @@ class DashboardScreen extends React.Component<Props, IState> {
     }
 
 
-    /**Drawer Action Region Start */
+    //#region Drawer Action Region
     closeDrawer = () => {
         this._drawer._root.close();
     }
@@ -58,7 +58,7 @@ class DashboardScreen extends React.Component<Props, IState> {
     openDrawer = () => {
         this._drawer._root.open();
     }
-    /**Drawer Action Region End */
+    //#endregion
 
     render() {
         return (
