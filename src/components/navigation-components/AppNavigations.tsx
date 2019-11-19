@@ -136,6 +136,7 @@ const RateChartScreensStack = createStackNavigator({
     headerMode: "none"
 });
 
+
 /**
  * Offers and notification screens stack
  */

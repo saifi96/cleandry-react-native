@@ -7,6 +7,7 @@ import ServiceModel from "../../core/models/ServiceModel";
 import ClothTypeModel from "../../core/models/ClothTypeModel";
 import GlobalStyle from "../../styles/GlobalStyle";
 import { StyleSheet } from "react-native";
+import FormFieldModel from "../../core/models/FormFieldModel";
 
 interface IServiceSelectionProps extends IAppGlobalProps {
     services: Array<ServiceModel>;
@@ -276,7 +277,15 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
     )
 }
 
+class DeliveryDetailFormState {
+    public Name = new FormFieldModel();
+    public Phone = new FormFieldModel();
+    public Pincode = new FormFieldModel();
+    public Address = new FormFieldModel();
+}
+
 export const DeliveryDetailFormComponent = () => {
+    const [state, setState] = useState(new DeliveryDetailFormState());
     return (
         <View>
             <H3 style={styles.sectionTitle}>Delivery Detail</H3>
@@ -285,10 +294,17 @@ export const DeliveryDetailFormComponent = () => {
                 <Item
                     fixedLabel={true}
                     regular
+                    error={state.Name.IsError}
                     style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                     <Input
                         style={GlobalStyle.textSizeM}
                         placeholder="Your name"
+                        onChangeText={(txt) => {
+                            setState({
+                                ...state,
+                                Name: { ...state.Name, Value: txt }
+                            });
+                        }}
                         placeholderTextColor={ColorConstants.placeholderText} />
                     <Icon name="user" type="FontAwesome5" />
                 </Item>
@@ -296,11 +312,19 @@ export const DeliveryDetailFormComponent = () => {
                 <Item
                     fixedLabel={true}
                     regular
+                    error={state.Phone.IsError}
                     style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                     <Input
                         style={GlobalStyle.textSizeM}
                         keyboardType="numeric"
                         placeholder="Phone"
+                        maxLength={10}
+                        onChangeText={(txt) => {
+                            setState({
+                                ...state,
+                                Phone: { ...state.Phone, Value: txt }
+                            });
+                        }}
                         placeholderTextColor={ColorConstants.placeholderText}
                     />
                     <Icon name="cellphone-android" type="MaterialCommunityIcons" />
@@ -309,10 +333,18 @@ export const DeliveryDetailFormComponent = () => {
                 <Item
                     fixedLabel={true}
                     regular
+                    error={state.Pincode.IsError}
                     style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                     <Input
                         style={GlobalStyle.textSizeM}
                         keyboardType="numeric"
+                        maxLength={10}
+                        onChangeText={(txt) => {
+                            setState({
+                                ...state,
+                                Pincode: { ...state.Pincode, Value: txt }
+                            });
+                        }}
                         placeholder="Enter pincode"
                         placeholderTextColor={ColorConstants.placeholderText}
                     />
@@ -323,9 +355,16 @@ export const DeliveryDetailFormComponent = () => {
                 <Item
                     fixedLabel={true}
                     regular
+                    error={state.Address.IsError}
                     style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                     <Input
                         style={GlobalStyle.textSizeM}
+                        onChangeText={(txt) => {
+                            setState({
+                                ...state,
+                                Address: { ...state.Address, Value: txt }
+                            });
+                        }}
                         placeholder="Enter address"
                         placeholderTextColor={ColorConstants.placeholderText}
                     />
@@ -339,7 +378,6 @@ export const DeliveryDetailFormComponent = () => {
 }
 
 export const OrderDetailComponent = () => {
-
     return (
         <View>
             <H3 style={styles.sectionTitle}>Order Detail</H3>
