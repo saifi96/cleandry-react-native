@@ -46,7 +46,6 @@ class DashboardScreen extends React.Component<Props, IState> {
     }
 
     componentDidMount() {
-
     }
 
 

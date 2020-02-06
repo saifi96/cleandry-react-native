@@ -65,14 +65,12 @@ class ServiceScreen extends React.Component<Props, IState> {
                     contentContainerStyle={{ minHeight: "100%" }}
                     style={[GlobalStyle.posRelation]}
                 >
-                    <ServiceSelectionComponent
-                        services={this.props.services}
-                        clothTypes={this.props.clothTypes}
-                    />
+                    <ServiceSelectionComponent services={this.props.services} clothTypes={this.props.clothTypes} />
 
                     <DeliveryDetailFormComponent />
 
                     <OrderDetailComponent />
+
                 </Content>
             </MainContainerComponent>
         )

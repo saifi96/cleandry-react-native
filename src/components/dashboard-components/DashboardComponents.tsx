@@ -17,7 +17,8 @@ import GlobalFunctions from "../../core/helpers/GlobalFunctions";
 
 
 interface IOurTopServicesProps extends IAppGlobalProps {
-    services: Array<ServiceModel>;
+    services: Array<ServiceModel>
+    navigation: any
 }
 export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
 
@@ -31,7 +32,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             title="Washing"
                             iconSource={ImgPathConstants.serviceIcons.washing}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 1 });
                             }}
                         />
                     </Col>
@@ -40,7 +41,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             title="Ironing"
                             iconSource={ImgPathConstants.serviceIcons.ironing}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 2 });
                             }}
                         />
                     </Col>
@@ -49,7 +50,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             title="Dry Clean"
                             iconSource={ImgPathConstants.serviceIcons.dryClean}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 3 });
                             }}
                         />
                     </Col>
@@ -58,19 +59,19 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             title="Wash & Iron"
                             iconSource={ImgPathConstants.serviceIcons.washIron}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 4 });
                             }}
                         />
                     </Col>
                 </Row>
 
                 <Row style={{ marginVertical: 10 }}>
-                    <Col style={[dashboardStyle.gridColContent]}>
+                    <Col style={[dashboardStyle.gridColContent]} >
                         <GridButton
                             title="Dress Iron"
                             iconSource={ImgPathConstants.serviceIcons.dressIron}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 5 });
                             }}
                         />
                     </Col>
@@ -79,7 +80,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             title="Bedsheet"
                             iconSource={ImgPathConstants.serviceIcons.bedsheetIron}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 6 });
                             }}
                         />
                     </Col>
@@ -88,7 +89,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             title="Cloths"
                             iconSource={ImgPathConstants.serviceIcons.dryClean}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 7 });
                             }}
                         />
                     </Col>
@@ -97,7 +98,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             title="Bleaching"
                             iconSource={ImgPathConstants.serviceIcons.bleaching}
                             onClick={() => {
-                                props.navigation.navigate(NavigateToScreen.ServiceScreen);
+                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: 8 });
                             }}
                         />
                     </Col>

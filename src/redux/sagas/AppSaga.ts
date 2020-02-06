@@ -19,12 +19,12 @@ function* loadAppInitialData() {
     yield put(AppGlobalActions.isLoading(true));
 
     /* #region  Get all services */
-    let callDetailServices = new APICallDetail();
+    const callDetailServices = new APICallDetail();
     callDetailServices.status = eAPIActionStatus.Requested;
     callDetailServices.callerId = ServiceActionTypes.API_GET_SERVICES_REQUEST;
 
     yield put(AppGlobalActions.requestAPICall(callDetailServices.callerId));
-    let callResultServices: APIResultType<Array<ServiceModel>> = yield call(API.getAllServices);
+    const callResultServices: APIResultType<ServiceModel[]> = yield call(API.getAllServices);
 
     callDetailServices.message = callResultServices.msg;
     if (callResultServices.success) {
@@ -40,12 +40,12 @@ function* loadAppInitialData() {
     /* #endregion */
 
     /* #region  Get all cloth types */
-    let callDetailClothTypes = new APICallDetail();
+    const callDetailClothTypes = new APICallDetail();
     callDetailClothTypes.status = eAPIActionStatus.Requested;
     callDetailClothTypes.callerId = ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST;
 
     yield put(AppGlobalActions.requestAPICall(callDetailClothTypes.callerId));
-    let callResultClothTypes: APIResultType<Array<ClothTypeModel>> = yield call(API.getAllclothTypes);
+    const callResultClothTypes: APIResultType<Array<ClothTypeModel>> = yield call(API.getAllclothTypes);
 
     callDetailClothTypes.message = callResultClothTypes.msg;
     if (callResultClothTypes.success) {

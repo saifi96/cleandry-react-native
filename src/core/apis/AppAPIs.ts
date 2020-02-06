@@ -10,7 +10,7 @@ import ClothTypeModel from "../models/ClothTypeModel";
 export default class API {
 
     static async registrationRequest(argUser: UserModel): Promise<APIResultType<UserModel>> {
-        return await APICaller.Get(APIActionNames.register, `
+        return await APICaller.Get<UserModel>(`
         ?action=${APIActionNames.register}
         &first_name=${argUser.FirstName}
         &last_name=${argUser.LastName}
@@ -21,7 +21,7 @@ export default class API {
     }
 
     static async loginRequest(argEmail: string, argPassword: string): Promise<APIResultType<UserModel>> {
-        return await APICaller.Get(APIActionNames.login, `
+        return await APICaller.Get(`
         ?action=${APIActionNames.login}
         &user_email=${argEmail}
         &user_pwd=password`,
@@ -31,35 +31,12 @@ export default class API {
     static async otpVerificationRequest() {
     }
 
-    static async getAllServices(): Promise<APIResultType<Array<ServiceModel>>> {
-
-        let result = new APIResultType<Array<ServiceModel>>();
-        try {
-
-            result = await APICaller.Get(APIActionNames.getAllServices, `
-            ?action=${APIActionNames.getAllServices}
-            `, false);
-        }
-        catch (err) {
-            console.log("haha");
-        }
-
-        return result;
+    static async getAllServices(): Promise<APIResultType<ServiceModel[]>> {
+        return await APICaller.Get(`?action=${APIActionNames.getAllServices}`);
     }
 
-    static async getAllclothTypes(): Promise<APIResultType<Array<ClothTypeModel>>> {
-
-        let result = new APIResultType<Array<ClothTypeModel>>();
-        try {
-
-            result = await APICaller.Get(APIActionNames.getAllServicesCategory, `
-            ?action=${APIActionNames.getAllServicesCategory}
-            `, false);
-        }
-        catch (err) {
-        }
-
-        return result;
+    static async getAllclothTypes(): Promise<APIResultType<ClothTypeModel[]>> {
+        return await APICaller.Get(`?action=${APIActionNames.getAllServicesCategory}`);
     }
 }
 

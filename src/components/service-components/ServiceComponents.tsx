@@ -28,11 +28,10 @@ class ServiceSelectionState {
     public expandedServiceId: number = -1;
 }
 export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
-
     const [state, setState] = useState(new ServiceSelectionState());
 
     function addNewClothForService(argServiceId: number) {
-        if (props.clothTypes.length > 0) {
+        if (props.clothTypes.length) {
 
             let newState = { ...state };
             let serviceIndex = newState.choosenServices.findIndex(iService => iService.id == argServiceId);
@@ -77,12 +76,12 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
     }
 
     function renderCurrentServiceItems(argServiceId: number) {
-
-        let currentService = state.choosenServices.find(iService => iService.id == argServiceId);
-        if (currentService != undefined) {
-
+        // let currentService = state.choosenServices.find(iService => iService.id == argServiceId);
+        // if (currentService != undefined) {
+        // }
+        if (props.clothTypes.length) {
             return (
-                currentService.clothTypes.map(iServiceItem =>
+                props.clothTypes.map(iServiceItem =>
                     <ListItem
                         noIndent
                         iconRight
@@ -122,13 +121,13 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
                             <View style={{ flexDirection: "row" }}>
                                 <Text note>
                                     QTY:&nbsp;
-                                </Text>
+                                    </Text>
                                 <Text>
                                     {iServiceItem.itemCount} X&nbsp;
-                                </Text>
+                                    </Text>
                                 <Text note>
                                     &#8377;&nbsp;:
-                                </Text>
+                                    </Text>
                                 <Text>
                                     {iServiceItem.basePrice}
                                 </Text>
@@ -165,9 +164,10 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
                             </Button>
                         </Right>
                     </ListItem>)
-            );
+            )
+        } else {
+            return null
         }
-
 
     }
 
@@ -248,13 +248,11 @@ export const ServiceSelectionComponent = (props: IServiceSelectionProps) => {
                             </Right>
                         </ListItem>
                         {
-                            props.clothTypes.length > 0 && state.expandedServiceId == iSerice.id ?
+                            props.clothTypes.length && state.expandedServiceId == iSerice.id ?
                                 <List
                                     key={`${iSerice.id}_cloth_types`}
                                 >
-                                    {
-                                        renderCurrentServiceItems(iSerice.id)
-                                    }
+                                    {renderCurrentServiceItems(iSerice.id)}
 
                                     <Button
                                         small
