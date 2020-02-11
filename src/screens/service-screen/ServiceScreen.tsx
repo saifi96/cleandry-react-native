@@ -8,15 +8,16 @@ import { NavigateToScreen } from "../../components/navigation-components/AppNavi
 import IMapAppStateToProps from "../../base/interfaces/IMapAppStateToProps";
 import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
-import { ServiceSelectionComponent, DeliveryDetailFormComponent, OrderDetailComponent } from "../../components/service-components/ServiceComponents";
+import { DeliveryDetailFormComponent, OrderDetailComponent, ServiceUnitSelectionComponent } from "../../components/service-components/ServiceComponents";
 import ServiceModel from "../../core/models/ServiceModel";
-import ClothTypeModel from "../../core/models/ClothTypeModel";
+import ServiceUnitModel from "../../core/models/ServiceUnitModel";
 import { AppState } from "../../redux/reducers/Index";
 import { connect } from "react-redux";
+import { ServiceUnitSelectionAdapter } from "../../core/models/adapters";
 
 interface IMapOwnStateToProps extends IMapAppStateToProps {
     services: Array<ServiceModel>;
-    clothTypes: Array<ClothTypeModel>;
+    clothTypes: Array<ServiceUnitModel>;
 }
 
 interface IMapOwnDispatchToProps extends IMapAppDispatchToProps {
@@ -28,13 +29,56 @@ interface IOwnProps extends IAppGlobalProps {
 type Props = IOwnProps & IMapOwnStateToProps & IMapOwnDispatchToProps;
 
 interface IState {
+    currentService: ServiceModel
+    serviceUnitSelections: ServiceUnitSelectionAdapter[]
 }
-
 class ServiceScreen extends React.Component<Props, IState> {
 
+    //#region Life Cycle Hooks
     constructor(props: Props) {
         super(props);
+
+        const serviceId = (this.props.navigation.state.params.serviceId || '')
+        const serviceUnitSelectionAdapter: ServiceUnitSelectionAdapter[] = []
+        for (const iServiceUnit of props.clothTypes) {
+            serviceUnitSelectionAdapter.push({ selectionCount: 0, serviceUnit: iServiceUnit })
+        }
+        this.state = {
+            currentService: (props.services.find(iService => serviceId === iService.id) || new ServiceModel()),
+            serviceUnitSelections: serviceUnitSelectionAdapter
+        }
+
+        //#region Bind Functions
+        this.onServiceUnitAdd = this.onServiceUnitAdd.bind(this)
+        this.onServiceUnitRemove = this.onServiceUnitRemove.bind(this)
+        //#endregion
     }
+    componentWillMount() {
+    }
+    //#endregion
+
+    //#region Service Unit
+    onServiceUnitAdd(argServiceUnitId: number) {
+        const serviceUnitSelections = this.state.serviceUnitSelections
+        const serviceUnit = serviceUnitSelections.find(iServiceUnit => iServiceUnit.serviceUnit.id === argServiceUnitId)
+        if (serviceUnit) {
+            if ((serviceUnit.selectionCount + 1) <= serviceUnit.serviceUnit.maxlimit) {
+            }
+            serviceUnit.selectionCount++
+            this.setState({ ...this.state, serviceUnitSelections })
+        }
+    }
+    onServiceUnitRemove(argServiceUnitId: number) {
+        const serviceUnitSelections = this.state.serviceUnitSelections
+        const serviceUnit = serviceUnitSelections.find(iServiceUnit => iServiceUnit.serviceUnit.id === argServiceUnitId)
+        if (serviceUnit) {
+            if (serviceUnit.selectionCount > 0) {
+                serviceUnit.selectionCount--
+            }
+            this.setState({ ...this.state, serviceUnitSelections })
+        }
+    }
+    //#endregion
 
     render() {
 
@@ -54,7 +98,7 @@ class ServiceScreen extends React.Component<Props, IState> {
                         </Button>
                     </Left>
                     <Body>
-                        <H3 style={[{ color: ColorConstants.white }]}>Services</H3>
+                        <H3 style={[{ color: ColorConstants.white }]}>{this.state.currentService.title}</H3>
                     </Body>
                     <Right>
                     </Right>
@@ -65,7 +109,12 @@ class ServiceScreen extends React.Component<Props, IState> {
                     contentContainerStyle={{ minHeight: "100%" }}
                     style={[GlobalStyle.posRelation]}
                 >
-                    <ServiceSelectionComponent services={this.props.services} clothTypes={this.props.clothTypes} />
+                    <ServiceUnitSelectionComponent
+                        service={this.state.currentService}
+                        serviceUnitSelections={this.state.serviceUnitSelections}
+                        onServiceUnitAdd={this.onServiceUnitAdd}
+                        onServiceUnitRemove={this.onServiceUnitRemove}
+                    />
 
                     <DeliveryDetailFormComponent />
 

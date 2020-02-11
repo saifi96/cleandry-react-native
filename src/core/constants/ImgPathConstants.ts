@@ -13,6 +13,7 @@ const ImgPathConstants = Object.freeze({
         dressIron: require("../../assests/icons/dress-iron.png"),
         bedsheetIron: require("../../assests/icons/bedsheet-iron.png"),
         bleaching: require("../../assests/icons/laundry-detergent.png"),
+        default: require("../../assests/icons/default.png")
     },
     leftMenuIcons: {
         face: require("../../assests/icons/face.jpg"),

@@ -132,10 +132,10 @@ class LoginScreen extends React.Component<Props, IState> {
 
                             <Row style={[GlobalStyle.verticalSpacing, { justifyContent: "center" }]}>
                                 <Button
-                                    iconRight={true}
                                     large
                                     block
                                     rounded
+                                    iconRight
                                     style={[GlobalStyle.width75Per, GlobalStyle.bgAppPrimary]}
                                     onPress={this.getOTP}
                                 >

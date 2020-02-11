@@ -10,7 +10,7 @@ import { CarouselComponent } from "../general-components/CrouselComponent";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
 import { NavigateToScreen } from "../navigation-components/AppNavigations";
 import ServiceModel from "../../core/models/ServiceModel";
-import ClothTypeModel from "../../core/models/ClothTypeModel";
+import ServiceUnitModel from "../../core/models/ServiceUnitModel";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import GlobalFunctions from "../../core/helpers/GlobalFunctions";
 
@@ -21,12 +21,54 @@ interface IOurTopServicesProps extends IAppGlobalProps {
     navigation: any
 }
 export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
-
+    const services = props.services.sort((a, b) => {
+        if (a.position > b.position) return 1
+        if (b.position > a.position) return -1
+        return 0
+    }).filter(iService => iService.status === "E")
+    function renderServices() {
+        if (services.length > 0) {
+            const itemsPerRow = 4
+            const numberOfRows = ((services.length / itemsPerRow % 2) === 0) ? (services.length / itemsPerRow) : (parseInt(`${services.length / itemsPerRow}`) + 1)
+            const aryOfRows = new Array(numberOfRows).fill({})
+            const aryOfColumns = new Array(itemsPerRow).fill({})
+            let iServiceIndex = -1
+            return aryOfRows.map((rowVal, rowIdx) =>
+                <Row>
+                    {
+                        aryOfColumns.map((columnVal, columnIdx) => {
+                            ++iServiceIndex
+                            const iService = iServiceIndex < services.length ? services[iServiceIndex] : null
+                            if (iService) {
+                                return (
+                                    <Col style={[GlobalStyle.gridColContent]} size={3}>
+                                        <GridButton
+                                            title={iService.title}
+                                            iconSource={{ uri: iService.image }}
+                                            onClick={() => {
+                                                props.navigation.navigate(NavigateToScreen.ServiceScreen, { serviceId: iService.id });
+                                            }}
+                                        />
+                                    </Col>
+                                )
+                            } else {
+                                return <Col size={3}></Col>
+                            }
+                        }
+                        )
+                    }
+                </Row>
+            )
+        } else {
+            return <Text>Services not available</Text>
+        }
+    }
     return (
         <View style={[dashboardStyle.section]}>
             <Text style={[dashboardStyle.sectionTitle]}>Our Top Services</Text>
             <Grid>
-                <Row>
+                {renderServices()}
+                {/* <Row>
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Washing"
@@ -36,6 +78,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             }}
                         />
                     </Col>
+
                     <Col style={[dashboardStyle.gridColContent]}>
                         <GridButton
                             title="Ironing"
@@ -63,9 +106,9 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             }}
                         />
                     </Col>
-                </Row>
+                </Row> */}
 
-                <Row style={{ marginVertical: 10 }}>
+                {/* <Row style={{ marginVertical: 10 }}>
                     <Col style={[dashboardStyle.gridColContent]} >
                         <GridButton
                             title="Dress Iron"
@@ -102,8 +145,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             }}
                         />
                     </Col>
-                </Row>
-
+                </Row> */}
             </Grid>
         </View>
     )
@@ -112,7 +154,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
 
 interface IQuickCheckoutProps {
     services: Array<ServiceModel>;
-    clothTypes: Array<ClothTypeModel>;
+    clothTypes: Array<ServiceUnitModel>;
 }
 class QuickCheckoutState {
     selectedServiceId: number = 0;
@@ -306,9 +348,5 @@ const dashboardStyle = StyleSheet.create({
     sectionTitle: {
         color: ColorConstants.primary,
         marginBottom: 5
-    },
-    gridColContent: {
-        alignItems: "center",
-        margin: 5
     }
 })

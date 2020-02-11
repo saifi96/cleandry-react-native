@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Thumbnail, View, Button } from "native-base";
 import { ImageSourcePropType, Text, TouchableOpacity } from "react-native";
 import ColorConstants from "../../core/constants/ColorConstants";
+import ImgPathConstants from "../../core/constants/ImgPathConstants";
 
 
 interface IGridButtonProps {
@@ -11,6 +12,10 @@ interface IGridButtonProps {
 }
 
 export const GridButton = (props: IGridButtonProps) => {
+    const [state, setState] = useState({ imageSource: props.iconSource })
+    function onImageLoadFailed() {
+        setState({ ...state, imageSource: ImgPathConstants.serviceIcons.default })
+    }
     return (
         <View style={{
             borderRadius: 5, padding: 3,
@@ -30,9 +35,11 @@ export const GridButton = (props: IGridButtonProps) => {
                     square
                     resizeMode="contain"
                     resizeMethod="auto"
-                    source={props.iconSource}
+                    defaultSource={ImgPathConstants.serviceIcons.washIron}
+                    source={state.imageSource}
+                    onError={onImageLoadFailed}
                 />
-                <Text>{props.title}</Text>
+                <Text numberOfLines={1} lineBreakMode="tail" adjustsFontSizeToFit={true} ellipsizeMode="tail">{props.title}</Text>
             </TouchableOpacity>
         </View>
     )

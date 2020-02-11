@@ -1,4 +1,4 @@
-import ClothTypeModel from "./ClothTypeModel";
+import ServiceUnitModel from "./ServiceUnitModel";
 
 export default class ServiceModel {
 
@@ -51,12 +51,21 @@ export default class ServiceModel {
     }
 
 
-    private _cloth_types: Array<ClothTypeModel> = [];
-    public get cloth_types(): Array<ClothTypeModel> {
+    private _cloth_types: Array<ServiceUnitModel> = [];
+    public get cloth_types(): Array<ServiceUnitModel> {
         return this._cloth_types;
     }
-    public set cloth_types(v: Array<ClothTypeModel>) {
+    public set cloth_types(v: Array<ServiceUnitModel>) {
         this._cloth_types = v;
     }
+
+    private _status: string = '';
+    public get status(): string {
+        return this._status;
+    }
+    public set status(value: string) {
+        this._status = value;
+    }
+
 
 }

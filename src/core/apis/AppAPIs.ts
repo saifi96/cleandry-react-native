@@ -4,7 +4,7 @@ import UserModel from "../models/UserModel";
 import { APIActionNames } from "../constants/APIConstants";
 import APIResultType from "./APIResultType";
 import ServiceModel from "../models/ServiceModel";
-import ClothTypeModel from "../models/ClothTypeModel";
+import ServiceUnitModel from "../models/ServiceUnitModel";
 
 
 export default class API {
@@ -35,7 +35,7 @@ export default class API {
         return await APICaller.Get(`?action=${APIActionNames.getAllServices}`);
     }
 
-    static async getAllclothTypes(): Promise<APIResultType<ClothTypeModel[]>> {
+    static async getAllclothTypes(): Promise<APIResultType<ServiceUnitModel[]>> {
         return await APICaller.Get(`?action=${APIActionNames.getAllServicesCategory}`);
     }
 }

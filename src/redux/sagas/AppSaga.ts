@@ -8,7 +8,7 @@ import { eAPIActionStatus } from "../../core/enums/DataEnums";
 import API from "../../core/apis/AppAPIs";
 import { ServiceActionTypes, ServiceActions } from "../actions/ServiceActions";
 import ServiceModel from "../../core/models/ServiceModel";
-import ClothTypeModel from "../../core/models/ClothTypeModel";
+import ServiceUnitModel from "../../core/models/ServiceUnitModel";
 
 
 
@@ -45,7 +45,7 @@ function* loadAppInitialData() {
     callDetailClothTypes.callerId = ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST;
 
     yield put(AppGlobalActions.requestAPICall(callDetailClothTypes.callerId));
-    const callResultClothTypes: APIResultType<Array<ClothTypeModel>> = yield call(API.getAllclothTypes);
+    const callResultClothTypes: APIResultType<Array<ServiceUnitModel>> = yield call(API.getAllclothTypes);
 
     callDetailClothTypes.message = callResultClothTypes.msg;
     if (callResultClothTypes.success) {
@@ -152,7 +152,7 @@ function* getAllClothTypes() {
 
     yield put(AppGlobalActions.isLoading(true));
     yield put(AppGlobalActions.requestAPICall(apiCallDetail.callerId));
-    let apiResult: APIResultType<Array<ClothTypeModel>> = yield call(API.getAllclothTypes);
+    let apiResult: APIResultType<Array<ServiceUnitModel>> = yield call(API.getAllclothTypes);
 
     apiCallDetail.message = apiResult.msg;
     if (apiResult.success) {

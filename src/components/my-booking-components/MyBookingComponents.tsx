@@ -23,61 +23,61 @@ export const MyBookingListComponent = (props: IMyBookingListProps) => {
                         ?
                         props.MyBookings.map(iBookingData =>
                             <ListItem
-                                thumbnail
+                                itemDivider
+                                avatar
                                 noIndent
                                 noBorder
                                 onPress={() => {
                                     console.log();
                                 }}
-                                style={[GlobalStyle.bgLighGray,
-                                GlobalStyle.borderRadiusM, { marginBottom: 10 }]}
+                                style={[GlobalStyle.borderRadiusM, { marginBottom: 10 }]}
                             >
                                 <Left>
                                     <Thumbnail
                                         large
                                         circular
-                                        source={ImgPathConstants.dashboardCrousel[0]}
+                                        source={{ uri: 'https://cleandry.in/assets/images/services/service_24507.png' }}
                                     />
                                 </Left>
                                 <Body style={{ paddingBottom: 0, paddingTop: 0 }}>
                                     <Grid>
                                         <Row>
-                                            <Col>
+                                            <Col size={4}>
                                                 <Text note>Service Name:</Text>
                                             </Col>
-                                            <Col>
+                                            <Col size={8}>
                                                 <Text suppressHighlighting>{iBookingData.ServiceName}</Text>
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col>
+                                            <Col size={4}>
                                                 <Text note>Sub Category:</Text>
                                             </Col>
-                                            <Col>
+                                            <Col size={8}>
                                                 <Text suppressHighlighting>{iBookingData.SubCategoryName}</Text>
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col>
+                                            <Col size={4}>
                                                 <Text note>Ordered On:</Text>
                                             </Col>
-                                            <Col>
+                                            <Col size={8}>
                                                 <Text suppressHighlighting>{new Date().toDateString()}</Text>
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col>
+                                            <Col size={4}>
                                                 <Text note>CRN No:</Text>
                                             </Col>
-                                            <Col>
+                                            <Col size={8}>
                                                 <Text suppressHighlighting>#45</Text>
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col>
+                                            <Col size={4}>
                                                 <Text note>Total Amount:</Text>
                                             </Col>
-                                            <Col>
+                                            <Col size={8}>
                                                 <Text suppressHighlighting>&#8377; 45.78</Text>
                                             </Col>
                                         </Row>

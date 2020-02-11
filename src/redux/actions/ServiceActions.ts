@@ -1,6 +1,6 @@
 import { createAction } from "../../core/helpers/ReduxUtils";
 import ServiceModel from "../../core/models/ServiceModel";
-import ClothTypeModel from "../../core/models/ClothTypeModel";
+import ServiceUnitModel from "../../core/models/ServiceUnitModel";
 
 /**
  * Action Types
@@ -21,7 +21,7 @@ export const ServiceActions = {
     apiGetServicesRequest: (): any => createAction(ServiceActionTypes.API_GET_SERVICES_REQUEST, null),
     apiGetClothTypesRequest: (): any => createAction(ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST, null),
     storeServices: (payload: Array<ServiceModel>) => createAction(ServiceActionTypes.STORE_SERVICES, payload),
-    storeClothTypes: (payload: Array<ClothTypeModel>) => createAction(ServiceActionTypes.STORE_CLOTH_TYPES, payload)
+    storeClothTypes: (payload: Array<ServiceUnitModel>) => createAction(ServiceActionTypes.STORE_CLOTH_TYPES, payload)
 }
 
 

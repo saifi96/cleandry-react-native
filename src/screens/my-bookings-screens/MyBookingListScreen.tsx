@@ -21,12 +21,12 @@ class MyBookingListScreen extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
 
-        let listDTOMyBooking = new Array<MyBookingData>();
-        let dtoMyBooking = new MyBookingData();
+        const listDTOMyBooking = new Array<MyBookingData>();
+        const dtoMyBooking = new MyBookingData();
         dtoMyBooking.ServiceName = "Cleandry";
         dtoMyBooking.SubCategoryName = "Cleandry category title";
 
-        let dtoMyBooking2 = new MyBookingData();
+        const dtoMyBooking2 = new MyBookingData();
         dtoMyBooking2.ServiceName = "Navigo";
         dtoMyBooking2.SubCategoryName = "Navigo category title";
         listDTOMyBooking.push(dtoMyBooking);

@@ -63,8 +63,10 @@ const GlobalStyle = StyleSheet.create({
     bgLighGray: {
         backgroundColor: ColorConstants.lightGray1,
     },
-
-
+    gridColContent: {
+        alignItems: "center",
+        margin: 5
+    }
 });
 
 export default GlobalStyle;

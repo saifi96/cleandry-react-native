@@ -14,13 +14,14 @@ import IAppGlobalProps from '../../base/interfaces/IAppGlobalProps';
 import { AppState } from '../../redux/reducers/Index';
 import { connect } from 'react-redux';
 import ServiceModel from '../../core/models/ServiceModel';
-import ClothTypeModel from '../../core/models/ClothTypeModel';
+import ServiceUnitModel from '../../core/models/ServiceUnitModel';
+import { ImageBackground, Image } from 'react-native';
 
 
 
 interface IMapOwnStateToProps extends IMapAppStateToProps {
     services: Array<ServiceModel>;
-    clothTypes: Array<ClothTypeModel>;
+    clothTypes: Array<ServiceUnitModel>;
 }
 
 interface IMapOwnDispatchToProps extends IMapAppDispatchToProps {

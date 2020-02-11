@@ -9,6 +9,7 @@ import IMapAppDispatchToProps from "../../base/interfaces/IMapAppDispatchToProps
 import { AppState } from "../../redux/reducers/Index";
 import { connect } from "react-redux";
 import { AppGlobalActions } from "../../redux/actions/AppGlobalActions";
+import { Image } from "react-native";
 
 
 
@@ -46,14 +47,19 @@ class AppLoadingScreen extends React.Component<Props, IState> {
     render() {
         return (
             <Container style={{ position: "relative", justifyContent: "center" }}>
-                <View style={{ alignItems: "center" }}>
+                {/* <View style={{ alignItems: "center" }}>
                     <Spinner size="large" color={ColorConstants.primary}>
                     </Spinner>
                     <H3>Loading..</H3>
+                </View> */}
+                <View style={{ alignItems: 'center' }}>
+                    <Image source={require('../../assests/images/logo.png')} style={{ width: '75%', height: 125 }} resizeMode="center" />
                 </View>
                 <View style={{ alignItems: "center", position: "absolute", bottom: 5, left: 0, right: 0 }}>
+                    <Spinner size="large" color={ColorConstants.primary}>
+                    </Spinner>
                     <Text>
-                        &#9400; Copywrite Cleandry 2019
+                        Copyright &#9400; 2020 Cleandry
                     </Text>
                 </View>
             </Container>
