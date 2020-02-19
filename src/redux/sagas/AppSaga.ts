@@ -9,6 +9,7 @@ import API from "../../core/apis/AppAPIs";
 import { ServiceActionTypes, ServiceActions } from "../actions/ServiceActions";
 import ServiceModel from "../../core/models/ServiceModel";
 import ServiceUnitModel from "../../core/models/ServiceUnitModel";
+import { BannerModel } from "../../core/models/BannerModel";
 
 
 
@@ -18,7 +19,7 @@ function* loadAppInitialData() {
 
     yield put(AppGlobalActions.isLoading(true));
 
-    /* #region  Get all services */
+    //#region Get all services
     const callDetailServices = new APICallDetail();
     callDetailServices.status = eAPIActionStatus.Requested;
     callDetailServices.callerId = ServiceActionTypes.API_GET_SERVICES_REQUEST;
@@ -37,9 +38,9 @@ function* loadAppInitialData() {
         callDetailServices.status = eAPIActionStatus.Failed;
         yield put(AppGlobalActions.failedAPICall(callDetailServices));
     }
-    /* #endregion */
+    //#endregion
 
-    /* #region  Get all cloth types */
+    //#region Get all service units
     const callDetailClothTypes = new APICallDetail();
     callDetailClothTypes.status = eAPIActionStatus.Requested;
     callDetailClothTypes.callerId = ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST;
@@ -58,7 +59,16 @@ function* loadAppInitialData() {
         callDetailClothTypes.status = eAPIActionStatus.Failed;
         yield put(AppGlobalActions.failedAPICall(callDetailClothTypes));
     }
-    /* #endregion */
+    //#endregion
+
+    //#region Get app banners
+    const bannerAPICallDetail = new APICallDetail();
+    bannerAPICallDetail.status = eAPIActionStatus.Requested;
+    bannerAPICallDetail.callerId = "";
+
+    yield put(AppGlobalActions.requestAPICall(bannerAPICallDetail.callerId));
+    const bannerAPICallResult: APIResultType<BannerModel[]> = yield call(API.getAppBanners);
+    //#endregion
 
     yield put(AppGlobalActions.isAppDataLoaded(true));
     yield put(AppGlobalActions.isLoading(false));

@@ -13,7 +13,7 @@ import ServiceModel from "../../core/models/ServiceModel";
 import ServiceUnitModel from "../../core/models/ServiceUnitModel";
 import { AppState } from "../../redux/reducers/Index";
 import { connect } from "react-redux";
-import { ServiceUnitSelectionAdapter } from "../../core/models/adapters";
+import { ServiceUnitSelectionAdapter } from "../../core/models/Adapters";
 
 interface IMapOwnStateToProps extends IMapAppStateToProps {
     services: Array<ServiceModel>;

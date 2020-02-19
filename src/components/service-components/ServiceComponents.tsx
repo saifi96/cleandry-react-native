@@ -10,7 +10,7 @@ import { StyleSheet } from "react-native";
 import FormFieldModel from "../../core/models/FormFieldModel";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import { GridButton } from "../general-components/UIComponents";
-import { ServiceUnitSelectionAdapter } from "../../core/models/adapters";
+import { ServiceUnitSelectionAdapter } from "../../core/models/Adapters";
 
 //#region Service Selection Component
 interface IServiceSelectionProps extends IAppGlobalProps {

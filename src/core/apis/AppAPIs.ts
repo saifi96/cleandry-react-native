@@ -5,9 +5,14 @@ import { APIActionNames } from "../constants/APIConstants";
 import APIResultType from "./APIResultType";
 import ServiceModel from "../models/ServiceModel";
 import ServiceUnitModel from "../models/ServiceUnitModel";
+import { BannerModel } from "../models/BannerModel";
 
 
 export default class API {
+
+    static async getAppBanners(): Promise<APIResultType<BannerModel[]>> {
+        return await APICaller.Get<BannerModel[]>(`?action=${APIActionNames.allBanner}`);
+    }
 
     static async registrationRequest(argUser: UserModel): Promise<APIResultType<UserModel>> {
         return await APICaller.Get<UserModel>(`
