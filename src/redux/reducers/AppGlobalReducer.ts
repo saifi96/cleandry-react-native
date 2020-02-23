@@ -4,31 +4,26 @@ import { eAPIActionStatus } from "../../core/enums/DataEnums";
 import { UserAccountState } from "../states/UserAccountState";
 import AppGlobalState, { APICallDetail } from "../states/AppGlobalState";
 import { AppGlobalActionTypes } from "../actions/AppGlobalActions";
+import BannerModel from "../../core/models/BannerModel";
 
-const initialState: AppGlobalState = {
-    activeAPICalls: new Array<APICallDetail>(),
-    isAppDataLoaded: false,
-    isLoading: false,
-    isLoggedInUser: false
-}
-
+const initialState = new AppGlobalState()
 const AppGlobalReducer = (state = initialState, action: Action): AppGlobalState => {
 
     if (action.payload == null || action.payload == undefined) {
         return state;
     }
 
-    let newState = { ...state };
+    const newState = { ...state };
 
     switch (action.type) {
         case AppGlobalActionTypes.REQUEST_API_CALL:
             {
-                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == action.payload);
+                const index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == action.payload);
                 if (index > -1) {
                     newState.activeAPICalls.splice(index, 1);
                 }
 
-                let apiCallDetail = new APICallDetail();
+                const apiCallDetail = new APICallDetail();
                 apiCallDetail.callerId = action.payload;
                 apiCallDetail.status = eAPIActionStatus.Requested;
                 apiCallDetail.message = action.payload;
@@ -37,8 +32,8 @@ const AppGlobalReducer = (state = initialState, action: Action): AppGlobalState 
             break;
         case AppGlobalActionTypes.SUCCESS_API_CALL:
             {
-                let apiCallDetail = action.payload as APICallDetail;
-                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == apiCallDetail.callerId);
+                const apiCallDetail = action.payload as APICallDetail;
+                const index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == apiCallDetail.callerId);
                 if (index > -1) {
                     newState.activeAPICalls[index].status = eAPIActionStatus.Success;
                     newState.activeAPICalls[index].message = apiCallDetail.message;
@@ -48,8 +43,8 @@ const AppGlobalReducer = (state = initialState, action: Action): AppGlobalState 
             break;
         case AppGlobalActionTypes.FAILED_API_CALL:
             {
-                let apiCallDetail = action.payload as APICallDetail;
-                let index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == apiCallDetail.callerId);
+                const apiCallDetail = action.payload as APICallDetail;
+                const index = newState.activeAPICalls.findIndex(iAPICall => iAPICall.callerId == apiCallDetail.callerId);
                 if (index > -1) {
                     newState.activeAPICalls[index].status = eAPIActionStatus.Failed;
                     newState.activeAPICalls[index].message = apiCallDetail.message;
@@ -64,6 +59,9 @@ const AppGlobalReducer = (state = initialState, action: Action): AppGlobalState 
             break;
         case AppGlobalActionTypes.IS_APP_DATA_LOADED:
             newState.isAppDataLoaded = action.payload;
+            break;
+        case AppGlobalActionTypes.APP_BANNERS:
+            newState.appBanners = action.payload;
             break;
         default:
             break;

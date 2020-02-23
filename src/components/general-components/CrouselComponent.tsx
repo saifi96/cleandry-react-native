@@ -3,23 +3,25 @@ import { View, Thumbnail } from "native-base";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import { Dimensions } from "react-native";
 import ColorConstants from "../../core/constants/ColorConstants";
+import BannerModel from "../../core/models/BannerModel";
 
 
 
 interface ICarouselProps {
-    entries: string[];
+    banners: BannerModel[];
 }
 
 export const CarouselComponent = (props: ICarouselProps) => {
 
-
     const [state, setState] = useState({
+        banners: props.banners ? props.banners : [],
         activeSlideIndex: 0,
         sliderWidth: Dimensions.get("screen").width - 20,
         itemWidth: Dimensions.get("screen").width - 20
     });
 
     const _renderItem = ({ item, index }: any) => {
+        const instanceOfBanner = item as BannerModel
         return (<View>
             <Thumbnail
                 resizeMode="cover"
@@ -28,13 +30,14 @@ export const CarouselComponent = (props: ICarouselProps) => {
                 borderBottomLeftRadius={3}
                 borderTopLeftRadius={3}
                 borderTopRightRadius={3}
-                source={item}
+                source={{ uri: instanceOfBanner.pic }}
                 style={{ height: 125, width: "100%", flex: 1 }}
             />
         </View>)
     }
 
     return (
+
         <View
             onLayout={(event) => {
                 setState({
@@ -51,14 +54,14 @@ export const CarouselComponent = (props: ICarouselProps) => {
                 loop={true}
                 sliderWidth={state.sliderWidth}
                 itemWidth={state.itemWidth}
-                data={props.entries}
+                data={state.banners}
                 renderItem={_renderItem}
                 style={{ backgroundColor: "red" }}
                 onSnapToItem={(index) => setState({ ...state, activeSlideIndex: index })}
             />
 
             <Pagination
-                dotsLength={props.entries.length}
+                dotsLength={state.banners.length}
                 activeDotIndex={state.activeSlideIndex}
                 containerStyle={{
                     paddingTop: 3,
@@ -74,7 +77,6 @@ export const CarouselComponent = (props: ICarouselProps) => {
                     backgroundColor: ColorConstants.primary
                 }}
                 inactiveDotStyle={{
-
                 }}
                 inactiveDotOpacity={0.4}
                 inactiveDotScale={0.6}

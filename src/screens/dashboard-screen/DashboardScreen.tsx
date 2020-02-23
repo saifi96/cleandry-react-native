@@ -93,7 +93,7 @@ class DashboardScreen extends React.Component<Props, IState> {
                         style={[GlobalStyle.posRelation]}
                     >
 
-                        <CarouselComponent entries={ImgPathConstants.dashboardCrousel} />
+                        <CarouselComponent banners={this.props.appGlobalState.appBanners} />
 
                         <OurTopServicesComponent
                             services={this.props.services}

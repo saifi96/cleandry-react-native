@@ -81,4 +81,12 @@ export default class ServiceUnitModel {
         this._position = v;
     }
 
+    private _category: string = '';
+    public get category(): string {
+        return this._category;
+    }
+    public set category(value: string) {
+        this._category = value;
+    }
+
 }

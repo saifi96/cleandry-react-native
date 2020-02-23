@@ -5,7 +5,7 @@ import { APIActionNames } from "../constants/APIConstants";
 import APIResultType from "./APIResultType";
 import ServiceModel from "../models/ServiceModel";
 import ServiceUnitModel from "../models/ServiceUnitModel";
-import { BannerModel } from "../models/BannerModel";
+import BannerModel from "../models/BannerModel";
 
 
 export default class API {

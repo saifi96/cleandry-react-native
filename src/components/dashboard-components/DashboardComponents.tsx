@@ -318,7 +318,7 @@ export const TrendingOfferComponent = () => {
     return (
         <View style={[dashboardStyle.section]}>
             <Text style={[dashboardStyle.sectionTitle]}>Trending Offers</Text>
-            <CarouselComponent entries={ImgPathConstants.dashboardCrousel} />
+            {/* <CarouselComponent entries={ImgPathConstants.dashboardCrousel} /> */}
         </View>
     )
 }
@@ -328,7 +328,7 @@ export const RatingReviewComponent = () => {
     return (
         <View style={[dashboardStyle.section]}>
             <Text style={[dashboardStyle.sectionTitle]}>Rating Review</Text>
-            <CarouselComponent entries={ImgPathConstants.dashboardCrousel} />
+            {/* <CarouselComponent entries={ImgPathConstants.dashboardCrousel} /> */}
         </View>
     )
 }

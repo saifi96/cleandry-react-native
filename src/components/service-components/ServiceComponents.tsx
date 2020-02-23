@@ -278,7 +278,6 @@ class ServiceSelectionState {
 
 //#region Service Unit Selection Component
 interface IServiceUnitSelectionProps extends IAppGlobalProps {
-    service: ServiceModel
     serviceUnitSelections: ServiceUnitSelectionAdapter[]
     onServiceUnitAdd?: (argServiceUnitId: number) => void
     onServiceUnitRemove?: (argServiceUnitId: number) => void
@@ -293,7 +292,7 @@ export const ServiceUnitSelectionComponent = (props: IServiceUnitSelectionProps)
                     props.serviceUnitSelections.map(iClothAdapter =>
                         <ListItem thumbnail itemDivider noBorder style={{ marginBottom: 8 }}>
                             <Left>
-                                <Thumbnail square source={{ uri: 'https://cleandry.in/assets/images/services/service_68213.png' }} />
+                                <Thumbnail square source={{ uri: iClothAdapter.serviceUnit.predefine_image }} />
                             </Left>
                             <Body>
                                 <Text>{iClothAdapter.serviceUnit.units_title}</Text>

@@ -1,4 +1,4 @@
-export class BannerModel {
+export default class BannerModel {
 
     private _id: number = 0;
     public get id(): number {

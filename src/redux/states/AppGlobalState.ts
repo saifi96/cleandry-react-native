@@ -1,4 +1,5 @@
 import { eAPIActionStatus } from "../../core/enums/DataEnums";
+import BannerModel from "../../core/models/BannerModel";
 
 export class APICallDetail {
     public callerId: string = "";
@@ -12,4 +13,5 @@ export default class AppGlobalState {
     public isLoading: boolean = false;
     public isLoggedInUser: boolean = false;
     public isAppDataLoaded: boolean = false;
+    public appBanners: BannerModel[] = [];
 }

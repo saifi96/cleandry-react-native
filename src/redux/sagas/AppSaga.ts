@@ -9,65 +9,25 @@ import API from "../../core/apis/AppAPIs";
 import { ServiceActionTypes, ServiceActions } from "../actions/ServiceActions";
 import ServiceModel from "../../core/models/ServiceModel";
 import ServiceUnitModel from "../../core/models/ServiceUnitModel";
-import { BannerModel } from "../../core/models/BannerModel";
+import BannerModel from "../../core/models/BannerModel";
 
 
 
-/* #region  Worker Saga */
-
+//#region Worker sage
 function* loadAppInitialData() {
 
     yield put(AppGlobalActions.isLoading(true));
 
     //#region Get all services
-    const callDetailServices = new APICallDetail();
-    callDetailServices.status = eAPIActionStatus.Requested;
-    callDetailServices.callerId = ServiceActionTypes.API_GET_SERVICES_REQUEST;
-
-    yield put(AppGlobalActions.requestAPICall(callDetailServices.callerId));
-    const callResultServices: APIResultType<ServiceModel[]> = yield call(API.getAllServices);
-
-    callDetailServices.message = callResultServices.msg;
-    if (callResultServices.success) {
-        callDetailServices.data = callResultServices.data;
-        callDetailServices.status = eAPIActionStatus.Success;
-        yield put(AppGlobalActions.successAPICall(callDetailServices));
-        yield put(ServiceActions.storeServices(callResultServices.data));
-    }
-    else {
-        callDetailServices.status = eAPIActionStatus.Failed;
-        yield put(AppGlobalActions.failedAPICall(callDetailServices));
-    }
+    yield call(getAllServices);
     //#endregion
 
     //#region Get all service units
-    const callDetailClothTypes = new APICallDetail();
-    callDetailClothTypes.status = eAPIActionStatus.Requested;
-    callDetailClothTypes.callerId = ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST;
-
-    yield put(AppGlobalActions.requestAPICall(callDetailClothTypes.callerId));
-    const callResultClothTypes: APIResultType<Array<ServiceUnitModel>> = yield call(API.getAllclothTypes);
-
-    callDetailClothTypes.message = callResultClothTypes.msg;
-    if (callResultClothTypes.success) {
-        callDetailClothTypes.data = callResultClothTypes.data;
-        callDetailClothTypes.status = eAPIActionStatus.Success;
-        yield put(AppGlobalActions.successAPICall(callDetailClothTypes));
-        yield put(ServiceActions.storeClothTypes(callResultClothTypes.data));
-    }
-    else {
-        callDetailClothTypes.status = eAPIActionStatus.Failed;
-        yield put(AppGlobalActions.failedAPICall(callDetailClothTypes));
-    }
+    yield call(getAllServiceUnits);
     //#endregion
 
     //#region Get app banners
-    const bannerAPICallDetail = new APICallDetail();
-    bannerAPICallDetail.status = eAPIActionStatus.Requested;
-    bannerAPICallDetail.callerId = "";
-
-    yield put(AppGlobalActions.requestAPICall(bannerAPICallDetail.callerId));
-    const bannerAPICallResult: APIResultType<BannerModel[]> = yield call(API.getAppBanners);
+    yield call(getAppBanners)
     //#endregion
 
     yield put(AppGlobalActions.isAppDataLoaded(true));
@@ -131,55 +91,75 @@ function* verifyOTP() {
 
 function* getAllServices() {
 
-    let apiCallDetail = new APICallDetail();
-    apiCallDetail.status = eAPIActionStatus.Requested;
-    apiCallDetail.callerId = ServiceActionTypes.API_GET_SERVICES_REQUEST;
-
     yield put(AppGlobalActions.isLoading(true));
-    yield put(AppGlobalActions.requestAPICall(apiCallDetail.callerId));
-    let apiResult: APIResultType<Array<ServiceModel>> = yield call(API.getAllServices);
+    const callDetailServices = new APICallDetail();
+    callDetailServices.status = eAPIActionStatus.Requested;
+    callDetailServices.callerId = ServiceActionTypes.API_GET_SERVICES_REQUEST;
 
-    apiCallDetail.message = apiResult.msg;
-    if (apiResult.success) {
-        apiCallDetail.data = apiResult.data;
-        apiCallDetail.status = eAPIActionStatus.Success;
-        yield put(AppGlobalActions.successAPICall(apiCallDetail));
-        yield put(ServiceActions.storeServices(apiResult.data));
+    yield put(AppGlobalActions.requestAPICall(callDetailServices.callerId));
+    const callResultServices: APIResultType<ServiceModel[]> = yield call(API.getAllServices);
+
+    callDetailServices.message = callResultServices.msg;
+    if (callResultServices.success) {
+        callDetailServices.data = callResultServices.data;
+        callDetailServices.status = eAPIActionStatus.Success;
+        yield put(AppGlobalActions.successAPICall(callDetailServices));
+        yield put(ServiceActions.storeServices(callResultServices.data));
     }
     else {
-        apiCallDetail.status = eAPIActionStatus.Failed;
-        yield put(AppGlobalActions.failedAPICall(apiCallDetail));
+        callDetailServices.status = eAPIActionStatus.Failed;
+        yield put(AppGlobalActions.failedAPICall(callDetailServices));
+    }
+    yield put(AppGlobalActions.isLoading(false));
+}
+
+function* getAllServiceUnits() {
+
+    yield put(AppGlobalActions.isLoading(true));
+    const callDetailClothTypes = new APICallDetail();
+    callDetailClothTypes.status = eAPIActionStatus.Requested;
+    callDetailClothTypes.callerId = ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST;
+
+    yield put(AppGlobalActions.requestAPICall(callDetailClothTypes.callerId));
+    const callResultClothTypes: APIResultType<Array<ServiceUnitModel>> = yield call(API.getAllclothTypes);
+
+    callDetailClothTypes.message = callResultClothTypes.msg;
+    if (callResultClothTypes.success) {
+        callDetailClothTypes.data = callResultClothTypes.data;
+        callDetailClothTypes.status = eAPIActionStatus.Success;
+        yield put(AppGlobalActions.successAPICall(callDetailClothTypes));
+        yield put(ServiceActions.storeClothTypes(callResultClothTypes.data));
+    }
+    else {
+        callDetailClothTypes.status = eAPIActionStatus.Failed;
+        yield put(AppGlobalActions.failedAPICall(callDetailClothTypes));
     }
     yield put(AppGlobalActions.isLoading(false));
 
 }
 
-function* getAllClothTypes() {
-
-    let apiCallDetail = new APICallDetail();
-    apiCallDetail.status = eAPIActionStatus.Requested;
-    apiCallDetail.callerId = ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST;
-
+function* getAppBanners() {
     yield put(AppGlobalActions.isLoading(true));
-    yield put(AppGlobalActions.requestAPICall(apiCallDetail.callerId));
-    let apiResult: APIResultType<Array<ServiceUnitModel>> = yield call(API.getAllclothTypes);
+    const bannerAPICallDetail = new APICallDetail();
+    bannerAPICallDetail.status = eAPIActionStatus.Requested;
+    bannerAPICallDetail.callerId = AppGlobalActionTypes.APP_BANNERS;
 
-    apiCallDetail.message = apiResult.msg;
-    if (apiResult.success) {
-        apiCallDetail.data = apiResult.data;
-        apiCallDetail.status = eAPIActionStatus.Success;
-        yield put(AppGlobalActions.successAPICall(apiCallDetail));
-        yield put(ServiceActions.storeClothTypes(apiResult.data));
-    }
-    else {
-        apiCallDetail.status = eAPIActionStatus.Failed;
-        yield put(AppGlobalActions.failedAPICall(apiCallDetail));
+    yield put(AppGlobalActions.requestAPICall(bannerAPICallDetail.callerId));
+    const bannerAPICallResult: APIResultType<BannerModel[]> = yield call(API.getAppBanners);
+
+    bannerAPICallDetail.message = bannerAPICallResult.msg
+    if (bannerAPICallResult.success) {
+        bannerAPICallDetail.status = bannerAPICallResult.success
+        bannerAPICallDetail.data = bannerAPICallResult.data
+        yield put(AppGlobalActions.successAPICall(bannerAPICallDetail));
+        yield put(AppGlobalActions.storeAppBanners(bannerAPICallResult.data));
+    } else {
+        bannerAPICallDetail.status = eAPIActionStatus.Failed;
+        yield put(AppGlobalActions.failedAPICall(bannerAPICallDetail));
     }
     yield put(AppGlobalActions.isLoading(false));
 }
-
-/* #endregion */
-
+//#endregion
 
 
 /* #region  Root Watcher */
@@ -189,7 +169,7 @@ function* watcherRootSaga() {
     yield takeLatest(UserAccountActionTypes.API_OTP_VERIFICATION_REQUEST, verifyOTP);
     yield takeLatest(UserAccountActionTypes.API_REGISTER_USER_REQUEST, registerNewUser);
     yield takeLatest(ServiceActionTypes.API_GET_SERVICES_REQUEST, getAllServices);
-    yield takeLatest(ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST, getAllClothTypes);
+    yield takeLatest(ServiceActionTypes.API_GET_CLOTH_TYPES_REQUEST, getAllServiceUnits);
 }
 /* #endregion */
 

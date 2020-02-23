@@ -40,12 +40,18 @@ class ServiceScreen extends React.Component<Props, IState> {
 
         const serviceId = (this.props.navigation.state.params.serviceId || '')
         const serviceUnitSelectionAdapter: ServiceUnitSelectionAdapter[] = []
-        for (const iServiceUnit of props.clothTypes) {
-            serviceUnitSelectionAdapter.push({ selectionCount: 0, serviceUnit: iServiceUnit })
-        }
-        this.state = {
-            currentService: (props.services.find(iService => serviceId === iService.id) || new ServiceModel()),
-            serviceUnitSelections: serviceUnitSelectionAdapter
+        const currentService = props.services.find(iService => serviceId === iService.id)
+        if (currentService) {
+            const servicableCloths = props.clothTypes.filter(iCloth => iCloth.category === currentService.title)
+            for (const iServiceUnit of servicableCloths) {
+                serviceUnitSelectionAdapter.push({ selectionCount: 0, serviceUnit: iServiceUnit })
+            }
+            this.state = {
+                currentService: currentService,
+                serviceUnitSelections: serviceUnitSelectionAdapter
+            }
+        } else {
+            this.props.navigation.goBack();
         }
 
         //#region Bind Functions
@@ -110,7 +116,6 @@ class ServiceScreen extends React.Component<Props, IState> {
                     style={[GlobalStyle.posRelation]}
                 >
                     <ServiceUnitSelectionComponent
-                        service={this.state.currentService}
                         serviceUnitSelections={this.state.serviceUnitSelections}
                         onServiceUnitAdd={this.onServiceUnitAdd}
                         onServiceUnitRemove={this.onServiceUnitRemove}

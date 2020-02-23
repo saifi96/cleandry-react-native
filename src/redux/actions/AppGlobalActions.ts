@@ -21,6 +21,7 @@ export const AppGlobalActionTypes = Object.freeze({
     REQUEST_API_CALL: "REQUEST_API_CALL",
     SUCCESS_API_CALL: "SUCCESS_API_CALL",
     FAILED_API_CALL: "FAILED_API_CALL",
+    APP_BANNERS: "APP_BANNERS"
 });
 
 
@@ -34,5 +35,6 @@ export const AppGlobalActions = {
     loadAppInitialData: () => createAction(AppGlobalActionTypes.LOAD_APP_INITIAL_DATA, null),
     requestAPICall: (actionType: string) => createAction(AppGlobalActionTypes.REQUEST_API_CALL, actionType),
     successAPICall: (payload: APICallDetail) => createAction(AppGlobalActionTypes.SUCCESS_API_CALL, payload),
-    failedAPICall: (payload: APICallDetail) => createAction(AppGlobalActionTypes.FAILED_API_CALL, payload)
+    failedAPICall: (payload: APICallDetail) => createAction(AppGlobalActionTypes.FAILED_API_CALL, payload),
+    storeAppBanners: (payload: any) => createAction(AppGlobalActionTypes.APP_BANNERS, payload)
 }
