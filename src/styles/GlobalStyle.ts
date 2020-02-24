@@ -66,6 +66,9 @@ const GlobalStyle = StyleSheet.create({
     gridColContent: {
         alignItems: "center",
         margin: 5
+    },
+    blockElement: {
+        flex: 1, flexDirection: 'row'
     }
 });
 

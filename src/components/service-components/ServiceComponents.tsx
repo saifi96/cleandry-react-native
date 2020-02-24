@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, ListItem, Left, Right, Text, List, Icon, Thumbnail, H3, Body, Picker, Button, Form, Item, Input } from "native-base";
+import { View, ListItem, Left, Right, Text, List, Icon, H3, Body, Picker, Button, Form, Item, Input } from "native-base";
 import ImgPathConstants from "../../core/constants/ImgPathConstants";
 import ColorConstants from "../../core/constants/ColorConstants";
 import IAppGlobalProps from "../../base/interfaces/IAppGlobalProps";
@@ -9,7 +9,7 @@ import GlobalStyle from "../../styles/GlobalStyle";
 import { StyleSheet } from "react-native";
 import FormFieldModel from "../../core/models/FormFieldModel";
 import { Grid, Row, Col } from "react-native-easy-grid";
-import { GridButton } from "../general-components/UIComponents";
+import { ThumbnailRenderer } from "../general-components/UIComponents";
 import { ServiceUnitSelectionAdapter } from "../../core/models/Adapters";
 
 //#region Service Selection Component
@@ -289,42 +289,45 @@ export const ServiceUnitSelectionComponent = (props: IServiceUnitSelectionProps)
             <H3 style={styles.sectionTitle}>Choose Service Unit</H3>
             <List>
                 {
-                    props.serviceUnitSelections.map(iClothAdapter =>
-                        <ListItem thumbnail itemDivider noBorder style={{ marginBottom: 8 }}>
-                            <Left>
-                                <Thumbnail square source={{ uri: iClothAdapter.serviceUnit.predefine_image }} />
-                            </Left>
-                            <Body>
-                                <Text>{iClothAdapter.serviceUnit.units_title}</Text>
-                                <Text note numberOfLines={1} style={{ color: ColorConstants.primaryText }}>Price &#8377;{iClothAdapter.serviceUnit.base_price}</Text>
-                            </Body>
-                            <Right style={{ flex: 0.8, flexDirection: 'row', marginRight: -10 }}>
-                                <Button
-                                    icon
-                                    small
-                                    rounded
-                                    success
-                                    onPress={props.onServiceUnitAdd?.bind(null, iClothAdapter.serviceUnit.id)}
-                                >
-                                    <Icon name='plus-square-o' type="FontAwesome" />
-                                </Button>
-                                <Button
-                                    bordered
-                                    style={{ marginLeft: 3, marginRight: 3 }}
-                                >
-                                    <Text>{iClothAdapter.selectionCount}</Text>
-                                </Button>
-                                <Button
-                                    icon
-                                    small
-                                    rounded
-                                    danger
-                                    onPress={props.onServiceUnitRemove?.bind(null, iClothAdapter.serviceUnit.id)}
-                                >
-                                    <Icon name='minus-square-o' type="FontAwesome" />
-                                </Button>
-                            </Right>
-                        </ListItem>
+                    props.serviceUnitSelections.map(iClothAdapter => {
+                        return (
+                            <ListItem thumbnail itemDivider noBorder style={{ marginBottom: 8 }}>
+                                <Left>
+                                    <ThumbnailRenderer source={{ uri: iClothAdapter.serviceUnit.predefine_image }} square large />
+                                </Left>
+                                <Body>
+                                    <Text>{iClothAdapter.serviceUnit.units_title}</Text>
+                                    <Text note numberOfLines={1} style={{ color: ColorConstants.primaryText }}>Price &#8377;{iClothAdapter.serviceUnit.base_price}</Text>
+                                </Body>
+                                <Right style={{ flex: 0.8, flexDirection: 'row', marginRight: -10 }}>
+                                    <Button
+                                        icon
+                                        small
+                                        rounded
+                                        success
+                                        onPress={props.onServiceUnitAdd?.bind(null, iClothAdapter.serviceUnit.id)}
+                                    >
+                                        <Icon name='plus-square-o' type="FontAwesome" />
+                                    </Button>
+                                    <Button
+                                        bordered
+                                        style={{ marginLeft: 3, marginRight: 3 }}
+                                    >
+                                        <Text>{iClothAdapter.selectionCount}</Text>
+                                    </Button>
+                                    <Button
+                                        icon
+                                        small
+                                        rounded
+                                        danger
+                                        onPress={props.onServiceUnitRemove?.bind(null, iClothAdapter.serviceUnit.id)}
+                                    >
+                                        <Icon name='minus-square-o' type="FontAwesome" />
+                                    </Button>
+                                </Right>
+                            </ListItem>
+                        )
+                    }
                     )
                 }
             </List>
@@ -346,7 +349,6 @@ export const DeliveryDetailFormComponent = () => {
         <View>
             <H3 style={styles.sectionTitle}>Delivery Detail</H3>
             <Form>
-
                 <Item
                     fixedLabel={true}
                     regular
@@ -428,17 +430,101 @@ export const DeliveryDetailFormComponent = () => {
                 </Item>
 
             </Form>
-
         </View>
     )
 }
 //#endregion
 
 //#region Order Detail Component
-export const OrderDetailComponent = () => {
+interface IOrderDetailProps {
+    cartItems: ServiceUnitSelectionAdapter[]
+}
+export const OrderDetailComponent = (props: IOrderDetailProps) => {
     return (
         <View>
             <H3 style={styles.sectionTitle}>Order Detail</H3>
+            {
+                props.cartItems.map(item => {
+                    return (
+                        <View style={[GlobalStyle.blockElement]}>
+                            <Left>
+                                <Button iconLeft transparent>
+                                    <Icon name="close" type="FontAwesome" style={{ color: ColorConstants.danger }} active />
+                                    <Text uppercase={false} adjustsFontSizeToFit style={GlobalStyle.textSizeM}>{item.serviceUnit.units_title}</Text>
+                                </Button>
+                            </Left>
+                            <Right>
+                                <Button iconLeft transparent>
+                                    <Icon name="rupee" type="FontAwesome" style={{ marginRight: -10 }} />
+                                    <Text suppressHighlighting adjustsFontSizeToFit style={[GlobalStyle.textSizeM]}>{item.serviceUnit.base_price} X {item.selectionCount}</Text>
+                                </Button>
+                            </Right>
+                        </View>
+                    )
+                })
+            }
+            {
+                props.cartItems.length > 0
+                    ?
+                    <View>
+                        <View style={[{ borderTopWidth: 1, borderTopColor: ColorConstants.lightGray2 }, GlobalStyle.blockElement, styles.condencedRow]}>
+                            <Left>
+                                <Button transparent>
+                                    <Text style={[GlobalStyle.textSizeM, { marginLeft: 5 }]} adjustsFontSizeToFit uppercase={false}>Sub Total</Text>
+                                </Button>
+                            </Left>
+                            <Right>
+                                <Button iconLeft transparent>
+                                    <Icon name="rupee" type="FontAwesome" style={{ marginRight: -10 }} />
+                                    <Text style={[GlobalStyle.textSizeM]} adjustsFontSizeToFit>
+                                        {props.cartItems.map(item => item.selectionCount * item.serviceUnit.base_price).reduce((prev, current) => (prev + current))}.00
+                                        </Text>
+                                </Button>
+                            </Right>
+                        </View>
+                        <View style={[GlobalStyle.blockElement, styles.condencedRow]}>
+                            <Left>
+                                <Button transparent>
+                                    <Text style={[GlobalStyle.textSizeM, { marginLeft: 5 }]} adjustsFontSizeToFit uppercase={false}>Tax</Text>
+                                </Button>
+                            </Left>
+                            <Right>
+                                <Button iconLeft transparent>
+                                    <Icon name="rupee" type="FontAwesome" style={{ marginRight: -10 }} />
+                                    <Text style={[GlobalStyle.textSizeM]} adjustsFontSizeToFit>
+                                        20.00
+                                        </Text>
+                                </Button>
+                            </Right>
+                        </View>
+                        <View style={[GlobalStyle.blockElement]}>
+                            <Left>
+                                <Button transparent>
+                                    <Text style={[GlobalStyle.textSizeM, { marginLeft: 5 }]} adjustsFontSizeToFit uppercase={false}>Delivery Charges</Text>
+                                </Button>
+                            </Left>
+                            <Right>
+                                <Button iconLeft transparent>
+                                    {/* <Icon name="rupee" type="FontAwesome" style={{ marginRight: -10 }} /> */}
+                                    <Text style={[GlobalStyle.textSizeM]} adjustsFontSizeToFit>
+                                        Free
+                                    </Text>
+                                </Button>
+                            </Right>
+                        </View>
+                        <View style={[GlobalStyle.blockElement]}>
+                            <Item regular style={[GlobalStyle.blockElement]} rounded>
+                                <Input placeholder='Have a promocode?' />
+                            </Item>
+                        </View>
+                        <View style={[GlobalStyle.blockElement, { marginTop: 25, justifyContent: 'center' }]}>
+                            <Button large hasText={true} style={[GlobalStyle.width75Per, GlobalStyle.borderRadiusL, GlobalStyle.bgAppPrimary]}>
+                                <Text uppercase={false} textBreakStrategy="balanced" style={[GlobalStyle.blockElement, { textAlign: 'center' }]}>Apply</Text>
+                            </Button>
+                        </View>
+                    </View>
+                    : null
+            }
         </View>
     )
 }
@@ -449,5 +535,6 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         fontWeight: "bold",
         color: ColorConstants.placeholderText
-    }
+    },
+    condencedRow: { marginBottom: -12 }
 })

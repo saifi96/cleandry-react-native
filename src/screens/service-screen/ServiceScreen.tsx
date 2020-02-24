@@ -88,6 +88,7 @@ class ServiceScreen extends React.Component<Props, IState> {
 
     render() {
 
+        const cartItems = this.state.serviceUnitSelections.filter(item => item.selectionCount > 0)
         return (
             <MainContainerComponent isLoading={false}>
                 <Header
@@ -121,9 +122,8 @@ class ServiceScreen extends React.Component<Props, IState> {
                         onServiceUnitRemove={this.onServiceUnitRemove}
                     />
 
-                    <DeliveryDetailFormComponent />
-
-                    <OrderDetailComponent />
+                    {cartItems.length > 0 ? <DeliveryDetailFormComponent /> : null}
+                    {cartItems.length > 0 ? <OrderDetailComponent cartItems={cartItems} /> : null}
 
                 </Content>
             </MainContainerComponent>
