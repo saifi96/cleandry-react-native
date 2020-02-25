@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as Redux from 'redux';
-import { Container, Content, H1, Card, Text, Input, Button, View, Item, Icon } from 'native-base';
+import { Container, H2, Card, Text, Input, Button, View, Item, Icon } from 'native-base';
 import { Grid, Row, Col } from "react-native-easy-grid";
 import GlobalStyle from '../../styles/GlobalStyle';
 import { NavigateToScreen, NavigateToRoot } from '../../components/navigation-components/AppNavigations';
@@ -78,7 +78,7 @@ class LoginScreen extends React.Component<Props, IState> {
                     <Card style={[GlobalStyle.borderRadiusL, { flex: 1, padding: 10, paddingTop: 25, paddingBottom: 25, marginLeft: 15, marginRight: 15 }]}>
                         <Grid>
                             <Row style={{ flexDirection: "column" }}>
-                                <H1>Please Login Now</H1>
+                                <H2>Please Login Now</H2>
                                 <Text style={{ marginTop: 5 }}>
                                     Here we will verify your identity to serve you better
                                 </Text>
@@ -94,7 +94,7 @@ class LoginScreen extends React.Component<Props, IState> {
                                                 style={GlobalStyle.borderRadiusM}>
                                                 <Input
                                                     disabled={true}
-                                                    style={[GlobalStyle.textSizeL, { textAlign: "center" }]}
+                                                    style={[{ textAlign: "center" }]}
                                                     placeholder="+91"
                                                     textAlignVertical="center"
                                                     keyboardType="number-pad" />
@@ -107,7 +107,6 @@ class LoginScreen extends React.Component<Props, IState> {
                                                 style={GlobalStyle.borderRadiusM}
                                             >
                                                 <Input
-                                                    style={GlobalStyle.textSizeL}
                                                     placeholder="Enter phone no."
                                                     maxLength={10}
                                                     onChangeText={(txt) => {
@@ -132,7 +131,6 @@ class LoginScreen extends React.Component<Props, IState> {
 
                             <Row style={[GlobalStyle.verticalSpacing, { justifyContent: "center" }]}>
                                 <Button
-                                    large
                                     block
                                     rounded
                                     iconRight
@@ -171,19 +169,17 @@ class LoginScreen extends React.Component<Props, IState> {
                                 <Col>
                                     <Button
                                         iconRight={true}
-                                        large
-                                        style={[GlobalStyle.borderRadiusM, { margin: 5, backgroundColor: ColorConstants.danger }]}>
+                                        style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.danger }]}>
                                         <Text uppercase={false}>
                                             Google
                                         </Text>
                                         <Icon name="google" type="FontAwesome5" />
                                     </Button>
                                 </Col>
-                                <Col>
+                                <Col style={{ marginLeft: 5 }}>
                                     <Button
                                         iconRight={true}
-                                        large
-                                        style={[GlobalStyle.borderRadiusM, { margin: 5 }]}>
+                                        style={[GlobalStyle.borderRadiusM]}>
                                         <Text uppercase={false}>
                                             Facebook
                                         </Text>

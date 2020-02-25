@@ -37,7 +37,6 @@ class ServiceScreen extends React.Component<Props, IState> {
     //#region Life Cycle Hooks
     constructor(props: Props) {
         super(props);
-
         const serviceId = (this.props.navigation.state.params.serviceId || '')
         const serviceUnitSelectionAdapter: ServiceUnitSelectionAdapter[] = []
         const currentService = props.services.find(iService => serviceId === iService.id)
@@ -55,11 +54,15 @@ class ServiceScreen extends React.Component<Props, IState> {
         }
 
         //#region Bind Functions
-        this.onServiceUnitAdd = this.onServiceUnitAdd.bind(this)
-        this.onServiceUnitRemove = this.onServiceUnitRemove.bind(this)
+        this.onServiceUnitAdd = this.onServiceUnitAdd.bind(this);
+        this.onServiceUnitRemove = this.onServiceUnitRemove.bind(this);
+        this.goBack = this.goBack.bind(this);
         //#endregion
     }
     componentWillMount() {
+    }
+    goBack() {
+        this.props.navigation.pop()
     }
     //#endregion
 
@@ -97,9 +100,7 @@ class ServiceScreen extends React.Component<Props, IState> {
                     <Left>
                         <Button
                             transparent
-                            onPress={() => {
-                                this.props.navigation.navigate(NavigateToScreen.DashboardScreen);
-                            }}
+                            onPress={this.goBack}
                         >
                             <Icon name="arrow-left" type="FontAwesome5" />
                         </Button>

@@ -3,6 +3,7 @@ import { Thumbnail, View, Button, NativeBase } from "native-base";
 import { ImageSourcePropType, Text, TouchableOpacity } from "react-native";
 import ColorConstants from "../../core/constants/ColorConstants";
 import ImgPathConstants from "../../core/constants/ImgPathConstants";
+import GlobalStyle from "../../styles/GlobalStyle";
 
 
 interface IGridButtonProps {
@@ -14,11 +15,7 @@ interface IGridButtonProps {
 export const GridButton = (props: IGridButtonProps) => {
 
     return (
-        <View style={{
-            borderRadius: 5, padding: 3,
-            borderWidth: 1,
-            borderColor: ColorConstants.lightGray2
-        }}>
+        <View style={GlobalStyle.gridButton}>
             <TouchableOpacity
                 onPress={() => {
                     if (props.onClick != null) {
@@ -35,7 +32,7 @@ export const GridButton = (props: IGridButtonProps) => {
                     defaultSource={ImgPathConstants.serviceIcons.washIron}
                     source={props.iconSource}
                 />
-                <Text numberOfLines={1} lineBreakMode="tail" adjustsFontSizeToFit={true} ellipsizeMode="tail">{props.title}</Text>
+                <Text numberOfLines={1} lineBreakMode="tail" adjustsFontSizeToFit={true} ellipsizeMode="tail" style={GlobalStyle.gridButtonTitle}>{props.title}</Text>
             </TouchableOpacity>
         </View>
     )

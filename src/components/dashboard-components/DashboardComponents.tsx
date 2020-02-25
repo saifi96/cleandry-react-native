@@ -28,7 +28,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
     }).filter(iService => iService.status === "E")
     function renderServices() {
         if (services.length > 0) {
-            const itemsPerRow = 4
+            const itemsPerRow = 3
             const numberOfRows = ((services.length / itemsPerRow % 2) === 0) ? (services.length / itemsPerRow) : (parseInt(`${services.length / itemsPerRow}`) + 1)
             const aryOfRows = new Array(numberOfRows).fill({})
             const aryOfColumns = new Array(itemsPerRow).fill({})
@@ -41,7 +41,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                             const iService = iServiceIndex < services.length ? services[iServiceIndex] : null
                             if (iService) {
                                 return (
-                                    <Col style={[GlobalStyle.gridColContent]} size={3}>
+                                    <Col style={[GlobalStyle.gridColContent]} size={4}>
                                         <GridButton
                                             title={iService.title}
                                             iconSource={{ uri: iService.image }}
@@ -52,7 +52,7 @@ export const OurTopServicesComponent = (props: IOurTopServicesProps) => {
                                     </Col>
                                 )
                             } else {
-                                return <Col size={3}></Col>
+                                return <Col size={4}></Col>
                             }
                         }
                         )
@@ -261,12 +261,11 @@ export const QuickCheckoutComponent = (props: IQuickCheckoutProps) => {
                     <Col size={3}>
                         <Item
                             regular
+                            onPress={showDatePicker}
                             style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.white }]}
                         >
                             <Input
-                                onFocus={showDatePicker}
-                                onKeyPress={showDatePicker}
-                                onBlur={hideDatePicker}
+                                disabled
                                 value={state.scheduleDate}
                                 placeholder="Schedule Delivery"
                                 placeholderTextColor={ColorConstants.placeholderText}

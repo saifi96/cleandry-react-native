@@ -69,6 +69,31 @@ const GlobalStyle = StyleSheet.create({
     },
     blockElement: {
         flex: 1, flexDirection: 'row'
+    },
+    gridButton: {
+        borderRadius: 5,
+        padding: 5,
+        paddingTop: 8,
+        paddingBottom: 8,
+        borderWidth: 1,
+        borderColor: ColorConstants.lightGray2,
+        width: '100%'
+    },
+    gridButtonTitle: {
+        marginTop: 5,
+        fontWeight: '500'
+    },
+    listItemNarrow: {
+        marginBottom: 8,
+        paddingLeft: 5,
+        paddingRight: 5,
+        paddingTop: 0,
+        paddingBottom: 0,
+        borderRadius: 5
+    },
+    horizontalElmSeparator: {
+        marginLeft: 5,
+        marginRight: 5
     }
 });
 

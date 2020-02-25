@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container, H1, Card, Text, Input, Button, View, Item, Icon, Form, Header, Left, Body, Right, Content } from 'native-base';
+import { Container, H2, Card, Text, Input, Button, View, Item, Icon, Form, Header, Left, Body, Right, Content } from 'native-base';
 import { Grid, Row, Col } from "react-native-easy-grid";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import GlobalStyle from '../../styles/GlobalStyle';
@@ -137,9 +137,9 @@ class RegistrationScreen extends React.Component<Props, IState> {
                         </Row>
                     </Grid>
 
-                    <Card style={[GlobalStyle.borderRadiusL, { flex: 1, padding: 10, paddingTop: 50, paddingBottom: 0, marginBottom: -15, marginTop: "10%" }]}>
+                    <Card style={[GlobalStyle.borderRadiusL, { flex: 1, padding: 10, paddingTop: 50, paddingBottom: 10, marginBottom: -15, marginTop: "10%" }]}>
                         <View style={{ flexDirection: "column" }}>
-                            <H1>Register Now</H1>
+                            <H2>Register Now</H2>
                             <Text style={{ marginTop: 5 }}>
                                 Here we will verify your identity to serve you better
                             </Text>
@@ -210,14 +210,14 @@ class RegistrationScreen extends React.Component<Props, IState> {
                             <Item
                                 fixedLabel={true}
                                 regular
+                                onPress={this.showDatePicker}
                                 error={this.state.DOB.IsError}
                                 style={[GlobalStyle.borderRadiusM, GlobalStyle.itemSpacing, { padding: 3 }]}>
                                 <Input
+                                    disabled
                                     style={GlobalStyle.textSizeM}
                                     placeholder="DD/MM/YYYY"
                                     value={this.state.DOB.Value}
-                                    onFocus={this.showDatePicker}
-                                    onBlur={this.hideDatePicker}
                                     placeholderTextColor={ColorConstants.placeholderText} />
                                 <Icon
                                     name="calendar-month"
@@ -239,7 +239,6 @@ class RegistrationScreen extends React.Component<Props, IState> {
                         <View style={[GlobalStyle.verticalSpacing, { justifyContent: "center", flexDirection: "row" }]}>
                             <Button
                                 iconRight={true}
-                                large
                                 block
                                 rounded
                                 style={[GlobalStyle.width75Per, GlobalStyle.bgAppPrimary]}
@@ -250,7 +249,7 @@ class RegistrationScreen extends React.Component<Props, IState> {
                                     textBreakStrategy="balanced"
                                 >
                                     Register now
-                                    </Text>
+                                </Text>
                                 <Icon name="arrow-right" type="FontAwesome5" />
                             </Button>
                         </View>
@@ -275,8 +274,7 @@ class RegistrationScreen extends React.Component<Props, IState> {
                             <View style={{ flex: 1 }}>
                                 <Button
                                     iconRight={true}
-                                    large
-                                    style={[GlobalStyle.borderRadiusM, { margin: 5, backgroundColor: ColorConstants.danger }]}>
+                                    style={[GlobalStyle.borderRadiusM, { backgroundColor: ColorConstants.danger }]}>
                                     <Text uppercase={false}>
                                         Google
                                         </Text>
@@ -284,14 +282,13 @@ class RegistrationScreen extends React.Component<Props, IState> {
                                     </Icon>
                                 </Button>
                             </View>
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1, marginLeft: 5 }}>
                                 <Button
                                     iconRight={true}
-                                    large
-                                    style={[GlobalStyle.borderRadiusM, GlobalStyle.bgAppPrimary, { margin: 5 }]}>
+                                    style={[GlobalStyle.borderRadiusM, GlobalStyle.bgAppPrimary]}>
                                     <Text uppercase={false}>
                                         Facebook
-                                        </Text>
+                                    </Text>
                                     <Icon name="facebook" type="FontAwesome5" />
                                 </Button>
                             </View>
